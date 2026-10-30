@@ -362,13 +362,60 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   background: var(--accent);
   color: #fff;
 }
-
+/* Global Root Pitch Selector */
+.pitch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+  font-size: 0.76rem;
+  color: var(--ink);
+}
+.pitch-bar label {
+  font-weight: bold;
+  color: #5a4a3a;
+}
+.pitch-bar select {
+  font-family: Georgia, serif;
+  font-size: 0.78rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+}
+.pitch-bar select:focus {
+  border-color: var(--accent);
+}
 </style>
 </head>
 <body class="no-js-ready">
 <div class="wrap">
 <div class="view-tabs"><button class="view-tab active" data-view="finder">Raga Finder</button><button class="view-tab" data-view="wheel">Melakarta Wheel</button><button class="view-tab" data-view="ring">Raga Ring</button></div>
-
+<div class="pitch-bar">
+  <label for="saPitchSelect">Root Pitch (Sa):</label>
+  <select id="saPitchSelect">
+    <option value="196.00">G3 (196.0 Hz &middot; Safed 5 Low)</option>
+    <option value="207.65">G#3 / Ab3 (207.7 Hz &middot; Kali 4 Low)</option>
+    <option value="220.00">A3 (220.0 Hz &middot; Safed 6 Male)</option>
+    <option value="233.08">A#3 / Bb3 (233.1 Hz &middot; Kali 5 Male)</option>
+    <option value="246.94">B3 (246.9 Hz &middot; Safed 7 Male)</option>
+    <option value="261.63">C4 (261.6 Hz &middot; Safed 1 Female)</option>
+    <option value="277.18" selected>C#4 (277.2 Hz &middot; Kali 1 Standard)</option>
+    <option value="293.66">D4 (293.7 Hz &middot; Safed 2)</option>
+    <option value="311.13">D#4 / Eb4 (311.1 Hz &middot; Kali 2)</option>
+    <option value="329.63">E4 (329.6 Hz &middot; Safed 3)</option>
+    <option value="349.23">F4 (349.2 Hz &middot; Safed 4)</option>
+    <option value="369.99">F#4 (370.0 Hz &middot; Kali 3)</option>
+  </select>
+</div>
 <div id="finder-view" style="display: block;">
 <header class="top">
   <h1>Raga &amp; Song Finder</h1>
@@ -1768,7 +1815,7 @@ var DATA = {
   notes: CHROMATIC_NOTES,
   raags: Object.keys(RING_RAGA_DETAILS).map(function(ragaKey, idx) {
     var r = RING_RAGA_DETAILS[ragaKey];
-    
+
     // Construct the boolean notes map expected by the keyboard matcher
     var notesMap = {};
     CHROMATIC_NOTES.forEach(function(noteName, nIdx) {
@@ -5380,11 +5427,11 @@ function searchSong(){
     var detailStr = detail.length ? ' &mdash; '+detail.join(' / ') : '';
     var tagBadge = m._tag ? ' <span style="font-size:.68rem;color:#fff;background:#b8341e;padding:1px 5px;border-radius:3px;margin-left:4px">'+m._tag+'</span>' : '';
     var matchInfo = ' <span style="font-size:.68rem;color:#2e7d32">('+m.matched+'/'+m.total+' words)</span>';
-    d.innerHTML = 
+    d.innerHTML =
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
         '<div>' +
-          '<span class="rn ring-link" data-raga="' + escapeHtml(m.raag) + '" style="cursor:pointer;" title="View on Raga Ring">' + escapeHtml(m.raag) + '</span>' + 
-          matchInfo + 
+          '<span class="rn ring-link" data-raga="' + escapeHtml(m.raag) + '" style="cursor:pointer;" title="View on Raga Ring">' + escapeHtml(m.raag) + '</span>' +
+          matchInfo +
         '</div>' +
         '<a class="ring-link" data-raga="' + escapeHtml(m.raag) + '" style="font-size:0.75rem;white-space:nowrap;">View on Ring &rarr;</a>' +
       '</div>' +
@@ -5392,7 +5439,7 @@ function searchSong(){
         '<div class="song-item">' +
           '<div class="song-main">' +
             '<span class="song-name">' + escapeHtml(m.song) + '</span>' +
-            '<span class="song-detail">' + detailStr + '</span>' + tagBadge + 
+            '<span class="song-detail">' + detailStr + '</span>' + tagBadge +
           '</div>' +
         '</div>' +
       '</div>';
@@ -5423,6 +5470,25 @@ document.querySelectorAll('.tab').forEach(function(t){
 /* ================================================================
    AUDIO SYNTHESIZER & SWARA SEQUENCER (Piano Voice)
    ================================================================ */
+   // Global root pitch: defaults to C#4 (277.18 Hz). Persists in localStorage.
+   var SA_PITCH = parseFloat(localStorage.getItem('raga_global_sa_pitch')) || 277.18;
+
+   function initPitchSelector() {
+     var sel = document.getElementById('saPitchSelect');
+     if (!sel) return;
+
+     sel.value = SA_PITCH.toFixed(2);
+
+     sel.addEventListener('change', function() {
+       stopSwaraPlayback(); // Halt ongoing audio playback immediately
+       SA_PITCH = parseFloat(this.value);
+       try {
+         localStorage.setItem('raga_global_sa_pitch', this.value);
+       } catch(e) {}
+     });
+   }
+   document.addEventListener('DOMContentLoaded', initPitchSelector);
+   initPitchSelector();
 
 var audioCtx = null;
 var activePlayback = null;
@@ -5497,7 +5563,7 @@ function playStringTone1(freq, startTime, duration) {
 // Synthesizes a warm, bowed string ensemble tone (Violin / Sarangi voice)
 function playStringTone(freq, startTime, duration) {
   var ctx = getAudioContext();
-  
+
   // Dual detuned oscillators create acoustic thickness and chorusing
   var detunes = [-5, 5]; // detune in cents
 
@@ -5572,7 +5638,7 @@ function parseSwaraSequenceOriginal(phrase, isAvroha) {
 }
 
 function parseSwaraSequence(phrase, isAvroha) {
-  var tonic = 277.18; // Madhya Sa (C#4)
+  var tonic = (typeof SA_PITCH !== 'undefined') ? SA_PITCH : 277.18;
   var intervals = {
     "Sa": 0, "re": 1, "Re": 2, "ga": 3, "Ga": 4,
     "ma": 5, "Ma": 6, "Pa": 7, "dha": 8, "Dha": 9,
@@ -5673,6 +5739,66 @@ function playSwaraPhrase(phrase, isAvroha, btnElement) {
   activePlayback = { btn: btnElement, timers: timers };
 }
 
+// Sequencer for Melakarta scales: plays ascending (S to S') and descending (S' to S)
+function playMelakartaScale(csString, btnElement) {
+  if (activePlayback && activePlayback.btn === btnElement) {
+    stopSwaraPlayback();
+    return;
+  }
+
+  stopSwaraPlayback();
+
+  var tonic = (typeof SA_PITCH !== 'undefined') ? SA_PITCH : 277.18;
+  var intervals = {
+    "S": 0,
+    "R1": 1, "R2": 2, "G1": 2,
+    "R3": 3, "G2": 3, "G3": 4,
+    "M1": 5, "M2": 6,
+    "P": 7,
+    "D1": 8, "D2": 9, "N1": 9,
+    "D3": 10, "N2": 10, "N3": 11
+  };
+
+  var tokens = (csString || '').trim().split(/\s+/);
+  if (tokens.length < 2) return;
+
+  // 1. Build ascending frequencies (S -> S')
+  var asc = [];
+  for (var i = 0; i < tokens.length; i++) {
+    var t = tokens[i];
+    var shift = (i === tokens.length - 1 && t === "S") ? 12 : (intervals[t] !== undefined ? intervals[t] : 0);
+    asc.push(tonic * Math.pow(2, shift / 12));
+  }
+
+  // 2. Build full scale: Ascending then Descending (without repeating top S)
+  var scaleFreqs = asc.slice();
+  for (var j = asc.length - 2; j >= 0; j--) {
+    scaleFreqs.push(asc[j]);
+  }
+
+  btnElement.classList.add('playing');
+  btnElement.innerHTML = '&#9632; Stop';
+
+  var timers = [];
+  var noteInterval = 420; // 420ms per swara
+  var noteDuration = 0.7;
+
+  scaleFreqs.forEach(function(freq, idx) {
+    var timer = setTimeout(function() {
+      playStringTone(freq, getAudioContext().currentTime, noteDuration);
+    }, idx * noteInterval);
+    timers.push(timer);
+  });
+
+  var endTimer = setTimeout(function() {
+    btnElement.classList.remove('playing');
+    btnElement.innerHTML = '&#9654; Play Scale';
+    activePlayback = null;
+  }, scaleFreqs.length * noteInterval);
+  timers.push(endTimer);
+
+  activePlayback = { btn: btnElement, timers: timers };
+}
 
 /* RENDER */
 function noteKey(set){ return NOTE_ORDER.map(function(n){return set[n]?'1':'0';}).join(''); }
@@ -5740,7 +5866,7 @@ function ragaCard(r,exact){
              '</div>' +
              '<a class="ring-link" data-raga="'+r.name+'" style="font-size:0.75rem;white-space:nowrap;">View on Ring &rarr;</a>' +
            '</div>';
-  
+
   if(exact) html='<div style="font-size:.7rem;color:#2e7d32;font-weight:bold;margin-bottom:2px">EXACT MATCH</div>'+html;
   if(r.aaroha) {
     html += '<div class="swara-row">' +
@@ -5754,10 +5880,10 @@ function ragaCard(r,exact){
               '<button type="button" class="play-swara-btn btn-avroha">&#9654; Play</button>' +
             '</div>';
   }
-  
+
   if(r.pakad) html+='<div class="row"><b>Pakad:</b> '+r.pakad+'</div>';
   if(r.vadi||r.samvadi) html+='<div class="row"><b>Vadi:</b> '+(r.vadi||'-')+' &nbsp; <b>Samvadi:</b> '+(r.samvadi||'-')+'</div>';
-  
+
 
   if(r.cr||r.mk){
     html+='<div class="row"><b>Carnatic Raga:</b> '+(r.cr||'-')+' &nbsp; <b>Melakarta:</b> '+(r.mk||'-')+'</div>';
@@ -5765,13 +5891,13 @@ function ragaCard(r,exact){
       html+='<div class="row"><a class="mw-link" data-mk="'+r.mk+'">View on Melakarta Wheel &rarr;</a></div>';
     }
   }
-   
+
   if(r.description){
        html+='<div class="row" style="margin-top:4px;color:#5a4a3a;font-style:italic;">'+r.description+'</div>';
   }
 
   d.innerHTML=html;
-  
+
   var btnAaroha = d.querySelector('.btn-aaroha');
   if(btnAaroha) {
     btnAaroha.addEventListener('click', function(e) {
@@ -5787,17 +5913,17 @@ function ragaCard(r,exact){
       playSwaraPhrase(r.avroha, true, this);
     });
   }
-  
+
   var mwLink=d.querySelector('.mw-link');
   if(mwLink) mwLink.addEventListener('click',function(){showRagaOnWheel(this.getAttribute('data-mk'));});
-  
+
   var ringLinks = d.querySelectorAll('.ring-link');
   ringLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       viewOnRagaRing(this.getAttribute('data-raga'));
     });
   });
-  
+
   d.appendChild(songsBox(r.name));
   return d;
 }
@@ -6051,78 +6177,78 @@ render();
 
 /* ===== MELAKARTA WHEEL ===== */
 var RAGAS = [
-{n:1,name:"Kanakangi",cs:"S R1 G1 M1 P D1 N1 S",hs:"S-rR-m-P-dD-S",ch:"Indu",he:"Kanakangi"},
-{n:2,name:"Ratnangi",cs:"S R1 G1 M1 P D1 N2 S",hs:"S-rR-m-P-d-n-S",ch:"Indu",he:"—"},
-{n:3,name:"Ganamurti",cs:"S R1 G1 M1 P D1 N3 S",hs:"S-rR-m-P-d-N-S",ch:"Indu",he:"—"},
-{n:4,name:"Vanaspati",cs:"S R1 G1 M1 P D2 N2 S",hs:"S-rR-m-P-D-n-S",ch:"Indu",he:"—"},
-{n:5,name:"Manavati",cs:"S R1 G1 M1 P D2 N3 S",hs:"S-rR-m-P-D-N-S",ch:"Indu",he:"—"},
-{n:6,name:"Tanarupi",cs:"S R1 G1 M1 P D3 N3 S",hs:"S-rR-m-P-nN-S",ch:"Indu",he:"—"},
-{n:7,name:"Senavati",cs:"S R1 G2 M1 P D1 N1 S",hs:"S-r-g-m-P-dD-S",ch:"Netra",he:"—"},
-{n:8,name:"Hanumatodi",cs:"S R1 G2 M1 P D1 N2 S",hs:"S-r-g-m-P-d-n-S",ch:"Netra",he:"Bhairavi thaat"},
-{n:9,name:"Dhenuka",cs:"S R1 G2 M1 P D1 N3 S",hs:"S-r-g-m-P-d-N-S",ch:"Netra",he:"Ardhanarishvara"},
-{n:10,name:"Natakapriya",cs:"S R1 G2 M1 P D2 N2 S",hs:"S-r-g-m-P-D-n-S",ch:"Netra",he:"Ahiri"},
-{n:11,name:"Kokilapriya",cs:"S R1 G2 M1 P D2 N3 S",hs:"S-r-g-m-P-D-N-S",ch:"Netra",he:"Kokilapriya"},
-{n:12,name:"Rupavati",cs:"S R1 G2 M1 P D3 N3 S",hs:"S-r-g-m-P-nN-S",ch:"Netra",he:"—"},
-{n:13,name:"Gayakapriya",cs:"S R1 G3 M1 P D1 N1 S",hs:"S-r-G-m-P-dD-S",ch:"Agni",he:"—"},
-{n:14,name:"Vakulabharanam",cs:"S R1 G3 M1 P D1 N2 S",hs:"S-r-G-m-P-d-n-S",ch:"Agni",he:"Basant Mukhari"},
-{n:15,name:"Mayamalavagaula",cs:"S R1 G3 M1 P D1 N3 S",hs:"S-r-G-m-P-d-N-S",ch:"Agni",he:"Bhairav thaat"},
-{n:16,name:"Chakravakam",cs:"S R1 G3 M1 P D2 N2 S",hs:"S-r-G-m-P-D-n-S",ch:"Agni",he:"Ahir Bhairav"},
-{n:17,name:"Suryakantam",cs:"S R1 G3 M1 P D2 N3 S",hs:"S-r-G-m-P-D-N-S",ch:"Agni",he:"Bhatiyari Bhairav"},
-{n:18,name:"Hatakambari",cs:"S R1 G3 M1 P D3 N3 S",hs:"S-r-G-m-P-nN-S",ch:"Agni",he:"Ganjama"},
-{n:19,name:"Jhankaradhvani",cs:"S R2 G2 M1 P D1 N1 S",hs:"S-R-g-m-P-dD-S",ch:"Veda",he:"—"},
-{n:20,name:"Natabhairavi",cs:"S R2 G2 M1 P D1 N2 S",hs:"S-R-g-m-P-d-n-S",ch:"Veda",he:"Asavari thaat"},
-{n:21,name:"Kirwani",cs:"S R2 G2 M1 P D1 N3 S",hs:"S-R-g-m-P-d-N-S",ch:"Veda",he:"Kirwani"},
-{n:22,name:"Kharaharapriya",cs:"S R2 G2 M1 P D2 N2 S",hs:"S-R-g-m-P-D-n-S",ch:"Veda",he:"Kafi thaat"},
-{n:23,name:"Gourimanohari",cs:"S R2 G2 M1 P D2 N3 S",hs:"S-R-g-m-P-D-N-S",ch:"Veda",he:"Patdeep"},
-{n:24,name:"Varunapriya",cs:"S R2 G2 M1 P D3 N3 S",hs:"S-R-g-m-P-nN-S",ch:"Veda",he:"Chanchalas Malhar"},
-{n:25,name:"Mararanjani",cs:"S R2 G3 M1 P D1 N1 S",hs:"S-R-G-m-P-dD-S",ch:"Bana",he:"—"},
-{n:26,name:"Charukesi",cs:"S R2 G3 M1 P D1 N2 S",hs:"S-R-G-m-P-d-n-S",ch:"Bana",he:"Charukeshi"},
-{n:27,name:"Sarasangi",cs:"S R2 G3 M1 P D1 N3 S",hs:"S-R-G-m-P-d-N-S",ch:"Bana",he:"Nat Bhairav"},
-{n:28,name:"Harikambhoji",cs:"S R2 G3 M1 P D2 N2 S",hs:"S-R-G-m-P-D-n-S",ch:"Bana",he:"Khamaj thaat"},
-{n:29,name:"Sankarabharanam",cs:"S R2 G3 M1 P D2 N3 S",hs:"S-R-G-m-P-D-N-S",ch:"Bana",he:"Bilawal thaat"},
-{n:30,name:"Naganandini",cs:"S R2 G3 M1 P D3 N3 S",hs:"S-R-G-m-P-nN-S",ch:"Bana",he:"Gondgiri Malhar"},
-{n:31,name:"Yagapriya",cs:"S R3 G3 M1 P D1 N1 S",hs:"S-gG-m-P-dD-S",ch:"Ritu",he:"—"},
-{n:32,name:"Ragavardhini",cs:"S R3 G3 M1 P D1 N2 S",hs:"S-gG-m-P-d-n-S",ch:"Ritu",he:"Vardhini | Nandkauns"},
-{n:33,name:"Gangeyabhusani",cs:"S R3 G3 M1 P D1 N3 S",hs:"S-gG-m-P-d-N-S",ch:"Ritu",he:"Gangeyabhushan"},
-{n:34,name:"Vagadhiswari",cs:"S R3 G3 M1 P D2 N2 S",hs:"S-gG-m-P-D-n-S",ch:"Ritu",he:"Jogeshwari Pancham"},
-{n:35,name:"Sulini",cs:"S R3 G3 M1 P D2 N3 S",hs:"S-gG-m-P-D-N-S",ch:"Ritu",he:"—"},
-{n:36,name:"Chalanata",cs:"S R3 G3 M1 P D3 N3 S",hs:"S-gG-m-P-nN-S",ch:"Ritu",he:"Jog Tilang"},
-{n:37,name:"Salagam",cs:"S R1 G1 M2 P D1 N1 S",hs:"S-rR-M-P-dD-S",ch:"Rishi",he:"—"},
-{n:38,name:"Jalarnavam",cs:"S R1 G1 M2 P D1 N2 S",hs:"S-rR-M-P-d-n-S",ch:"Rishi",he:"—"},
-{n:39,name:"Jhalavarali",cs:"S R1 G1 M2 P D1 N3 S",hs:"S-rR-M-P-d-N-S",ch:"Rishi",he:"—"},
-{n:40,name:"Navanitam",cs:"S R1 G1 M2 P D2 N2 S",hs:"S-rR-M-P-D-n-S",ch:"Rishi",he:"—"},
-{n:41,name:"Pavani",cs:"S R1 G1 M2 P D2 N3 S",hs:"S-rR-M-P-D-N-S",ch:"Rishi",he:"—"},
-{n:42,name:"Raghupriya",cs:"S R1 G1 M2 P D3 N3 S",hs:"S-rR-M-P-nN-S",ch:"Rishi",he:"—"},
-{n:43,name:"Gavambhodi",cs:"S R1 G2 M2 P D1 N1 S",hs:"S-r-g-M-P-dD-S",ch:"Vasu",he:"—"},
-{n:44,name:"Bhavapriya",cs:"S R1 G2 M2 P D1 N2 S",hs:"S-r-g-M-P-d-n-S",ch:"Vasu",he:"Komal Ramkali"},
-{n:45,name:"Subhapantuvarali",cs:"S R1 G2 M2 P D1 N3 S",hs:"S-r-g-M-P-d-N-S",ch:"Vasu",he:"Todi thaat"},
-{n:46,name:"Shadvidamargini",cs:"S R1 G2 M2 P D2 N2 S",hs:"S-r-g-M-P-D-n-S",ch:"Vasu",he:"Chandni Todi"},
-{n:47,name:"Suvarnangi",cs:"S R1 G2 M2 P D2 N3 S",hs:"S-r-g-M-P-D-N-S",ch:"Vasu",he:"Madhu Multani"},
-{n:48,name:"Divyamani",cs:"S R1 G2 M2 P D3 N3 S",hs:"S-r-g-M-P-nN-S",ch:"Vasu",he:"—"},
-{n:49,name:"Dhavalambari",cs:"S R1 G3 M2 P D1 N1 S",hs:"S-r-G-M-P-dD-S",ch:"Brahma",he:"—"},
-{n:50,name:"Namanarayani",cs:"S R1 G3 M2 P D1 N2 S",hs:"S-r-G-M-P-d-n-S",ch:"Brahma",he:"Namanarayani"},
-{n:51,name:"Kamavardhini",cs:"S R1 G3 M2 P D1 N3 S",hs:"S-r-G-M-P-d-N-S",ch:"Brahma",he:"Poorvi thaat"},
-{n:52,name:"Rampriya",cs:"S R1 G3 M2 P D2 N2 S",hs:"S-r-G-M-P-D-n-S",ch:"Brahma",he:"Rampriya"},
-{n:53,name:"Gamanasrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"S-r-G-M-P-D-N-S",ch:"Brahma",he:"Marwa thaat"},
-{n:54,name:"Vishvambari",cs:"S R1 G3 M2 P D3 N3 S",hs:"S-r-G-M-P-nN-S",ch:"Brahma",he:"Vishwambari"},
-{n:55,name:"Shamalangi",cs:"S R2 G2 M2 P D1 N1 S",hs:"S-R-g-M-P-dD-S",ch:"Disi",he:"—"},
-{n:56,name:"Shanmukhapriya",cs:"S R2 G2 M2 P D1 N2 S",hs:"S-R-g-M-P-d-n-S",ch:"Disi",he:"Shanmukhpriya"},
-{n:57,name:"Simhendramadhyamam",cs:"S R2 G2 M2 P D1 N3 S",hs:"S-R-g-M-P-d-N-S",ch:"Disi",he:"Simhendra Mad."},
-{n:58,name:"Hemavati",cs:"S R2 G2 M2 P D2 N2 S",hs:"S-R-g-M-P-D-n-S",ch:"Disi",he:"Hemavati | Madhukant"},
-{n:59,name:"Dharmavati",cs:"S R2 G2 M2 P D2 N3 S",hs:"S-R-g-M-P-D-N-S",ch:"Disi",he:"Madhuvanti | Anjani Kalyan"},
-{n:60,name:"Nitimati",cs:"S R2 G2 M2 P D3 N3 S",hs:"S-R-g-M-P-nN-S",ch:"Disi",he:"—"},
-{n:61,name:"Kantamani",cs:"S R2 G3 M2 P D1 N1 S",hs:"S-R-G-M-P-dD-S",ch:"Rudra",he:"Kanthamani"},
-{n:62,name:"Rishabhapriya",cs:"S R2 G3 M2 P D1 N2 S",hs:"S-R-G-M-P-d-n-S",ch:"Rudra",he:"Rishabhapriya"},
-{n:63,name:"Latangi",cs:"S R2 G3 M2 P D1 N3 S",hs:"S-R-G-M-P-d-N-S",ch:"Rudra",he:"Latangi"},
-{n:64,name:"Vachaspati",cs:"S R2 G3 M2 P D2 N2 S",hs:"S-R-G-M-P-D-n-S",ch:"Rudra",he:"Vachaspati"},
-{n:65,name:"Mechakalyani",cs:"S R2 G3 M2 P D2 N3 S",hs:"S-R-G-M-P-D-N-S",ch:"Rudra",he:"Kalyan thaat"},
-{n:66,name:"Chitrambari",cs:"S R2 G3 M2 P D3 N3 S",hs:"S-R-G-M-P-nN-S",ch:"Rudra",he:"—"},
-{n:67,name:"Sucharitra",cs:"S R3 G3 M2 P D1 N1 S",hs:"S-gG-M-P-dD-S",ch:"Aditya",he:"Sucharitra"},
-{n:68,name:"Jyotiswarupini",cs:"S R3 G3 M2 P D1 N2 S",hs:"S-gG-M-P-d-n-S",ch:"Aditya",he:"—"},
-{n:69,name:"Dhatuvardhani",cs:"S R3 G3 M2 P D1 N3 S",hs:"S-gG-M-P-d-N-S",ch:"Aditya",he:"—"},
-{n:70,name:"Nasikabhushani",cs:"S R3 G3 M2 P D2 N2 S",hs:"S-gG-M-P-D-n-S",ch:"Aditya",he:"Surmanjari"},
-{n:71,name:"Kosalam",cs:"S R3 G3 M2 P D2 N3 S",hs:"S-gG-M-P-D-N-S",ch:"Aditya",he:"DoGa Kalyan"},
-{n:72,name:"Rasikapriya",cs:"S R3 G3 M2 P D3 N3 S",hs:"S-gG-M-P-DN-S",ch:"Aditya",he:"—"}
+{n:1,name:"Kanakangi",cs:"S R1 G1 M1 P D1 N1 S",hs:"Sa-re-Re-ma-Pa-dha-Dha-Sa'",ch:"Indu",he:"-",desc:"First Melakarta raag."},
+{n:2,name:"Ratnangi",cs:"S R1 G1 M1 P D1 N2 S",hs:"Sa-re-Re-ma-Pa-dha-ni-Sa'",ch:"Indu",he:"—"},
+{n:3,name:"Ganamurti",cs:"S R1 G1 M1 P D1 N3 S",hs:"Sa-re-Re-ma-Pa-dha-Ni-Sa'",ch:"Indu",he:"—"},
+{n:4,name:"Vanaspati",cs:"S R1 G1 M1 P D2 N2 S",hs:"Sa-re-Re-ma-Pa-Dha-ni-Sa'",ch:"Indu",he:"—"},
+{n:5,name:"Manavati",cs:"S R1 G1 M1 P D2 N3 S",hs:"Sa-re-Re-ma-Pa-Dha-Ni-Sa'",ch:"Indu",he:"—"},
+{n:6,name:"Tanarupi",cs:"S R1 G1 M1 P D3 N3 S",hs:"Sa-re-Re-ma-Pa-ni-Ni-Sa'",ch:"Indu",he:"—"},
+{n:7,name:"Senavati",cs:"S R1 G2 M1 P D1 N1 S",hs:"Sa-re-ga-ma-Pa-dha-Dha-Sa'",ch:"Netra",he:"—"},
+{n:8,name:"Hanumatodi",cs:"S R1 G2 M1 P D1 N2 S",hs:"Sa-re-ga-ma-Pa-dha-ni-Sa'",ch:"Netra",he:"Bhairavi thaat"},
+{n:9,name:"Dhenuka",cs:"S R1 G2 M1 P D1 N3 S",hs:"Sa-re-ga-ma-Pa-dha-Ni-Sa'",ch:"Netra",he:"Ardhanarishvara"},
+{n:10,name:"Natakapriya",cs:"S R1 G2 M1 P D2 N2 S",hs:"Sa-re-ga-ma-Pa-Dha-ni-Sa'",ch:"Netra",he:"Ahiri"},
+{n:11,name:"Kokilapriya",cs:"S R1 G2 M1 P D2 N3 S",hs:"Sa-re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Netra",he:"Kokilapriya"},
+{n:12,name:"Rupavati",cs:"S R1 G2 M1 P D3 N3 S",hs:"Sa-re-ga-ma-Pa-ni-Ni-Sa'",ch:"Netra",he:"—"},
+{n:13,name:"Gayakapriya",cs:"S R1 G3 M1 P D1 N1 S",hs:"Sa-re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Agni",he:"—"},
+{n:14,name:"Vakulabharanam",cs:"S R1 G3 M1 P D1 N2 S",hs:"Sa-re-Ga-ma-Pa-dha-ni-Sa'",ch:"Agni",he:"Basant Mukhari"},
+{n:15,name:"Mayamalavagaula",cs:"S R1 G3 M1 P D1 N3 S",hs:"Sa-re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Agni",he:"Bhairav thaat"},
+{n:16,name:"Chakravakam",cs:"S R1 G3 M1 P D2 N2 S",hs:"Sa-re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Agni",he:"Ahir Bhairav"},
+{n:17,name:"Suryakantam",cs:"S R1 G3 M1 P D2 N3 S",hs:"Sa-re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Agni",he:"Bhatiyari Bhairav"},
+{n:18,name:"Hatakambari",cs:"S R1 G3 M1 P D3 N3 S",hs:"Sa-re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Agni",he:"Ganjama"},
+{n:19,name:"Jhankaradhvani",cs:"S R2 G2 M1 P D1 N1 S",hs:"Sa-Re-ga-ma-Pa-dha-Dha-Sa'",ch:"Veda",he:"—"},
+{n:20,name:"Natabhairavi",cs:"S R2 G2 M1 P D1 N2 S",hs:"Sa-Re-ga-ma-Pa-dha-ni-Sa'",ch:"Veda",he:"Asavari thaat"},
+{n:21,name:"Kirwani",cs:"S R2 G2 M1 P D1 N3 S",hs:"Sa-Re-ga-ma-Pa-dha-Ni-Sa'",ch:"Veda",he:"Kirwani"},
+{n:22,name:"Kharaharapriya",cs:"S R2 G2 M1 P D2 N2 S",hs:"Sa-Re-ga-ma-Pa-Dha-ni-Sa'",ch:"Veda",he:"Kafi thaat"},
+{n:23,name:"Gourimanohari",cs:"S R2 G2 M1 P D2 N3 S",hs:"Sa-Re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Veda",he:"Patdeep"},
+{n:24,name:"Varunapriya",cs:"S R2 G2 M1 P D3 N3 S",hs:"Sa-Re-ga-ma-Pa-ni-Ni-Sa'",ch:"Veda",he:"Chanchalas Malhar"},
+{n:25,name:"Mararanjani",cs:"S R2 G3 M1 P D1 N1 S",hs:"Sa-Re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Bana",he:"—"},
+{n:26,name:"Charukesi",cs:"S R2 G3 M1 P D1 N2 S",hs:"Sa-Re-Ga-ma-Pa-dha-ni-Sa'",ch:"Bana",he:"Charukeshi"},
+{n:27,name:"Sarasangi",cs:"S R2 G3 M1 P D1 N3 S",hs:"Sa-Re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Bana",he:"Nat Bhairav"},
+{n:28,name:"Harikambhoji",cs:"S R2 G3 M1 P D2 N2 S",hs:"Sa-Re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Bana",he:"Khamaj thaat"},
+{n:29,name:"Sankarabharanam",cs:"S R2 G3 M1 P D2 N3 S",hs:"Sa-Re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Bana",he:"Bilawal thaat"},
+{n:30,name:"Naganandini",cs:"S R2 G3 M1 P D3 N3 S",hs:"Sa-Re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Bana",he:"Gondgiri Malhar"},
+{n:31,name:"Yagapriya",cs:"S R3 G3 M1 P D1 N1 S",hs:"Sa-ga-Ga-ma-Pa-dha-Dha-Sa'",ch:"Ritu",he:"—"},
+{n:32,name:"Ragavardhini",cs:"S R3 G3 M1 P D1 N2 S",hs:"Sa-ga-Ga-ma-Pa-dha-ni-Sa'",ch:"Ritu",he:"Vardhini | Nandkauns"},
+{n:33,name:"Gangeyabhusani",cs:"S R3 G3 M1 P D1 N3 S",hs:"Sa-ga-Ga-ma-Pa-dha-Ni-Sa'",ch:"Ritu",he:"Gangeyabhushan"},
+{n:34,name:"Vagadhiswari",cs:"S R3 G3 M1 P D2 N2 S",hs:"Sa-ga-Ga-ma-Pa-Dha-ni-Sa'",ch:"Ritu",he:"Jogeshwari Pancham"},
+{n:35,name:"Sulini",cs:"S R3 G3 M1 P D2 N3 S",hs:"Sa-ga-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Ritu",he:"—"},
+{n:36,name:"Chalanata",cs:"S R3 G3 M1 P D3 N3 S",hs:"Sa-ga-Ga-ma-Pa-ni-Ni-Sa'",ch:"Ritu",he:"Jog Tilang"},
+{n:37,name:"Salagam",cs:"S R1 G1 M2 P D1 N1 S",hs:"Sa-re-Re-Ma-Pa-dha-Dha-Sa'",ch:"Rishi",he:"—"},
+{n:38,name:"Jalarnavam",cs:"S R1 G1 M2 P D1 N2 S",hs:"Sa-re-Re-Ma-Pa-dha-ni-Sa'",ch:"Rishi",he:"—"},
+{n:39,name:"Jhalavarali",cs:"S R1 G1 M2 P D1 N3 S",hs:"Sa-re-Re-Ma-Pa-dha-Ni-Sa'",ch:"Rishi",he:"—"},
+{n:40,name:"Navanitam",cs:"S R1 G1 M2 P D2 N2 S",hs:"Sa-re-Re-Ma-Pa-Dha-ni-Sa'",ch:"Rishi",he:"—"},
+{n:41,name:"Pavani",cs:"S R1 G1 M2 P D2 N3 S",hs:"Sa-re-Re-Ma-Pa-Dha-Ni-Sa'",ch:"Rishi",he:"—"},
+{n:42,name:"Raghupriya",cs:"S R1 G1 M2 P D3 N3 S",hs:"Sa-re-Re-Ma-Pa-ni-Ni-Sa'",ch:"Rishi",he:"—"},
+{n:43,name:"Gavambhodi",cs:"S R1 G2 M2 P D1 N1 S",hs:"Sa-re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Vasu",he:"—"},
+{n:44,name:"Bhavapriya",cs:"S R1 G2 M2 P D1 N2 S",hs:"Sa-re-ga-Ma-Pa-dha-ni-Sa'",ch:"Vasu",he:"Komal Ramkali"},
+{n:45,name:"Subhapantuvarali",cs:"S R1 G2 M2 P D1 N3 S",hs:"Sa-re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Vasu",he:"Todi thaat"},
+{n:46,name:"Shadvidamargini",cs:"S R1 G2 M2 P D2 N2 S",hs:"Sa-re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Vasu",he:"Chandni Todi"},
+{n:47,name:"Suvarnangi",cs:"S R1 G2 M2 P D2 N3 S",hs:"Sa-re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Vasu",he:"Madhu Multani"},
+{n:48,name:"Divyamani",cs:"S R1 G2 M2 P D3 N3 S",hs:"Sa-re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Vasu",he:"—"},
+{n:49,name:"Dhavalambari",cs:"S R1 G3 M2 P D1 N1 S",hs:"Sa-re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Brahma",he:"—"},
+{n:50,name:"Namanarayani",cs:"S R1 G3 M2 P D1 N2 S",hs:"Sa-re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Brahma",he:"Namanarayani"},
+{n:51,name:"Kamavardhini",cs:"S R1 G3 M2 P D1 N3 S",hs:"Sa-re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Brahma",he:"Poorvi thaat"},
+{n:52,name:"Rampriya",cs:"S R1 G3 M2 P D2 N2 S",hs:"Sa-re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Brahma",he:"Rampriya"},
+{n:53,name:"Gamanasrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"Sa-re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Brahma",he:"Marwa thaat"},
+{n:54,name:"Vishvambari",cs:"S R1 G3 M2 P D3 N3 S",hs:"Sa-re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Brahma",he:"Vishwambari"},
+{n:55,name:"Shamalangi",cs:"S R2 G2 M2 P D1 N1 S",hs:"Sa-Re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Disi",he:"—"},
+{n:56,name:"Shanmukhapriya",cs:"S R2 G2 M2 P D1 N2 S",hs:"Sa-Re-ga-Ma-Pa-dha-ni-Sa'",ch:"Disi",he:"Shanmukhpriya"},
+{n:57,name:"Simhendramadhyamam",cs:"S R2 G2 M2 P D1 N3 S",hs:"Sa-Re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Disi",he:"Simhendra Mad."},
+{n:58,name:"Hemavati",cs:"S R2 G2 M2 P D2 N2 S",hs:"Sa-Re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Disi",he:"Hemavati | Madhukant"},
+{n:59,name:"Dharmavati",cs:"S R2 G2 M2 P D2 N3 S",hs:"Sa-Re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Disi",he:"Madhuvanti | Anjani Kalyan"},
+{n:60,name:"Nitimati",cs:"S R2 G2 M2 P D3 N3 S",hs:"Sa-Re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Disi",he:"—"},
+{n:61,name:"Kantamani",cs:"S R2 G3 M2 P D1 N1 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Rudra",he:"Kanthamani"},
+{n:62,name:"Rishabhapriya",cs:"S R2 G3 M2 P D1 N2 S",hs:"Sa-Re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Rudra",he:"Rishabhapriya"},
+{n:63,name:"Latangi",cs:"S R2 G3 M2 P D1 N3 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Rudra",he:"Latangi"},
+{n:64,name:"Vachaspati",cs:"S R2 G3 M2 P D2 N2 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Rudra",he:"Vachaspati"},
+{n:65,name:"Mechakalyani",cs:"S R2 G3 M2 P D2 N3 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Rudra",he:"Kalyan thaat"},
+{n:66,name:"Chitrambari",cs:"S R2 G3 M2 P D3 N3 S",hs:"Sa-Re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Rudra",he:"—"},
+{n:67,name:"Sucharitra",cs:"S R3 G3 M2 P D1 N1 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Aditya",he:"Sucharitra"},
+{n:68,name:"Jyotiswarupini",cs:"S R3 G3 M2 P D1 N2 S",hs:"Sa-ga-Ga-Ma-Pa-dha-ni-Sa'",ch:"Aditya",he:"—"},
+{n:69,name:"Dhatuvardhani",cs:"S R3 G3 M2 P D1 N3 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Aditya",he:"—"},
+{n:70,name:"Nasikabhushani",cs:"S R3 G3 M2 P D2 N2 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Aditya",he:"Surmanjari"},
+{n:71,name:"Kosalam",cs:"S R3 G3 M2 P D2 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"DoGa Kalyan"},
+{n:72,name:"Rasikapriya",cs:"S R3 G3 M2 P D3 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"—"}
 ];
 var CHAKRA_COLORS = {
   "Indu": "#c0392b", "Netra": "#d35400", "Agni": "#e67e22", "Veda": "#27ae60",
@@ -6337,17 +6463,41 @@ function showRaga(r) {
   if (nameEl) nameEl.el.classList.add('selected');
   var panel = document.getElementById('detail-panel');
   var chColor = CHAKRA_COLORS[r.ch];
+
+  var desc = r.desc || r.description || '';
+  var descRow = desc ? (
+    '<div class="detail-row">' +
+      '<div class="detail-label">Description</div>' +
+      '<div class="detail-value" style="font-style:italic;line-height:1.4;">' + desc + '</div>' +
+    '</div>'
+  ) : '';
+
   panel.innerHTML =
     '<h2>' + r.name + '</h2>' +
     '<div class="detail-num">Melakarta #' + r.n + '</div>' +
     '<div class="detail-row"><div class="detail-label">Chakra</div>' +
     '<div class="detail-value"><span class="chakra-badge" style="background:' + chColor + '">' + r.ch + ' (' + (Math.ceil(r.n/6)) + ')</span></div></div>' +
-    '<div class="detail-row"><div class="detail-label">Carnatic Swaras</div>' +
-    '<div class="detail-value swara-display">' + r.cs + '</div></div>' +
+    '<div class="detail-row" style="display:flex;justify-content:space-between;align-items:center;">' +
+      '<div>' +
+        '<div class="detail-label">Carnatic Swaras</div>' +
+        '<div class="detail-value swara-display">' + r.cs + '</div>' +
+      '</div>' +
+      '<button type="button" class="play-swara-btn btn-mw-play" style="margin-left:8px;">&#9654; Play Scale</button>' +
+    '</div>' +
     '<div class="detail-row"><div class="detail-label">Hindustani Swaras</div>' +
     '<div class="detail-value swara-display-h">' + r.hs + '</div></div>' +
     '<div class="detail-row"><div class="detail-label">Hindustani Equivalent</div>' +
-    '<div class="detail-value">' + (r.he === '\u2014' ? '<span style="color:#aaa">No direct equivalent</span>' : r.he) + '</div></div>';
+    '<div class="detail-value">' + (r.he === '\u2014' ? '<span style="color:#aaa">No direct equivalent</span>' : r.he) + '</div></div>' +
+    descRow;
+
+  var playBtn = panel.querySelector('.btn-mw-play');
+  if (playBtn) {
+    playBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      playMelakartaScale(r.cs, this);
+    });
+  }
+
   selectedRaga = r;
 }
 function buildLegend() {
@@ -6520,81 +6670,81 @@ document.getElementById('pwOverlay').addEventListener('click',function(e){if(e.t
 
 /* HINDUSTANI RAGA RING */
 
-var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"}, 
+var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Bhinna Shadja", "thaat": "Bilaval", "color": "#5CB85C"},
-                     {"raga": "Hemant", "thaat": "Bilaval", "color": "#5CB85C"}, 
+                     {"raga": "Hemant", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Alhaiyya Bilawal", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Maand", "thaat": "Bilaval", "color": "#5CB85C"},
-                     {"raga": "Shankara", "thaat": "Bilaval", "color": "#5CB85C"}, 
-                     {"raga": "Hamsadhwani", "thaat": "Bilaval", "color": "#5CB85C"}, 
-                     {"raga": "Durga", "thaat": "Bilaval", "color": "#5CB85C"}, 
+                     {"raga": "Shankara", "thaat": "Bilaval", "color": "#5CB85C"},
+                     {"raga": "Hamsadhwani", "thaat": "Bilaval", "color": "#5CB85C"},
+                     {"raga": "Durga", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Pahadi", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Deshkar", "thaat": "Bilaval", "color": "#5CB85C"},
-                     {"raga": "Bhoopali", "thaat": "Kalyan", "color": "#337AB7"}, 
-                     {"raga": "Shuddha Kalyan", "thaat": "Kalyan", "color": "#337AB7"}, 
-                     {"raga": "Yaman Kalyan", "thaat": "Kalyan", "color": "#337AB7"}, 
+                     {"raga": "Bhoopali", "thaat": "Kalyan", "color": "#337AB7"},
+                     {"raga": "Shuddha Kalyan", "thaat": "Kalyan", "color": "#337AB7"},
+                     {"raga": "Yaman Kalyan", "thaat": "Kalyan", "color": "#337AB7"},
                      {"raga": "Yaman", "thaat": "Kalyan", "color": "#337AB7"},
                      {"raga": "Kedar", "thaat": "Kalyan", "color": "#337AB7"},
                      {"raga": "Kamod", "thaat": "Kalyan", "color": "#337AB7"},
                      {"raga": "Chhayanat", "thaat": "Kalyan", "color": "#337AB7"},
                      {"raga": "Maru Bihag", "thaat": "Kalyan", "color": "#337AB7"},
-                     {"raga": "Hameer", "thaat": "Kalyan", "color": "#337AB7"}, 
-                     {"raga": "Hindol", "thaat": "Kalyan", "color": "#337AB7"}, 
-                     {"raga": "Bhatiyar", "thaat": "Marva", "color": "#F39C12"}, 
+                     {"raga": "Hameer", "thaat": "Kalyan", "color": "#337AB7"},
+                     {"raga": "Hindol", "thaat": "Kalyan", "color": "#337AB7"},
+                     {"raga": "Bhatiyar", "thaat": "Marva", "color": "#F39C12"},
                      {"raga": "Sohni", "thaat": "Marva", "color": "#F39C12"},
                      {"raga": "Marva", "thaat": "Marva", "color": "#F39C12"},
-                     {"raga": "Puriya Kalyan", "thaat": "Marva", "color": "#F39C12"},  
-                     {"raga": "Puriya", "thaat": "Marva", "color": "#F39C12"}, 
-                     {"raga": "Puriya Dhanashri", "thaat": "Poorvi", "color": "#E91E63"}, 
-                     {"raga": "Poorvi", "thaat": "Poorvi", "color": "#E91E63"}, 
-                     {"raga": "Lalit", "thaat": "Poorvi", "color": "#E91E63"}, 
-                     {"raga": "Basant", "thaat": "Poorvi", "color": "#E91E63"}, 
-                     {"raga": "Multani", "thaat": "Todi", "color": "#3498DB"}, 
-                     {"raga": "Todi", "thaat": "Todi", "color": "#3498DB"}, 
+                     {"raga": "Puriya Kalyan", "thaat": "Marva", "color": "#F39C12"},
+                     {"raga": "Puriya", "thaat": "Marva", "color": "#F39C12"},
+                     {"raga": "Puriya Dhanashri", "thaat": "Poorvi", "color": "#E91E63"},
+                     {"raga": "Poorvi", "thaat": "Poorvi", "color": "#E91E63"},
+                     {"raga": "Lalit", "thaat": "Poorvi", "color": "#E91E63"},
+                     {"raga": "Basant", "thaat": "Poorvi", "color": "#E91E63"},
+                     {"raga": "Multani", "thaat": "Todi", "color": "#3498DB"},
+                     {"raga": "Todi", "thaat": "Todi", "color": "#3498DB"},
                      {"raga": "Madhuvanti", "thaat": "Todi", "color": "#3498DB"},
-                     {"raga": "Kalingada", "thaat": "Bhairav", "color": "#9B59B6"}, 
+                     {"raga": "Kalingada", "thaat": "Bhairav", "color": "#9B59B6"},
                      {"raga": "Nat Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},
-                     {"raga": "Bairagi Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},    
-                     {"raga": "Bhairav", "thaat": "Bhairav", "color": "#9B59B6"}, 
-                     {"raga": "Bibhas", "thaat": "Bhairav", "color": "#9B59B6"}, 
+                     {"raga": "Bairagi Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},
+                     {"raga": "Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},
+                     {"raga": "Bibhas", "thaat": "Bhairav", "color": "#9B59B6"},
                      {"raga": "Ahir Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},
-                     {"raga": "Bhairavi", "thaat": "Bhairavi", "color": "#E74C3C"}, 
+                     {"raga": "Bhairavi", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Bilaskhani todi", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Malkauns", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Jogkauns", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Charukeshi", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Chandrakauns", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Madhukauns", "thaat": "Asavari", "color": "#95A5A6"},
-                     {"raga": "Jaunpuri", "thaat": "Asavari", "color": "#95A5A6"}, 
+                     {"raga": "Jaunpuri", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Asavari", "thaat": "Asavari", "color": "#95A5A6"},
-                     {"raga": "Adana", "thaat": "Asavari", "color": "#95A5A6"}, 
-                     {"raga": "Darbari Kanada", "thaat": "Asavari", "color": "#95A5A6"}, 
-                     {"raga": "Kirwani", "thaat": "Asavari", "color": "#95A5A6"}, 
+                     {"raga": "Adana", "thaat": "Asavari", "color": "#95A5A6"},
+                     {"raga": "Darbari Kanada", "thaat": "Asavari", "color": "#95A5A6"},
+                     {"raga": "Kirwani", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Kafi", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Dhani", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Malgunji", "thaat": "Kafi", "color": "#1ABC9C"},
-                     {"raga": "Bahar", "thaat": "Kafi", "color": "#1ABC9C"}, 
+                     {"raga": "Bahar", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Malhar", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Madhmad Sarang", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Megh Malhar", "thaat": "Kafi", "color": "#1ABC9C"},
-                     {"raga": "Barwa", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Patdeep", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Abhogi", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Shivranjani", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Pilu", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Jog", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Brindavani Sarang", "thaat": "Kafi", "color": "#1ABC9C"}, 
+                     {"raga": "Barwa", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Patdeep", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Abhogi", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Shivranjani", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Pilu", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Jog", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Brindavani Sarang", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Jaijaiwanti", "thaat": "Kafi", "color": "#1ABC9C"},
-                     {"raga": "Bhimpalasi", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Bageshri", "thaat": "Kafi", "color": "#1ABC9C"}, 
-                     {"raga": "Rageshri", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Desh", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Tilakkamod", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Khamaj", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Tilang", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Jhinjhoti", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Kalavati", "thaat": "Khamaj", "color": "#F0AD4E"}, 
-                     {"raga": "Gara", "thaat": "Khamaj", "color": "#F0AD4E"},  
+                     {"raga": "Bhimpalasi", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Bageshri", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Rageshri", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Desh", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Tilakkamod", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Khamaj", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Tilang", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Jhinjhoti", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Kalavati", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Gara", "thaat": "Khamaj", "color": "#F0AD4E"},
                      ];
 
 
@@ -6602,7 +6752,7 @@ var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
 var RING_THAAT_ORDER = ["Bhairav", "Poorvi", "Marva", "Kalyan", "Bilaval", "Khamaj", "Kafi", "Asavari", "Bhairavi", "Todi"];
 var RING_THAAT_COLORS = {"Bilaval": "#5CB85C", "Kalyan": "#337AB7", "Khamaj": "#F0AD4E", "Bhairav": "#9B59B6", "Kafi": "#1ABC9C", "Asavari": "#95A5A6", "Bhairavi": "#E74C3C", "Poorvi": "#E91E63", "Marva": "#F39C12", "Todi": "#3498DB"};
 
-                          
+
 var NOTES = ["Sa", "Re'", "Re", "Ga'", "Ga", "Ma", "Ma|", "Pa", "Dha'", "Dha", "Ni'", "Ni"];
 
 
@@ -6657,7 +6807,7 @@ function buildRingOld() {
   for (var d = 0; d < dynamicEls.length; d++) {
     dynamicEls[d].remove();
   }
-  
+
   var svgNS = 'http://www.w3.org/2000/svg';
   var cx = 450, cy = 450;
   var rOuter = 360, rInner = 115, rNum = 140;
@@ -6898,12 +7048,12 @@ function buildRing() {
 
   var svgNS = 'http://www.w3.org/2000/svg';
   var cx = 450, cy = 450;
-  
+
   // Concentric ring radii
   var rOuter = 360;  // Outer ring outer boundary
   var rMid   = 238;  // Dividing boundary between inner and outer tracks
   var rInner = 115;  // Inner ring inner boundary (meets center hub)
-  
+
   var total = RING_SEGMENTS.length; // 66
   var anglePer = 360 / total;       // ~5.454°
 
@@ -7389,13 +7539,13 @@ function ring_showTransitionInfo(transIndex){
   var panel = document.getElementById('ring-detail-panel');
   var title = document.getElementById('ring-detail-title');
   var content = document.getElementById('ring-detail-content');
-  
+
   title.textContent = t.from + ' \u2192 ' + t.to;
-  
+
   var html = '';
   html += '<div class="detail-row"><span class="detail-label">From</span><span class="detail-value">' + t.from + '</span></div>';
   html += '<div class="detail-row"><span class="detail-label">To</span><span class="detail-value">' + t.to + '</span></div>';
-  
+
   var noteHtml = '';
   for(var i=0;i<t.notes_changed.length;i++){
     var n = t.notes_changed[i];
@@ -7405,7 +7555,7 @@ function ring_showTransitionInfo(transIndex){
     noteHtml += '<span class="note-chip ' + kind + '">' + n + '</span>';
   }
   html += '<div class="detail-row"><span class="detail-label">Note change</span><div class="notes-chips">' + noteHtml + '</div></div>';
-  
+
   var descMap = {
     'Re': 'Shuddha Rishabh (natural 2nd) replaces komal Re',
     're': 'Komal Rishabh (flat 2nd) replaces shuddha Re',
@@ -7423,7 +7573,7 @@ function ring_showTransitionInfo(transIndex){
     descParts.push(descMap[t.notes_changed[j]] || t.notes_changed[j]);
   }
   html += '<div class="detail-row"><span class="detail-label">Description</span><span class="detail-value">' + descParts.join('; ') + '</span></div>';
-  
+
   content.innerHTML = html;
   panel.classList.add('show');
 }
@@ -7434,14 +7584,14 @@ function ring_showDetails(ragaName){
   var panel = document.getElementById('ring-detail-panel');
   var title = document.getElementById('ring-detail-title');
   var content = document.getElementById('ring-detail-content');
-  
+
   title.textContent = r.name;
-  
+
   var html = '';
   var thaatDisplay = r.thaat === 'None' ? r.effective_thaat + ' (assigned)' : r.thaat;
   html += '<div class="detail-row"><span class="detail-label">Thaat</span><span class="detail-value">' + thaatDisplay + '</span></div>';
   html += '<div class="detail-row"><span class="detail-label">Jati</span><span class="detail-value">' + (r.jati || '\u2014') + '</span></div>';
-  
+
   var chips = '';
   for(var i=0;i<r.notes.length;i++){
     var n = r.notes[i];
@@ -7449,7 +7599,7 @@ function ring_showDetails(ragaName){
     chips += '<span class="note-chip ' + kind + '">' + (RING_LABELS[n] || n) + '</span>';
   }
   html += '<div class="detail-row"><span class="detail-label">Notes</span><div class="notes-chips">' + chips + '</div></div>';
-  
+
 
   if(r.aaroha) {
     html += '<div class="swara-row" style="padding:2px 0;">' +
@@ -7463,7 +7613,7 @@ function ring_showDetails(ragaName){
               '<button type="button" class="play-swara-btn btn-ring-avroha">&#9654; Play</button>' +
             '</div>';
   }
-  
+
   if(r.pakad) html += '<div class="detail-row"><span class="detail-label">Pakad</span><span class="detail-value swara-line">' + r.pakad + '</span></div>';
   if(r.vadi) html += '<div class="detail-row"><span class="detail-label">Vadi</span><span class="detail-value">' + r.vadi + '</span></div>';
   if(r.samvadi) html += '<div class="detail-row"><span class="detail-label">Samvadi</span><span class="detail-value">' + r.samvadi + '</span></div>';
@@ -7472,9 +7622,9 @@ function ring_showDetails(ragaName){
   if(r.description) {
     html += '<div class="detail-row"><span class="detail-label">Description</span><span class="detail-value" style="line-height:1.4;">' + r.description + '</span></div>';
   }
-  
+
   content.innerHTML = html;
-  
+
    var ringBtnAaroha = content.querySelector('.btn-ring-aaroha');
   if (ringBtnAaroha) {
     ringBtnAaroha.addEventListener('click', function(e) {
@@ -7489,7 +7639,7 @@ function ring_showDetails(ragaName){
       playSwaraPhrase(r.avroha, true, this);
     });
   }
-  
+
   panel.classList.add('show');
 }
 
@@ -7572,11 +7722,11 @@ function showReviewDialog() {
     pending.forEach(function(item) {
       var row = document.createElement('div');
       row.style.cssText = 'border:1px solid #ddd;padding:6px 8px;border-radius:6px;background:#faf8f5;display:flex;justify-content:space-between;align-items:center;gap:6px;';
-      
+
       var badgeColor = item.tag === 'deleted' ? '#c62828' : (item.tag === 'edited' ? '#1565c0' : '#2e7d32');
-      row.innerHTML = 
+      row.innerHTML =
         '<div>' +
-          '<b>' + escapeHtml(item.raga) + '</b>: ' + escapeHtml(item.song.song) + 
+          '<b>' + escapeHtml(item.raga) + '</b>: ' + escapeHtml(item.song.song) +
           ' <span style="font-size:0.68rem;color:#fff;background:' + badgeColor + ';padding:1px 5px;border-radius:3px;">' + item.tag + '</span>' +
         '</div>';
 
@@ -7831,8 +7981,8 @@ async function saveToHtmlFile() {
   });
 
   var propOrder = [
-    "name", "thaat", "effective_thaat", "jati", 
-    "aaroha", "avroha", "pakad", "vadi", "samvadi", 
+    "name", "thaat", "effective_thaat", "jati",
+    "aaroha", "avroha", "pakad", "vadi", "samvadi",
     "cr", "mk", "notes", "note_vec", "description"
   ];
 
