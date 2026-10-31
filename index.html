@@ -402,18 +402,18 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 <div class="pitch-bar">
   <label for="saPitchSelect">Root Pitch (Sa):</label>
   <select id="saPitchSelect">
-    <option value="196.00">G3 (196.0 Hz &middot; Safed 5 Low)</option>
-    <option value="207.65">G#3 / Ab3 (207.7 Hz &middot; Kali 4 Low)</option>
-    <option value="220.00">A3 (220.0 Hz &middot; Safed 6 Male)</option>
-    <option value="233.08">A#3 / Bb3 (233.1 Hz &middot; Kali 5 Male)</option>
-    <option value="246.94">B3 (246.9 Hz &middot; Safed 7 Male)</option>
-    <option value="261.63">C4 (261.6 Hz &middot; Safed 1 Female)</option>
-    <option value="277.18" selected>C#4 (277.2 Hz &middot; Kali 1 Standard)</option>
-    <option value="293.66">D4 (293.7 Hz &middot; Safed 2)</option>
-    <option value="311.13">D#4 / Eb4 (311.1 Hz &middot; Kali 2)</option>
-    <option value="329.63">E4 (329.6 Hz &middot; Safed 3)</option>
-    <option value="349.23">F4 (349.2 Hz &middot; Safed 4)</option>
-    <option value="369.99">F#4 (370.0 Hz &middot; Kali 3)</option>
+    <option value="196.00">G3 (Safed 5 Low)</option>
+    <option value="207.65">G#3 / Ab3 (Kali 4 Low)</option>
+    <option value="220.00">A3 (Safed 6 Low)</option>
+    <option value="233.08">A#3 / Bb3 (Kali 5 Low)</option>
+    <option value="246.94">B3 (Safed 7 Low)</option>
+    <option value="261.63">C4 (Safed 1 Standard)</option>
+    <option value="277.18" selected>C#4 (Kali 1 Standard)</option>
+    <option value="293.66">D4 (Safed 2 Standard)</option>
+    <option value="311.13">D#4 / Eb4 (Kali 2 Standard)</option>
+    <option value="329.63">E4 (Safed 3 Standard)</option>
+    <option value="349.23">F4 (Safed 4Standard)</option>
+    <option value="369.99">F#4 (Kali 3 Standard)</option>
   </select>
 </div>
 <div id="finder-view" style="display: block;">
@@ -6177,78 +6177,78 @@ render();
 
 /* ===== MELAKARTA WHEEL ===== */
 var RAGAS = [
-{n:1,name:"Kanakangi",cs:"S R1 G1 M1 P D1 N1 S",hs:"Sa-re-Re-ma-Pa-dha-Dha-Sa'",ch:"Indu",he:"-",desc:"First Melakarta raag."},
-{n:2,name:"Ratnangi",cs:"S R1 G1 M1 P D1 N2 S",hs:"Sa-re-Re-ma-Pa-dha-ni-Sa'",ch:"Indu",he:"—"},
-{n:3,name:"Ganamurti",cs:"S R1 G1 M1 P D1 N3 S",hs:"Sa-re-Re-ma-Pa-dha-Ni-Sa'",ch:"Indu",he:"—"},
-{n:4,name:"Vanaspati",cs:"S R1 G1 M1 P D2 N2 S",hs:"Sa-re-Re-ma-Pa-Dha-ni-Sa'",ch:"Indu",he:"—"},
-{n:5,name:"Manavati",cs:"S R1 G1 M1 P D2 N3 S",hs:"Sa-re-Re-ma-Pa-Dha-Ni-Sa'",ch:"Indu",he:"—"},
-{n:6,name:"Tanarupi",cs:"S R1 G1 M1 P D3 N3 S",hs:"Sa-re-Re-ma-Pa-ni-Ni-Sa'",ch:"Indu",he:"—"},
-{n:7,name:"Senavati",cs:"S R1 G2 M1 P D1 N1 S",hs:"Sa-re-ga-ma-Pa-dha-Dha-Sa'",ch:"Netra",he:"—"},
-{n:8,name:"Hanumatodi",cs:"S R1 G2 M1 P D1 N2 S",hs:"Sa-re-ga-ma-Pa-dha-ni-Sa'",ch:"Netra",he:"Bhairavi thaat"},
-{n:9,name:"Dhenuka",cs:"S R1 G2 M1 P D1 N3 S",hs:"Sa-re-ga-ma-Pa-dha-Ni-Sa'",ch:"Netra",he:"Ardhanarishvara"},
-{n:10,name:"Natakapriya",cs:"S R1 G2 M1 P D2 N2 S",hs:"Sa-re-ga-ma-Pa-Dha-ni-Sa'",ch:"Netra",he:"Ahiri"},
-{n:11,name:"Kokilapriya",cs:"S R1 G2 M1 P D2 N3 S",hs:"Sa-re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Netra",he:"Kokilapriya"},
-{n:12,name:"Rupavati",cs:"S R1 G2 M1 P D3 N3 S",hs:"Sa-re-ga-ma-Pa-ni-Ni-Sa'",ch:"Netra",he:"—"},
-{n:13,name:"Gayakapriya",cs:"S R1 G3 M1 P D1 N1 S",hs:"Sa-re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Agni",he:"—"},
-{n:14,name:"Vakulabharanam",cs:"S R1 G3 M1 P D1 N2 S",hs:"Sa-re-Ga-ma-Pa-dha-ni-Sa'",ch:"Agni",he:"Basant Mukhari"},
-{n:15,name:"Mayamalavagaula",cs:"S R1 G3 M1 P D1 N3 S",hs:"Sa-re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Agni",he:"Bhairav thaat"},
-{n:16,name:"Chakravakam",cs:"S R1 G3 M1 P D2 N2 S",hs:"Sa-re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Agni",he:"Ahir Bhairav"},
-{n:17,name:"Suryakantam",cs:"S R1 G3 M1 P D2 N3 S",hs:"Sa-re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Agni",he:"Bhatiyari Bhairav"},
-{n:18,name:"Hatakambari",cs:"S R1 G3 M1 P D3 N3 S",hs:"Sa-re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Agni",he:"Ganjama"},
-{n:19,name:"Jhankaradhvani",cs:"S R2 G2 M1 P D1 N1 S",hs:"Sa-Re-ga-ma-Pa-dha-Dha-Sa'",ch:"Veda",he:"—"},
-{n:20,name:"Natabhairavi",cs:"S R2 G2 M1 P D1 N2 S",hs:"Sa-Re-ga-ma-Pa-dha-ni-Sa'",ch:"Veda",he:"Asavari thaat"},
-{n:21,name:"Kirwani",cs:"S R2 G2 M1 P D1 N3 S",hs:"Sa-Re-ga-ma-Pa-dha-Ni-Sa'",ch:"Veda",he:"Kirwani"},
-{n:22,name:"Kharaharapriya",cs:"S R2 G2 M1 P D2 N2 S",hs:"Sa-Re-ga-ma-Pa-Dha-ni-Sa'",ch:"Veda",he:"Kafi thaat"},
-{n:23,name:"Gourimanohari",cs:"S R2 G2 M1 P D2 N3 S",hs:"Sa-Re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Veda",he:"Patdeep"},
-{n:24,name:"Varunapriya",cs:"S R2 G2 M1 P D3 N3 S",hs:"Sa-Re-ga-ma-Pa-ni-Ni-Sa'",ch:"Veda",he:"Chanchalas Malhar"},
-{n:25,name:"Mararanjani",cs:"S R2 G3 M1 P D1 N1 S",hs:"Sa-Re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Bana",he:"—"},
-{n:26,name:"Charukesi",cs:"S R2 G3 M1 P D1 N2 S",hs:"Sa-Re-Ga-ma-Pa-dha-ni-Sa'",ch:"Bana",he:"Charukeshi"},
-{n:27,name:"Sarasangi",cs:"S R2 G3 M1 P D1 N3 S",hs:"Sa-Re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Bana",he:"Nat Bhairav"},
-{n:28,name:"Harikambhoji",cs:"S R2 G3 M1 P D2 N2 S",hs:"Sa-Re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Bana",he:"Khamaj thaat"},
-{n:29,name:"Sankarabharanam",cs:"S R2 G3 M1 P D2 N3 S",hs:"Sa-Re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Bana",he:"Bilawal thaat"},
-{n:30,name:"Naganandini",cs:"S R2 G3 M1 P D3 N3 S",hs:"Sa-Re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Bana",he:"Gondgiri Malhar"},
-{n:31,name:"Yagapriya",cs:"S R3 G3 M1 P D1 N1 S",hs:"Sa-ga-Ga-ma-Pa-dha-Dha-Sa'",ch:"Ritu",he:"—"},
-{n:32,name:"Ragavardhini",cs:"S R3 G3 M1 P D1 N2 S",hs:"Sa-ga-Ga-ma-Pa-dha-ni-Sa'",ch:"Ritu",he:"Vardhini | Nandkauns"},
-{n:33,name:"Gangeyabhusani",cs:"S R3 G3 M1 P D1 N3 S",hs:"Sa-ga-Ga-ma-Pa-dha-Ni-Sa'",ch:"Ritu",he:"Gangeyabhushan"},
-{n:34,name:"Vagadhiswari",cs:"S R3 G3 M1 P D2 N2 S",hs:"Sa-ga-Ga-ma-Pa-Dha-ni-Sa'",ch:"Ritu",he:"Jogeshwari Pancham"},
-{n:35,name:"Sulini",cs:"S R3 G3 M1 P D2 N3 S",hs:"Sa-ga-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Ritu",he:"—"},
-{n:36,name:"Chalanata",cs:"S R3 G3 M1 P D3 N3 S",hs:"Sa-ga-Ga-ma-Pa-ni-Ni-Sa'",ch:"Ritu",he:"Jog Tilang"},
-{n:37,name:"Salagam",cs:"S R1 G1 M2 P D1 N1 S",hs:"Sa-re-Re-Ma-Pa-dha-Dha-Sa'",ch:"Rishi",he:"—"},
-{n:38,name:"Jalarnavam",cs:"S R1 G1 M2 P D1 N2 S",hs:"Sa-re-Re-Ma-Pa-dha-ni-Sa'",ch:"Rishi",he:"—"},
-{n:39,name:"Jhalavarali",cs:"S R1 G1 M2 P D1 N3 S",hs:"Sa-re-Re-Ma-Pa-dha-Ni-Sa'",ch:"Rishi",he:"—"},
-{n:40,name:"Navanitam",cs:"S R1 G1 M2 P D2 N2 S",hs:"Sa-re-Re-Ma-Pa-Dha-ni-Sa'",ch:"Rishi",he:"—"},
-{n:41,name:"Pavani",cs:"S R1 G1 M2 P D2 N3 S",hs:"Sa-re-Re-Ma-Pa-Dha-Ni-Sa'",ch:"Rishi",he:"—"},
-{n:42,name:"Raghupriya",cs:"S R1 G1 M2 P D3 N3 S",hs:"Sa-re-Re-Ma-Pa-ni-Ni-Sa'",ch:"Rishi",he:"—"},
-{n:43,name:"Gavambhodi",cs:"S R1 G2 M2 P D1 N1 S",hs:"Sa-re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Vasu",he:"—"},
-{n:44,name:"Bhavapriya",cs:"S R1 G2 M2 P D1 N2 S",hs:"Sa-re-ga-Ma-Pa-dha-ni-Sa'",ch:"Vasu",he:"Komal Ramkali"},
-{n:45,name:"Subhapantuvarali",cs:"S R1 G2 M2 P D1 N3 S",hs:"Sa-re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Vasu",he:"Todi thaat"},
-{n:46,name:"Shadvidamargini",cs:"S R1 G2 M2 P D2 N2 S",hs:"Sa-re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Vasu",he:"Chandni Todi"},
-{n:47,name:"Suvarnangi",cs:"S R1 G2 M2 P D2 N3 S",hs:"Sa-re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Vasu",he:"Madhu Multani"},
-{n:48,name:"Divyamani",cs:"S R1 G2 M2 P D3 N3 S",hs:"Sa-re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Vasu",he:"—"},
-{n:49,name:"Dhavalambari",cs:"S R1 G3 M2 P D1 N1 S",hs:"Sa-re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Brahma",he:"—"},
-{n:50,name:"Namanarayani",cs:"S R1 G3 M2 P D1 N2 S",hs:"Sa-re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Brahma",he:"Namanarayani"},
-{n:51,name:"Kamavardhini",cs:"S R1 G3 M2 P D1 N3 S",hs:"Sa-re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Brahma",he:"Poorvi thaat"},
-{n:52,name:"Rampriya",cs:"S R1 G3 M2 P D2 N2 S",hs:"Sa-re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Brahma",he:"Rampriya"},
-{n:53,name:"Gamanasrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"Sa-re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Brahma",he:"Marwa thaat"},
-{n:54,name:"Vishvambari",cs:"S R1 G3 M2 P D3 N3 S",hs:"Sa-re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Brahma",he:"Vishwambari"},
-{n:55,name:"Shamalangi",cs:"S R2 G2 M2 P D1 N1 S",hs:"Sa-Re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Disi",he:"—"},
-{n:56,name:"Shanmukhapriya",cs:"S R2 G2 M2 P D1 N2 S",hs:"Sa-Re-ga-Ma-Pa-dha-ni-Sa'",ch:"Disi",he:"Shanmukhpriya"},
-{n:57,name:"Simhendramadhyamam",cs:"S R2 G2 M2 P D1 N3 S",hs:"Sa-Re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Disi",he:"Simhendra Mad."},
-{n:58,name:"Hemavati",cs:"S R2 G2 M2 P D2 N2 S",hs:"Sa-Re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Disi",he:"Hemavati | Madhukant"},
-{n:59,name:"Dharmavati",cs:"S R2 G2 M2 P D2 N3 S",hs:"Sa-Re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Disi",he:"Madhuvanti | Anjani Kalyan"},
-{n:60,name:"Nitimati",cs:"S R2 G2 M2 P D3 N3 S",hs:"Sa-Re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Disi",he:"—"},
-{n:61,name:"Kantamani",cs:"S R2 G3 M2 P D1 N1 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Rudra",he:"Kanthamani"},
-{n:62,name:"Rishabhapriya",cs:"S R2 G3 M2 P D1 N2 S",hs:"Sa-Re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Rudra",he:"Rishabhapriya"},
-{n:63,name:"Latangi",cs:"S R2 G3 M2 P D1 N3 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Rudra",he:"Latangi"},
-{n:64,name:"Vachaspati",cs:"S R2 G3 M2 P D2 N2 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Rudra",he:"Vachaspati"},
-{n:65,name:"Mechakalyani",cs:"S R2 G3 M2 P D2 N3 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Rudra",he:"Kalyan thaat"},
-{n:66,name:"Chitrambari",cs:"S R2 G3 M2 P D3 N3 S",hs:"Sa-Re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Rudra",he:"—"},
-{n:67,name:"Sucharitra",cs:"S R3 G3 M2 P D1 N1 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Aditya",he:"Sucharitra"},
-{n:68,name:"Jyotiswarupini",cs:"S R3 G3 M2 P D1 N2 S",hs:"Sa-ga-Ga-Ma-Pa-dha-ni-Sa'",ch:"Aditya",he:"—"},
-{n:69,name:"Dhatuvardhani",cs:"S R3 G3 M2 P D1 N3 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Aditya",he:"—"},
-{n:70,name:"Nasikabhushani",cs:"S R3 G3 M2 P D2 N2 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Aditya",he:"Surmanjari"},
-{n:71,name:"Kosalam",cs:"S R3 G3 M2 P D2 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"DoGa Kalyan"},
-{n:72,name:"Rasikapriya",cs:"S R3 G3 M2 P D3 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"—"}
+{n:1,name:"Kanakangi",cs:"S R1 G1 M1 P D1 N1 S",hs:"Sa-re-Re-ma-Pa-dha-Dha-Sa'",ch:"Indu",he:"-",desc:"As the first Melakarta raga, it possesses a highly raw, microtonal aesthetic because of its lower-interval notes. It evokes a deeply meditative and somewhat unearthly mood of profound spiritual isolation."},
+{n:2,name:"Ratnangi",cs:"S R1 G1 M1 P D1 N2 S",hs:"Sa-re-Re-ma-Pa-dha-ni-Sa'",ch:"Indu",he:"—",desc:"This raga slightly shifts the top interval to introduce a subtle touch of mystery. It balances a feeling of ancient devotion with a poignant sense of yearning."},
+{n:3,name:"Ganamurti",cs:"S R1 G1 M1 P D1 N3 S",hs:"Sa-re-Re-ma-Pa-dha-Ni-Sa'",ch:"Indu",he:"—",desc:"Famous for its ability to convey deep sorrow and intense spiritual longing, this scale relies heavily on nuanced microtonal oscillations. It requires careful voice control to bring out its mournful beauty."},
+{n:4,name:"Vanaspati",cs:"S R1 G1 M1 P D2 N2 S",hs:"Sa-re-Re-ma-Pa-Dha-ni-Sa'",ch:"Indu",he:"—",desc:"Translating to -lord of the forest,this raga offers a rustic and deeply grounded melodic movement. It creates an atmosphere of peaceful, serene isolation akin to a quiet jungle dawn."},
+{n:5,name:"Manavati",cs:"S R1 G1 M1 P D2 N3 S",hs:"Sa-re-Re-ma-Pa-Dha-Ni-Sa'",ch:"Indu",he:"—",desc:"This raga projects a soft, regal aura of quiet dignity and focus. It is rarely performed in concerts but is highly valued for its concise and structured emotional gravity."},
+{n:6,name:"Tanarupi",cs:"S R1 G1 M1 P D3 N3 S",hs:"Sa-re-Re-ma-Pa-ni-Ni-Sa'",ch:"Indu",he:"—",desc:"Closing the first chakra, this scale features an unusual, jagged interval combination that presents a sharp musical challenge. It evokes an intense, dramatic mood of urgency and intellectual curiosity."},
+{n:7,name:"Senavati",cs:"S R1 G2 M1 P D1 N1 S",hs:"Sa-re-ga-ma-Pa-dha-Dha-Sa'",ch:"Netra",he:"—",desc:"This scale introduces a slightly higher rishabha to evoke the disciplined, commanding aura of an ancient army commander. It blends a strong sense of order with an undercurrent of melancholic gravity."},
+{n:8,name:"Hanumatodi",cs:"S R1 G2 M1 P D1 N2 S",hs:"Sa-re-ga-ma-Pa-dha-ni-Sa'",ch:"Netra",he:"Bhairavi thaat",desc:"Renowned as one of the towering giants of Carnatic music, Todi is rich in heavy ornamentations (gamakas). It carries a vast emotional reservoir capable of expressing profound pathos, absolute surrender, and immense devotional depth."},
+{n:9,name:"Dhenuka",cs:"S R1 G2 M1 P D1 N3 S",hs:"Sa-re-ga-ma-Pa-dha-Ni-Sa'",ch:"Netra",he:"Ardhanarishvara",desc:"This raga creates a sweet, plaintive, and deeply tender atmosphere resembling a mother cow calling its calf. It acts as an emotional bridge, balancing heavy grief with comforting solace."},
+{n:10,name:"Natakapriya",cs:"S R1 G2 M1 P D2 N2 S",hs:"Sa-re-ga-ma-Pa-Dha-ni-Sa'",ch:"Netra",he:"Ahiri",desc:"Balancing theatrical flair with a sense of underlying unease, this raga is full of unexpected melodic twists. It captures a dramatic, narrative-driven mood that keeps listeners highly engaged."},
+{n:11,name:"Kokilapriya",cs:"S R1 G2 M1 P D2 N3 S",hs:"Sa-re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Netra",he:"Kokilapriya",desc:"Named after the sweet singing of the cuckoo bird, this raga provides a lighter, more fluid emotional texture. It inspires an atmospheric sense of pleasant expectation and gentle romance."},
+{n:12,name:"Rupavati",cs:"S R1 G2 M1 P D3 N3 S",hs:"Sa-re-ga-ma-Pa-ni-Ni-Sa'",ch:"Netra",he:"—",desc:" This raga radiates a sharp, beautiful brilliance through its unique phrasing. It leaves listeners with a distinct impression of aesthetic perfection and bright, confident energy."},
+{n:13,name:"Gayakapriya",cs:"S R1 G3 M1 P D1 N1 S",hs:"Sa-re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Agni",he:"—",desc:"Translating to -the singer’s favorite -this scale offers an accessible yet deeply devotional quality. It provides a peaceful, stable, and highly meditative foundation for vocal exploration."},
+{n:14,name:"Vakulabharanam",cs:"S R1 G3 M1 P D1 N2 S",hs:"Sa-re-Ga-ma-Pa-dha-ni-Sa'",ch:"Agni",he:"Basant Mukhari",desc:"Evoking a deeply contemplative and sorrowful mood, this raga mimics a soft, prayerful sigh. It is highly effective at invoking a state of profound internal reflection and absolute surrender."},
+{n:15,name:"Mayamalavagaula",cs:"S R1 G3 M1 P D1 N3 S",hs:"Sa-re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Agni",he:"Bhairav thaat",desc:"Celebrated as the ultimate beginner's scale due to its perfectly symmetrical, open intervals, it is the bedrock of Carnatic pedagogy. Despite its instructional role, it projects a grand, deeply peaceful, and spiritually uplifting dawn energy."},
+{n:16,name:"Chakravakam",cs:"S R1 G3 M1 P D2 N2 S",hs:"Sa-re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Agni",he:"Ahir Bhairav",desc:"This raga generates a warm, deeply compassionate, and humanitarian mood. It blends vibrant, optimistic energy with a deeply sympathetic understanding of human emotion."},
+{n:17,name:"Suryakantam",cs:"S R1 G3 M1 P D2 N3 S",hs:"Sa-re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Agni",he:"Bhatiyari Bhairav",desc:"Radiating the bright, piercing energy of the morning sun, this raga clears away lingering doubts. It evokes an empowering mood of sudden awakening, clarity, and spiritual fortitude."},
+{n:18,name:"Hatakambari",cs:"S R1 G3 M1 P D3 N3 S",hs:"Sa-re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Agni",he:"Ganjama",desc:" This scale has an elusive, unpredictable nature that creates a sense of profound wonder. Its uncommon swara intervals challenge the listener's expectations, evoking mystery and awe."},
+{n:19,name:"Jhankaradhvani",cs:"S R2 G2 M1 P D1 N1 S",hs:"Sa-Re-ga-ma-Pa-dha-Dha-Sa'",ch:"Veda",he:"—",desc:"Mimicking the rhythmic buzzing of bees, this raga relies on highly intricate internal vibrations. It creates a hypnotic, buzzing sonic landscape that is deeply soothing."},
+{n:20,name:"Natabhairavi",cs:"S R2 G2 M1 P D1 N2 S",hs:"Sa-Re-ga-ma-Pa-dha-ni-Sa'",ch:"Veda",he:"Asavari thaat",desc:"This majestic scale serves as the foundation for several popular derivative ragas like Anandabhairavi and Jaunpuri. It projects a serious, ancient, and highly respectful devotional mood."},
+{n:21,name:"Kirwani",cs:"S R2 G2 M1 P D1 N3 S",hs:"Sa-Re-ga-ma-Pa-dha-Ni-Sa'",ch:"Veda",he:"Kirwani",desc:"Structurally identical to the Western harmonic minor scale, this raga is instantly accessible and globally beloved. It carries a deeply romantic, nostalgic, and melancholic flavor that appeals directly to the heart."},
+{n:22,name:"Kharaharapriya",cs:"S R2 G2 M1 P D2 N2 S",hs:"Sa-Re-ga-ma-Pa-Dha-ni-Sa'",ch:"Veda",he:"Kafi thaat",desc:"A magnificent pillar of the Carnatic tradition, this scale is incredibly versatile and rich in emotional possibilities. It can evoke intense devotion, heroic valor, or profound peace with equal brilliance."},
+{n:23,name:"Gourimanohari",cs:"S R2 G2 M1 P D2 N3 S",hs:"Sa-Re-ga-ma-Pa-Dha-Ni-Sa'",ch:"Veda",he:"Patdeep",desc:"This highly melodic scale radiates pristine purity and innocent grace. It leaves listeners with a refreshing, calming sense of clarity, peace, and spiritual optimism."},
+{n:24,name:"Varunapriya",cs:"S R2 G2 M1 P D3 N3 S",hs:"Sa-Re-ga-ma-Pa-ni-Ni-Sa'",ch:"Veda",he:"Chanchalas Malhar",desc:"Named after the deity of the oceans and rains, this raga evokes vast, deep, and slightly turbulent emotional waters. It channels a sweeping sense of cosmic grandeur and natural power."},
+{n:25,name:"Mararanjani",cs:"S R2 G3 M1 P D1 N1 S",hs:"Sa-Re-Ga-ma-Pa-dha-Dha-Sa'",ch:"Bana",he:"—",desc:"This raga utilizes a flat, minimalist structure to create an atmosphere of profound quietude. It evokes a highly internal mood of absolute detachment and emotional stillness."},
+{n:26,name:"Charukesi",cs:"S R2 G3 M1 P D1 N2 S",hs:"Sa-Re-Ga-ma-Pa-dha-ni-Sa'",ch:"Bana",he:"Charukeshi",desc:"Masterfully blending a bright, joyful ascent with a deeply sorrowful, melting descent, this raga is a favorite for emotional storytelling. It captures a uniquely bittersweet mood of yearning and loving surrender."},
+{n:27,name:"Sarasangi",cs:"S R2 G3 M1 P D1 N3 S",hs:"Sa-Re-Ga-ma-Pa-dha-Ni-Sa'",ch:"Bana",he:"Nat Bhairav",desc:"This raga projects an aura of radiant warmth, inner peace, and divine maternal comfort. It is highly effective for soothing an anxious mind and inviting gentle contemplation."},
+{n:28,name:"Harikambhoji",cs:"S R2 G3 M1 P D2 N2 S",hs:"Sa-Re-Ga-ma-Pa-Dha-ni-Sa'",ch:"Bana",he:"Khamaj thaat",desc:"Serving as the parent to monumental ragas like Mohanam and Kambhoji, this scale is a massive powerhouse. It is inherently majestic, celebratory, and carries a bright, life-affirming energy."},
+{n:29,name:"Sankarabharanam",cs:"S R2 G3 M1 P D2 N3 S",hs:"Sa-Re-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Bana",he:"Bilawal thaat",desc:"Equivalent to the Western major scale, this legendary raga represents ultimate stability, royalty, and festive grandeur. It fills the performance space with a sense of universal balance, prosperity, and divine joy."},
+{n:30,name:"Naganandini",cs:"S R2 G3 M1 P D3 N3 S",hs:"Sa-Re-Ga-ma-Pa-ni-Ni-Sa'",ch:"Bana",he:"Gondgiri Malhar",desc:"Translating to - the one who delights the serpents - this raga has a highly coiled, hypnotic melodic movement. It creates a mysterious, deeply focused atmosphere of snake-charmer charm."},
+{n:31,name:"Yagapriya",cs:"S R3 G3 M1 P D1 N1 S",hs:"Sa-ga-Ga-ma-Pa-dha-Dha-Sa'",ch:"Ritu",he:"—",desc:"This raga carries the sacred, smoke-filled atmosphere of a Vedic fire ritual. Its sharp, unusual swara pairings evoke a sense of deep mystery and strict ritualistic devotion."},
+{n:32,name:"Ragavardhini",cs:"S R3 G3 M1 P D1 N2 S",hs:"Sa-ga-Ga-ma-Pa-dha-ni-Sa'",ch:"Ritu",he:"Vardhini | Nandkauns",desc:"True to its name, which means - multiplier of melody - this scale expands beautifully into deep, unexpected pathways. It shifts between moments of profound vulnerability and sudden strength."},
+{n:33,name:"Gangeyabhusani",cs:"S R3 G3 M1 P D1 N3 S",hs:"Sa-ga-Ga-ma-Pa-dha-Ni-Sa'",ch:"Ritu",he:"Gangeyabhushan",desc:"This scale possesses an exotic, fiercely brilliant personality that commands immediate attention. It projects a regal, defensive, and fiercely protective mood."},
+{n:34,name:"Vagadhiswari",cs:"S R3 G3 M1 P D2 N2 S",hs:"Sa-ga-Ga-ma-Pa-Dha-ni-Sa'",ch:"Ritu",he:"Jogeshwari Pancham",desc:"Named after the goddess of speech, this raga features bold, highly expressive melodic intervals. It leaves listeners with a strong sense of intellectual clarity and artistic authority."},
+{n:35,name:"Sulini",cs:"S R3 G3 M1 P D2 N3 S",hs:"Sa-ga-Ga-ma-Pa-Dha-Ni-Sa'",ch:"Ritu",he:"—",desc:"This raga feels highly dynamic, sharp, and weapon-like, matching its name (the spear-bearer). It builds an atmosphere of unshakeable courage, heroic focus, and protective power."},
+{n:36,name:"Chalanata",cs:"S R3 G3 M1 P D3 N3 S",hs:"Sa-ga-Ga-ma-Pa-ni-Ni-Sa'",ch:"Ritu",he:"Jog Tilang",desc:"This explosive, high-energy raga is widely used to open concerts due to its bright, driving rhythms. It commands the room with an urgent sense of auspicious celebration and joyous victory."},
+{n:37,name:"Salagam",cs:"S R1 G1 M2 P D1 N1 S",hs:"Sa-re-Re-Ma-Pa-dha-Dha-Sa'",ch:"Rishi",he:"—",desc:"As the first Prati Madhyama raga, it introduces a sharp, piercing fourth note that completely reorients the listener's ear. It carries an intense, stark mood of deep hermitic isolation."},
+{n:38,name:"Jalarnavam",cs:"S R1 G1 M2 P D1 N2 S",hs:"Sa-re-Re-Ma-Pa-dha-ni-Sa'",ch:"Rishi",he:"—",desc:"Translating to - the roaring ocean -this scale uses its unusual intervals to mimic the restless, surging movement of deep sea waves. It evokes a raw, unpredictable atmosphere of elemental power."},
+{n:39,name:"Jhalavarali",cs:"S R1 G1 M2 P D1 N3 S",hs:"Sa-re-Re-Ma-Pa-dha-Ni-Sa'",ch:"Rishi",he:"—",desc:"This raga is heavily shrouded in mystery, dark sorrow, and deep devotional intensity. Its sharp microtones demand extreme precision, creating a hauntingly beautiful, tearful plea to the divine."},
+{n:40,name:"Navanitam",cs:"S R1 G1 M2 P D2 N2 S",hs:"Sa-re-Re-Ma-Pa-Dha-ni-Sa'",ch:"Rishi",he:"—",desc:"Meaning -fresh butter - this raga surprisingly contrasts its name by offering a highly complex, elusive scale. It delivers a slippery, fleeting emotional quality that keeps the listener in a state of curious suspense."},
+{n:41,name:"Pavani",cs:"S R1 G1 M2 P D2 N3 S",hs:"Sa-re-Re-Ma-Pa-Dha-Ni-Sa'",ch:"Rishi",he:"—",desc:"This raga projects an aura of pristine, windswept purification and sparkling clarity. It clears the mind, leaving behind a light, breezy, and deeply refreshing spiritual atmosphere."},
+{n:42,name:"Raghupriya",cs:"S R1 G1 M2 P D3 N3 S",hs:"Sa-re-Re-Ma-Pa-ni-Ni-Sa'",ch:"Rishi",he:"—",desc:"Closing the seventh chakra, this scale features highly condensed, sharp intervals that create an intense intellectual challenge. It rewards listeners with a bright, lightning-fast display of melodic geometry."},
+{n:43,name:"Gavambhodi",cs:"S R1 G2 M2 P D1 N1 S",hs:"Sa-re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Vasu",he:"—",desc:"This rare raga carries a deeply heavy, exhausting emotional weight that mimics a long desert journey. It evokes an intense mood of spiritual thirst, weariness, and a driving need for salvation."},
+{n:44,name:"Bhavapriya",cs:"S R1 G2 M2 P D1 N2 S",hs:"Sa-re-ga-Ma-Pa-dha-ni-Sa'",ch:"Vasu",he:"Komal Ramkali",desc:"Translating to - the lover of emotions - this raga uses its sharp intervals to pierce directly to the heart. It creates a deeply moving, vulnerable atmosphere of pure, unfiltered devotion."},
+{n:45,name:"Subhapantuvarali",cs:"S R1 G2 M2 P D1 N3 S",hs:"Sa-re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Vasu",he:"Todi thaat",desc:"This monumental raga is the ultimate expression of profound grief, absolute heartbreak, and crying prayer. It carries an immense, shattering emotional weight that can move audiences to tears."},
+{n:46,name:"Shadvidamargini",cs:"S R1 G2 M2 P D2 N2 S",hs:"Sa-re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Vasu",he:"Chandni Todi",desc:"A highly intellectual scale, this raga explores six distinct melodic paths within its strict framework. It evokes a sharp, analytical, and highly adventurous musical mood."},
+{n:47,name:"Suvarnangi",cs:"S R1 G2 M2 P D2 N3 S",hs:"Sa-re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Vasu",he:"Madhu Multani",desc:"Translating to - the golden-bodied - this raga glitters with a bright, metallic brilliance. It cuts through emotional fog, creating an atmosphere of vibrant clarity and heroic focus."},
+{n:48,name:"Divyamani",cs:"S R1 G2 M2 P D3 N3 S",hs:"Sa-re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Vasu",he:"—",desc:"This raga projects an ethereal, celestial glow that feels entirely disconnected from mundane life. It leaves listeners with a profound sense of cosmic mystery and divine enlightenment."},
+{n:49,name:"Dhavalambari",cs:"S R1 G3 M2 P D1 N1 S",hs:"Sa-re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Brahma",he:"—",desc:"This scale paints a picture of stark, snow-white purity and towering Himalayan peaks. It evokes an unshakeable mood of meditative stillness, cool detachment, and absolute peace."},
+{n:50,name:"Namanarayani",cs:"S R1 G3 M2 P D1 N2 S",hs:"Sa-re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Brahma",he:"Namanarayani",desc:"Infused with deep, prayerful chanting rhythms, this raga sounds like a rhythmic evening temple prayer. It creates a comforting, protective, and deeply devotional atmosphere."},
+{n:51,name:"Kamavardhini",cs:"S R1 G3 M2 P D1 N3 S",hs:"Sa-re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Brahma",he:"Poorvi thaat",desc:"A massive pillar of the afternoon classical repertoire, this raga is bursting with intense, fiery passion and spiritual desperation. It demands absolute attention with its burning, restless energy."},
+{n:52,name:"Rampriya",cs:"S R1 G3 M2 P D2 N2 S",hs:"Sa-re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Brahma",he:"Rampriya",desc:"This raga blends royal dignity with a deeply affectionate, protective warmth. It evokes the comforting aura of a benevolent ruler, offering strength, peace, and reassurance."},
+{n:53,name:"Gamanasrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"Sa-re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Brahma",he:"Marwa thaat",desc:"This highly sophisticated scale serves as the parent to the immensely popular concert raga Purvikalyani. It moves with a graceful, twisting motion that balances deep longing with playful creativity."},
+{n:54,name:"Vishvambari",cs:"S R1 G3 M2 P D3 N3 S",hs:"Sa-re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Brahma",he:"Vishwambari",desc:"Carrying a vast, all-encompassing energy, this scale feels as large as the universe itself. It projects an atmosphere of epic grandeur, timelessness, and cosmic wonder."},
+{n:55,name:"Shamalangi",cs:"S R2 G2 M2 P D1 N1 S",hs:"Sa-Re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Disi",he:"—",desc:"This raga carries a dark, evening-sky beauty that feels deeply enchanting and slightly protective. It evokes a quiet, velvety mood of hidden mysteries and restful contemplation."},
+{n:56,name:"Shanmukhapriya",cs:"S R2 G2 M2 P D1 N2 S",hs:"Sa-Re-ga-Ma-Pa-dha-ni-Sa'",ch:"Disi",he:"Shanmukhpriya",desc:"A crowd favorite, this powerful scale is incredibly dynamic, heroic, and emotionally expressive. It effortlessly commands the stage, invoking feelings of awe, courage, and sharp intelligence."},
+{n:57,name:"Simhendramadhyamam",cs:"S R2 G2 M2 P D1 N3 S",hs:"Sa-Re-ga-Ma-Pa-dha-Ni-Sa'",ch:"Disi",he:"Simhendra Mad.",desc:"This iconic raga sounds grand, theatrical, and deeply majestic. It builds a thrilling, suspenseful atmosphere that makes it a centerpiece for masterful, virtuoso improvisations."},
+{n:58,name:"Hemavati",cs:"S R2 G2 M2 P D2 N2 S",hs:"Sa-Re-ga-Ma-Pa-Dha-ni-Sa'",ch:"Disi",he:"Hemavati | Madhukant",desc:"Translating to -the golden one -this highly accessible raga radiates a sweet, smooth, and deeply romantic charm. It is instantly appealing, wrapping the listener in a warm, artistic embrace."},
+{n:59,name:"Dharmavati",cs:"S R2 G2 M2 P D2 N3 S",hs:"Sa-Re-ga-Ma-Pa-Dha-Ni-Sa'",ch:"Disi",he:"Madhuvanti | Anjani Kalyan",desc:"This raga embodies the spirit of righteousness, absolute truth, and balanced justice. It creates a noble, crystal-clear atmosphere of moral strength, clarity, and peace."},
+{n:60,name:"Nitimati",cs:"S R2 G2 M2 P D3 N3 S",hs:"Sa-Re-ga-Ma-Pa-ni-Ni-Sa'",ch:"Disi",he:"—",desc:"Meaning - the moral one - this scale relies on highly complex, strict musical intervals. It leaves an impression of unbending discipline, intellectual rigor, and dignified focus."},
+{n:61,name:"Kantamani",cs:"S R2 G3 M2 P D1 N1 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Rudra",he:"Kanthamani",desc:"This rare scale features an unusual layout that feels slightly erratic and volatile. It evokes a mood of unpredictable tension, sudden lightning-fast shifts, and artistic danger."},
+{n:62,name:"Rishabhapriya",cs:"S R2 G3 M2 P D1 N2 S",hs:"Sa-Re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Rudra",he:"Rishabhapriya",desc:"Highlighting its second note with great emphasis, this raga creates a fiercely independent and proud personality. It drives forward with a confident, adventurous, and highly individualistic energy."},
+{n:63,name:"Latangi",cs:"S R2 G3 M2 P D1 N3 S",hs:"Sa-Re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Rudra",he:"Latangi",desc:"This beautifully radiant raga is famous for its sweet, melting, and affectionate nature. It fills the room with a joyful, celebratory sense of love, beauty, and absolute bliss."},
+{n:64,name:"Vachaspati",cs:"S R2 G3 M2 P D2 N2 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Rudra",he:"Vachaspati",desc:"A towering masterpiece of a scale, it is globally recognized for its perfect balance of intellectual complexity and raw emotional appeal. It projects a commanding, philosophical aura of deep wisdom."},
+{n:65,name:"Mechakalyani",cs:"S R2 G3 M2 P D2 N3 S",hs:"Sa-Re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Rudra",he:"Kalyan thaat",desc:"As one of the most famous, grandest, and most frequently performed ragas in all of Carnatic music, it is the ultimate queen of scales. It radiates an all-encompassing, blindingly brilliant light of pure joy, auspiciousness, and divine beauty."},
+{n:66,name:"Chitrambari",cs:"S R2 G3 M2 P D3 N3 S",hs:"Sa-Re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Rudra",he:"—",desc:"This raga acts as a vibrant, multi-colored canvas of brilliant musical phrases. It creates a highly imaginative, kaleidoscope-like atmosphere that stimulates artistic curiosity."},
+{n:67,name:"Sucharitra",cs:"S R3 G3 M2 P D1 N1 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Dha-Sa'",ch:"Aditya",he:"Sucharitra",desc:"Marking the start of the final chakra, this scale carries a highly complex, historical dignity. It sounds ancient and uncompromising, demanding deep focus to unlock its hidden beauty."},
+{n:68,name:"Jyotiswarupini",cs:"S R3 G3 M2 P D1 N2 S",hs:"Sa-ga-Ga-Ma-Pa-dha-ni-Sa'",ch:"Aditya",he:"—",desc:"Translating to - the form of pure light -this raga cuts through darkness like a single, blazing torch. It leaves listeners with an empowering feeling of spiritual awakening and intense mental clarity."},
+{n:69,name:"Dhatuvardhani",cs:"S R3 G3 M2 P D1 N3 S",hs:"Sa-ga-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Aditya",he:"—",desc:"This raga acts as an intense energetic catalyst, driving musical phrases forward with a restless, rhythmic pulse. It builds a powerful mood of physical stamina and unshakeable determination."},
+{n:70,name:"Nasikabhushani",cs:"S R3 G3 M2 P D2 N2 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Aditya",he:"Surmanjari",desc:"This exotic scale features a highly peculiar nasal and bright tonal quality that sounds completely distinct from any other raga. It surprises the listener, evoking a sense of sudden discovery and playful wonder."},
+{n:71,name:"Kosalam",cs:"S R3 G3 M2 P D2 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"DoGa Kalyan",desc:"This scale moves with a grand, expansive, and sweeping stride. It fills the performance environment with an air of historic triumph, vast territory, and royal celebration."},
+{n:72,name:"Rasikapriya",cs:"S R3 G3 M2 P D3 N3 S",hs:"Sa-ga-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Aditya",he:"—",desc:" As the 72nd and final Melakarta raga, it represents the absolute peak of the entire system. It leaves audiences with a profound, blissful feeling of structural completion, ultimate artistic fulfillment, and universal harmony."}
 ];
 var CHAKRA_COLORS = {
   "Indu": "#c0392b", "Netra": "#d35400", "Agni": "#e67e22", "Veda": "#27ae60",
