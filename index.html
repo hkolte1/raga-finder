@@ -217,17 +217,127 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
 #wheel-view .chakra-label{font-size:7px;fill:#444;pointer-events:none;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
 #wheel-view .center-text{text-anchor:middle;fill:#2c2c2c;font-size:16px;font-weight:700;pointer-events:none}
 #wheel-view .center-sub{text-anchor:middle;fill:#999;font-size:10px;pointer-events:none}
-#detail-panel{width:100%;max-width:380px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,.1);margin-top:16px;text-align:left}
-#detail-panel h2{color:var(--ink);font-size:1.2rem;margin-bottom:4px;text-align:left;font-variant:normal}
-#detail-panel .detail-num{color:#999;font-size:.8rem;margin-bottom:14px}
-#detail-panel .detail-row{margin-bottom:12px}
-#detail-panel .detail-label{color:#8a7fa0;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:3px}
-#detail-panel .detail-value{color:#444;font-size:.92rem;line-height:1.5}
-#detail-panel .swara-display{font-family:'Courier New',monospace;font-size:.95rem;letter-spacing:1px;color:#2563a8}
-#detail-panel .swara-display-h{font-family:'Courier New',monospace;font-size:.95rem;letter-spacing:1px;color:#b8860b}
-#detail-panel .chakra-badge{display:inline-block;padding:3px 10px;border-radius:15px;font-size:.8rem;font-weight:600;color:#fff}
-#detail-panel .placeholder{text-align:center;padding:30px 0;color:#aaa}
-#detail-panel .placeholder p{font-size:.85rem;margin-top:8px}
+#detail-panel {
+  width: 100%;
+  max-width: 680px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 10px;
+  text-align: left;
+}
+.mw-cards-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+#detail-panel .mw-card {
+  flex: 1 1 310px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.08);
+  box-sizing: border-box;
+}
+#detail-panel h2 {
+  color: var(--ink);
+  font-size: 0.88rem;
+  margin-bottom: 2px;
+  text-align: left;
+  font-variant: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#detail-panel .detail-num {
+  color: #999;
+  font-size: 0.62rem;
+  margin-bottom: 8px;
+}
+#detail-panel .detail-row {
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+#detail-panel .detail-label {
+  color: #8a7fa0;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+#detail-panel .detail-value {
+  color: #444;
+  font-size: 0.72rem;
+}
+#detail-panel .swara-display {
+  font-family: 'Courier New', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.5px;
+  color: #2563a8;
+}
+#detail-panel .swara-display-h {
+  font-family: 'Courier New', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.5px;
+  color: #b8860b;
+}
+#detail-panel .chakra-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #fff;
+}
+.mw-step {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 8px;
+  margin: 6px 0;
+  background: rgba(184, 52, 30, 0.03);
+  border-radius: 0 4px 4px 0;
+}
+.mw-step-title {
+  font-size: 0.68rem;
+  font-weight: bold;
+  color: #3a2a12;
+  margin-bottom: 2px;
+}
+.mw-step-desc {
+  font-size: 0.64rem;
+  color: #555;
+  line-height: 1.35;
+}
+.mw-step-res {
+  font-size: 0.66rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-top: 2px;
+}
+.mw-final-box {
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-top: 6px;
+}
+#detail-panel .placeholder {
+  text-align: center;
+  padding: 18px 0;
+  color: #aaa;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  width: 100%;
+}
+#detail-panel .placeholder p {
+  font-size: 0.74rem;
+  margin-top: 4px;
+}
 #legend{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px;max-width:100%}
 #legend .legend-item{display:flex;align-items:center;gap:4px;font-size:.68rem;color:#777}
 #legend .legend-swatch{width:12px;height:12px;border-radius:3px}
@@ -259,9 +369,7 @@ footer .last-updated{font-size:.68rem;color:#9a8d70}
   .raga-card .row{font-size:.72rem}
   .song-item{padding:6px}
   .song-del,.song-edit{min-width:36px;min-height:36px;padding:0 4px}
-  #detail-panel{padding:14px}
-  #detail-panel h2{font-size:1.05rem}
-  #detail-panel .detail-value{font-size:.85rem}
+  #detail-panel{padding:0}
   #controls button{padding:8px 12px;font-size:.76rem}
 }
 @media (min-width:600px){
@@ -6461,34 +6569,116 @@ function showRaga(r) {
   if (slice) slice.classList.add('selected');
   var nameEl = ragaNameEls[r.n - 1];
   if (nameEl) nameEl.el.classList.add('selected');
+
   var panel = document.getElementById('detail-panel');
   var chColor = CHAKRA_COLORS[r.ch];
 
+  // Description row for Card 1
   var desc = r.desc || r.description || '';
   var descRow = desc ? (
     '<div class="detail-row">' +
       '<div class="detail-label">Description</div>' +
-      '<div class="detail-value" style="font-style:italic;line-height:1.4;">' + desc + '</div>' +
+      '<div class="detail-value" style="font-style:italic;line-height:1.35;">' + desc + '</div>' +
     '</div>'
   ) : '';
 
+  // === STEP-BY-STEP MATHEMATICAL DEDUCTION DATA ===
+  var chNum = Math.ceil(r.n / 6); // Chakra number (1 to 12)
+  var chStart = (chNum - 1) * 6 + 1;
+  var chEnd = chNum * 6;
+  var isSecondHalf = (r.n > 36);
+
+  // 1. The Madhyam Selection
+  var mSymbol = isSecondHalf ? 'M₂' : 'M₁';
+  var mName = isSecondHalf ? 'Prati Madhyama (M₂)' : 'Shuddha Madhyama (M₁)';
+  var mHalfRange = isSecondHalf ? 'second half (37 to 72)' : 'first half (1 to 36)';
+  var mDesc = "72 ragas are split into two halves: 1–36 use M₁ and 37–72 use M₂.";
+
+  // 2. Purvanga (Re & Ga) Selection
+  var rgIndex = ((chNum - 1) % 6) + 1;
+  var rgMap = {
+    1: { code: 'R₁ G₁', name: 'Shuddha Rishabha (R₁) and Shuddha Gandhara (G₁)' },
+    2: { code: 'R₁ G₂', name: 'Shuddha Rishabha (R₁) and Sadharana Gandhara (G₂)' },
+    3: { code: 'R₁ G₃', name: 'Shuddha Rishabha (R₁) and Antara Gandhara (G₃)' },
+    4: { code: 'R₂ G₂', name: 'Chatushruti Rishabha (R₂) and Sadharana Gandhara (G₂)' },
+    5: { code: 'R₂ G₃', name: 'Chatushruti Rishabha (R₂) and Antara Gandhara (G₃)' },
+    6: { code: 'R₃ G₃', name: 'Shatsruti Rishabha (R₃) and Antara Gandhara (G₃)' }
+  };
+  var rgInfo = rgMap[rgIndex];
+  var rgDesc = "The 72 ragas are divided into 12 Chakras (groups of 6). Each Chakra shares the exact same Re and Ga combination (1: R₁G₁, 2: R₁G₂, 3: R₁G₃, 4: R₂G₂, 5: R₂G₃, 6: R₃G₃, repeating for Chakras 7–12).";
+
+  // 3. Uttaranga (Dha & Ni) Selection
+  var posInChakra = ((r.n - 1) % 6) + 1;
+  var dnMap = {
+    1: { code: 'D₁ N₁', name: 'Shuddha Dhaivata (D₁) and Shuddha Nishada (N₁)' },
+    2: { code: 'D₁ N₂', name: 'Shuddha Dhaivata (D₁) and Sadharana Nishada (N₂)' },
+    3: { code: 'D₁ N₃', name: 'Shuddha Dhaivata (D₁) and Kakali Nishada (N₃)' },
+    4: { code: 'D₂ N₂', name: 'Chatushruti Dhaivata (D₂) and Kaisiki Nishada (N₂)' },
+    5: { code: 'D₂ N₃', name: 'Chatushruti Dhaivata (D₂) and Kakali Nishada (N₃)' },
+    6: { code: 'D₃ N₃', name: 'Shatsruti Dhaivata (D₃) and Kakali Nishada (N₃)' }
+  };
+  var dnInfo = dnMap[posInChakra];
+  var dnDesc = "Within any Chakra, the 6 ragas rotate through 6 fixed D-N pairs: 1: D₁N₁, 2: D₁N₂, 3: D₁N₃, 4: D₂N₂, 5: D₂N₃, 6: D₃N₃.";
+  var posOrdinal = ['1st', '2nd', '3rd', '4th', '5th', '6th'][posInChakra - 1];
+
   panel.innerHTML =
-    '<h2>' + r.name + '</h2>' +
-    '<div class="detail-num">Melakarta #' + r.n + '</div>' +
-    '<div class="detail-row"><div class="detail-label">Chakra</div>' +
-    '<div class="detail-value"><span class="chakra-badge" style="background:' + chColor + '">' + r.ch + ' (' + (Math.ceil(r.n/6)) + ')</span></div></div>' +
-    '<div class="detail-row" style="display:flex;justify-content:space-between;align-items:center;">' +
-      '<div>' +
-        '<div class="detail-label">Carnatic Swaras</div>' +
-        '<div class="detail-value swara-display">' + r.cs + '</div>' +
+    '<div class="mw-cards-grid">' +
+      '<!-- CARD 1: OVERVIEW & PLAY SCALE -->' +
+      '<div class="mw-card">' +
+        '<h2><span>' + r.name + '</span><span class="chakra-badge" style="background:' + chColor + '">' + r.ch + ' (' + chNum + ')</span></h2>' +
+        '<div class="detail-num">Melakarta #' + r.n + ' of 72</div>' +
+        '<div class="detail-row" style="display:flex;justify-content:space-between;align-items:center;">' +
+                  '<div>' +
+                    '<div class="detail-label"><a href="javascript:void(0)" id="mw-deriv-toggle" style="color:#1565c0;text-decoration:underline;cursor:pointer;">Carnatic Swaras &#9662;</a></div>' +
+                    '<div class="detail-value swara-display">' + r.cs + '</div>' +
+                  '</div>' +
+                  '<button type="button" class="play-swara-btn btn-mw-play" style="padding:2px 7px;font-size:0.65rem;">&#9654; Play Scale</button>' +
+                '</div>' +
+        '<div class="detail-row">' +
+          '<div class="detail-label">Hindustani Swaras</div>' +
+          '<div class="detail-value swara-display-h">' + r.hs + '</div>' +
+        '</div>' +
+        '<div class="detail-row">' +
+          '<div class="detail-label">Hindustani Equivalent</div>' +
+          '<div class="detail-value">' + (r.he === '—' || r.he === '-' ? '<span style="color:#aaa">No direct equivalent</span>' : r.he) + '</div>' +
+        '</div>' +
+        descRow +
       '</div>' +
-      '<button type="button" class="play-swara-btn btn-mw-play" style="margin-left:8px;">&#9654; Play Scale</button>' +
-    '</div>' +
-    '<div class="detail-row"><div class="detail-label">Hindustani Swaras</div>' +
-    '<div class="detail-value swara-display-h">' + r.hs + '</div></div>' +
-    '<div class="detail-row"><div class="detail-label">Hindustani Equivalent</div>' +
-    '<div class="detail-value">' + (r.he === '\u2014' ? '<span style="color:#aaa">No direct equivalent</span>' : r.he) + '</div></div>' +
-    descRow;
+
+      '<!-- CARD 2: CONCISE 1-LINE STEP-BY-STEP DEDUCTION (COLLAPSIBLE) -->' +
+            '<div class="mw-card" id="mw-deriv-card" style="display:none;">' +
+        '<h2><span>' + r.name + '</span><span style="font-size:0.62rem;color:#8a7fa0;font-weight:normal;">Derivation Logic</span></h2>' +
+        '<div class="detail-num">Structural Template: <b>S &ndash; R &ndash; G &ndash; M &ndash; P &ndash; D &ndash; N &ndash; Ṡ</b></div>' +
+
+        '<div class="detail-row">' +
+          '<a class="mw-info-link" style="font-size:0.66rem;" href="javascript:void(0)" title="' + mDesc + '" onclick="alert(\'' + mDesc + '\');return false;"> Madhyam selection</a>: ' +
+          '<span class="detail-value">Raga #' + r.n + ' falls in the ' + mHalfRange + ', which uses ' + mName + ' &rarr; <b>' + mSymbol + '</b></span>' +
+        '</div>' +
+
+        '<div class="detail-row">' +
+          '<a class="mw-info-link" style="font-size:0.66rem;" href="javascript:void(0)" title="' + rgDesc + '" onclick="alert(\'' + rgDesc + '\');return false;">Purvanga selection</a>: ' +
+          '<span class="detail-value">Chakra ' + chNum + ' (' + r.ch + ' Chakra, ragas ' + chStart + '&ndash;' + chEnd + ') uses ' + rgInfo.name + ' &rarr; <b>' + rgInfo.code + '</b></span>' +
+        '</div>' +
+
+        '<div class="detail-row">' +
+          '<a class="mw-info-link" style="font-size:0.66rem;" href="javascript:void(0)" title="' + dnDesc + '" onclick="alert(\'' + dnDesc + '\');return false;">Uttaranga selection</a>: ' +
+          '<span class="detail-value">Position ' + posInChakra + ' of 6 in chakra (' + posOrdinal + ' raga) uses ' + dnInfo.name + ' &rarr; <b>' + dnInfo.code + '</b></span>' +
+        '</div>' +
+
+        '<div class="detail-row">' +
+                  '<b style="font-size: 0.66rem; color: #3a2a12;">Constant Anchors:</b> ' +
+                  '<span class="detail-value" style="font-size: 0.66rem;">Shadjam (S) and Pancham (P) are invariant achala swaras &rarr; <b>S and P</b></span>' +
+                '</div>' +
+
+        '<div class="mw-final-box">' +
+          '<div style="font-size:0.60rem;color:#8a7fa0;text-transform:uppercase;font-weight:600;margin-bottom:2px;">Final Formula for ' + r.name + ' (#' + r.n + ')</div>' +
+          '<div class="swara-display" style="font-weight:bold;font-size:0.78rem;">' + r.cs + '</div>' +
+          '<div style="font-size:0.62rem;color:#555;margin-top:2px;line-height:1.35;">' +
+            'S &bull; ' + rgInfo.name + ' &bull; ' + mName + ' &bull; P &bull; ' + dnInfo.name +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
 
   var playBtn = panel.querySelector('.btn-mw-play');
   if (playBtn) {
@@ -6497,9 +6687,21 @@ function showRaga(r) {
       playMelakartaScale(r.cs, this);
     });
   }
-
+  // Toggle Card 2 visibility when clicking "Carnatic Swaras"
+    var derivToggle = panel.querySelector('#mw-deriv-toggle');
+    var derivCard = panel.querySelector('#mw-deriv-card');
+    if (derivToggle && derivCard) {
+      derivToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isHidden = (derivCard.style.display === 'none' || derivCard.style.display === '');
+        derivCard.style.display = isHidden ? 'block' : 'none';
+        derivToggle.innerHTML = isHidden ? 'Carnatic Swaras &#9652;' : 'Carnatic Swaras &#9662;';
+      });
+    }
   selectedRaga = r;
 }
+
 function buildLegend() {
   var legend = document.getElementById('legend');
   var chakraNames = ["Indu","Netra","Agni","Veda","Bana","Ritu","Rishi","Vasu","Brahma","Disi","Rudra","Aditya"];
