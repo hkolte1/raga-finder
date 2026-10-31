@@ -516,7 +516,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
     <option value="233.08">A#3 / Bb3 (Kali 5 Low)</option>
     <option value="246.94">B3 (Safed 7 Low)</option>
     <option value="261.63">C4 (Safed 1 Standard)</option>
-    <option value="277.18" selected>C#4 (Kali 1 Standard)</option>
+    <option value="277.18" selected="">C#4 (Kali 1 Standard)</option>
     <option value="293.66">D4 (Safed 2 Standard)</option>
     <option value="311.13">D#4 / Eb4 (Kali 2 Standard)</option>
     <option value="329.63">E4 (Safed 3 Standard)</option>
@@ -570,7 +570,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   <h2>Matching Ragas</h2>
   <div class="hint" id="hintText">No notes selected yet. Tap keys above to begin.</div>
   <div class="tabs">
-    <div class="tab active" data-tab="raga">Ragas</div>
+    <div class="tab" data-tab="raga">Ragas</div>
     <div class="tab" data-tab="thaat">Thaats</div>
   </div>
   <div class="count" id="count"></div>
@@ -578,7 +578,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 </div>
 </div><!-- /finder-view -->
 
-<div id="wheel-view" style="display:none">
+<div id="wheel-view" style="display: none;">
 <h2>Melakarta Wheel</h2>
 <p class="mw-subtitle">72 Janaka (Parent) Scales of Carnatic Music — Tap any raga to see details</p>
 <div id="controls">
@@ -693,8 +693,8 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 
 
 <footer>
-  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 542 songs · Song edits saved on this device</span>
-  <span class="last-updated">Last Updated: October 30, 2026</span>
+  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 582 songs · Song edits saved on this device</span>
+  <span class="last-updated">Last Updated: October 31, 2026</span>
 </footer>
 </div>
 
@@ -2412,6 +2412,12 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Bhimsen Joshi",
       "md": "Vasant Desai"
+    },
+    {
+      "song": "Mere mitwa mere meet re",
+      "film": "Geet",
+      "singer": "Mohammed Rafi, Lata Mangeshkar",
+      "md": "Kalyanji Anandji"
     }
   ],
   "Bhairav": [
@@ -3014,6 +3020,12 @@ var SONGS_BASE = {
       "film": "Anari",
       "singer": "Lata Mangeshkar, Mukesh",
       "md": "Shankar Jaikishan"
+    },
+    {
+      "song": "Saawan aaye ya na aaye",
+      "film": "Dil diya dard liya",
+      "singer": "Mohammed Rafi, Asha Bhosale",
+      "md": ""
     }
   ],
   "Chandrakauns": [
@@ -3498,6 +3510,18 @@ var SONGS_BASE = {
       "film": "Chandni Chowk to China",
       "singer": "Shankar Mahadevan, Shreya Ghoshal",
       "md": "Shankar-Ehsaan-Loy"
+    },
+    {
+      "song": "Akhercha ha tula dandawat",
+      "film": "",
+      "singer": "Lata mangeshkar",
+      "md": ""
+    },
+    {
+      "song": "Aga nach nach nach radhe",
+      "film": "Gondhalat gondhal",
+      "singer": "Suresh Wadkar",
+      "md": ""
     }
   ],
   "Hemant": [
@@ -3556,6 +3580,18 @@ var SONGS_BASE = {
       "film": "Sangeet Samrat Tansen",
       "singer": "Manna Dey",
       "md": "S.N. Tripathi"
+    },
+    {
+      "song": "Radha krishnawari bhalali",
+      "film": "",
+      "singer": "Asha Bhosale",
+      "md": ""
+    },
+    {
+      "song": "Gandha fulancha gela sangun",
+      "film": "",
+      "singer": "Suresh Wadkar,Asha Bhosale",
+      "md": ""
     }
   ],
   "Jaijaiwanti": [
@@ -3794,6 +3830,12 @@ var SONGS_BASE = {
       "film": "Jaal",
       "singer": "Hemant Kumar",
       "md": "S.D. Burman"
+    },
+    {
+      "song": "Jalte hai jiske liye",
+      "film": "Sujata",
+      "singer": "Talat Mahmood",
+      "md": "S.D.Burman"
     }
   ],
   "Kalavati": [
@@ -3910,6 +3952,12 @@ var SONGS_BASE = {
       "film": "Guddi",
       "singer": "Vani Jayaram",
       "md": "Vasant Desai"
+    },
+    {
+      "song": "Pal do pal ka saath hamara",
+      "film": "The Burning train",
+      "singer": "Asha Bhosale, Mohammed Rafi",
+      "md": "R.D.Burman"
     }
   ],
   "Khamaj": [
@@ -4090,6 +4138,12 @@ var SONGS_BASE = {
       "film": "Kalpana",
       "singer": "Manna Dey, Mohammed Rafi",
       "md": "O.P. Nayyar"
+    },
+    {
+      "song": "Koi Paas Aaya Sawere Sawere",
+      "film": "",
+      "singer": "Jagjit Singh",
+      "md": ""
     }
   ],
   "Maand": [
@@ -4402,9 +4456,9 @@ var SONGS_BASE = {
       "md": "R.D. Burman"
     },
     {
-      "song": "O mere sanam",
-      "film": "",
-      "singer": "Lata Mangeshkar",
+      "song": "Jeena yahan marna yehan",
+      "film": "Mera Naam Joker",
+      "singer": "Mukesh",
       "md": ""
     },
     {
@@ -4430,6 +4484,42 @@ var SONGS_BASE = {
       "film": "Muqaddar Ka Sikandar",
       "singer": "Kishore Kumar",
       "md": "Kalyanji Anandji"
+    },
+    {
+      "song": "Ek dhaga sukhacha",
+      "film": "",
+      "singer": "Sudheer Phadke",
+      "md": ""
+    },
+    {
+      "song": "Dolyat wach majhya tu geet bhavananche",
+      "film": "",
+      "singer": "Sudheer Phadke, Asha Bhosale",
+      "md": ""
+    },
+    {
+      "song": "Ha sagari kinara",
+      "film": "Mumbaicha Faujdar",
+      "singer": "Suresh Wadkar, Lata Mangeshkar",
+      "md": ""
+    },
+    {
+      "song": "Tumse milkar na jane kyu",
+      "film": "Pyar jhukta nahi",
+      "singer": "Shabbir Kumar",
+      "md": ""
+    },
+    {
+      "song": "Dil ke jharoke mein tujhko bithakar",
+      "film": "Brahmachari",
+      "singer": "Mohammed Rafi",
+      "md": ""
+    },
+    {
+      "song": "Pardesi pardesi jana nahi",
+      "film": "Raja Hindustani",
+      "singer": "Udit Narayan, Alka Yaagnik",
+      "md": ""
     }
   ],
   "Multani": [
@@ -4806,6 +4896,18 @@ var SONGS_BASE = {
       "film": "Vansh",
       "singer": "S.P, Lata Mangeshkar",
       "md": "Anand Milind"
+    },
+    {
+      "song": "Mohe Rang do laal",
+      "film": "Bajirao Mastani",
+      "singer": "Shreya Ghoshal",
+      "md": "Sanjay Leela Bhansali"
+    },
+    {
+      "song": "Sanjh Dhale gagan tale",
+      "film": "Utsav",
+      "singer": "Suresh Wadkar",
+      "md": "Laxmikant Pyarelal"
     }
   ],
   "Rageshri": [
@@ -5338,6 +5440,66 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Manik Varma",
       "md": "Bal Mote"
+    },
+    {
+      "song": "Khoya khoya chand",
+      "film": "Kala Bazar",
+      "singer": "Mohammed Rafi",
+      "md": "S.D.Burman"
+    },
+    {
+      "song": "Ye zindagi usi ki hai",
+      "film": "Anarkali",
+      "singer": "Lata Mangeshkar",
+      "md": "C. Ramchandra"
+    },
+    {
+      "song": "Nainon mein badra chhaye",
+      "film": "Mera Saaya",
+      "singer": "Lata Mangeshkar",
+      "md": "Madan Mohan"
+    },
+    {
+      "song": "Kuchh dil ne kaha",
+      "film": "Anupama",
+      "singer": "Lata Mangeshkar",
+      "md": "Hemant Kumar"
+    },
+    {
+      "song": "Tu mile dil khile",
+      "film": "Criminal",
+      "singer": "Kumar Sanu, Alka Yagnik",
+      "md": "M.M.Kreem"
+    },
+    {
+      "song": "Tu cheez badi hai mast",
+      "film": "Mohra",
+      "singer": "Udit Narayan, Kavita Krishnamurti",
+      "md": "Viju Shah"
+    },
+    {
+      "song": "Tanha tanha yahan pe jeena",
+      "film": "Rangeela",
+      "singer": "Asha Bhosale",
+      "md": "A.R.Rehman"
+    },
+    {
+      "song": "Radha kaise na jale",
+      "film": "Lagaan",
+      "singer": "Asha Bhosale, Udit Narayan",
+      "md": "A.R.Rehman"
+    },
+    {
+      "song": "Pani da rang",
+      "film": "Vicky Donor",
+      "singer": "Ayushman Khurana",
+      "md": "Ayushman Khurana"
+    },
+    {
+      "song": "Saathiya",
+      "film": "Saathia",
+      "singer": "Sonu Nigam",
+      "md": "A.R.Rehman"
     }
   ],
   "Dhani": [
@@ -5346,6 +5508,94 @@ var SONGS_BASE = {
       "film": "Sharmilee",
       "singer": "Kishore Kumar",
       "md": "R.D.Burman"
+    }
+  ],
+  "Madhmad Sarang": [
+    {
+      "song": "Udi Udi jaaye",
+      "film": "Raees",
+      "singer": "Sukhvinder Singh, Bhoomi Trivedi",
+      "md": "Ram Sampath"
+    },
+    {
+      "song": "Jag Ghoomeya thare jaisa na koi",
+      "film": "Sultan",
+      "singer": "Rahet Fateh Ali Khan",
+      "md": "Vishal Shekhar"
+    },
+    {
+      "song": "Mujhe Neend na aaye",
+      "film": "Dil",
+      "singer": "Udit Narayan, Alka Yagnik",
+      "md": "Anand Milind"
+    },
+    {
+      "song": "Munni badnam hui",
+      "film": "Dabangg",
+      "singer": "Mamta Sharma",
+      "md": "Lalit Pandit"
+    },
+    {
+      "song": "Prem ratan dhan payo",
+      "film": "Prem ratan dhan payo",
+      "singer": "Palak Muchhal",
+      "md": "Himesh Reshamiya"
+    }
+  ],
+  "Kamod": [
+    {
+      "song": "Tumko dekha to ye khayal aaya",
+      "film": "Saath Saath",
+      "singer": "Jagjit Singh, Chitra Singh",
+      "md": "Kuldip Singh"
+    },
+    {
+      "song": "Jaao re jogi tum jaao re",
+      "film": "Amrapali",
+      "singer": "Lata Mangeshkar",
+      "md": "Shankar Jaikishan"
+    }
+  ],
+  "Bairagi bhairav": [
+    {
+      "song": "Kisi nazar ko tera intezaar",
+      "film": "Aitbaar",
+      "singer": "Bhupinder Singh",
+      "md": "Bappi Lahiri"
+    },
+    {
+      "song": "Gam uthane ke liye main to jiye jaunga",
+      "film": "Mere Huzoor",
+      "singer": "Mohammed Rafi",
+      "md": "Shankar Jaikishan"
+    },
+    {
+      "song": "Mai ek raja hoon",
+      "film": "Uphaar",
+      "singer": "Mohammed Rafi",
+      "md": "Laxmikant Pyarelal"
+    },
+    {
+      "song": "Rut hai milan ki ssathi mere aa re",
+      "film": "Mela",
+      "singer": "Mohammed Rafi, Lata Mangeshkar",
+      "md": "R.D.Burman"
+    }
+  ],
+  "Nat bhairav": [
+    {
+      "song": "Tu pyar ka saagar hai",
+      "film": "Seema",
+      "singer": "Mohammed Rafi",
+      "md": "Shankar Jaikishan"
+    }
+  ],
+  "Bilaskhani todi": [
+    {
+      "song": "Jhoote naina bole",
+      "film": "Lekin",
+      "singer": "Asha Bhosale",
+      "md": "Hridaynath Mangeshkar"
     }
   ]
 };
@@ -8272,6 +8522,7 @@ document.getElementById('saveHtmlBtn').addEventListener('click', function() {
 
 buildRing();
 </script>
+
 
 
 </body></html>
