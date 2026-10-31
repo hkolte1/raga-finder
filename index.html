@@ -6810,6 +6810,82 @@ function resetWheel() { rotation = 0; applyRotation(); }
   svg.addEventListener('touchend', function() { isDragging = false; });
 })();
 
+// Complete Kaṭapayādi cipher lookup table for all 72 Melakarta ragas: [C1, D1, C2, D2, Prefix Note]
+var KATAPAYADI_CIPHER = [
+  ["Ka", 1, "Na", 0, ""],
+  ["Ra", 2, "Na", 0, ""],
+  ["Ga", 3, "Na", 0, ""],
+  ["Va", 4, "Na", 0, ""],
+  ["Ma", 5, "Na", 0, ""],
+  ["Ta", 6, "Na", 0, ""],
+  ["Sa", 7, "Na", 0, ""],
+  ["Ha", 8, "Nu (Na)", 0, "Prefixed as Hanuma-Todi so Ha(8) + Nu(0) yields #08."],
+  ["Dha", 9, "Nu (Na)", 0, ""],
+  ["Na", 0, "Ṭa", 1, ""],
+  ["Ka", 1, "Ka", 1, ""],
+  ["Ra", 2, "Pa", 1, ""],
+  ["Ga", 3, "Ya", 1, ""],
+  ["Va", 4, "Ka", 1, ""],
+  ["Ma", 5, "Ya", 1, "Prefixed as Maya-Malavagaula so Ma(5) + Ya(1) yields #15."],
+  ["Ca (Cha)", 6, "Ka", 1, ""],
+  ["Sa", 7, "Ya", 1, ""],
+  ["Ha", 8, "Ta", 1, ""],
+  ["Jha", 9, "Ka", 1, ""],
+  ["Na", 0, "Ṭha", 2, "Spelled as Naṭhabhairavi so Na(0) + Ṭha(2) yields #20."],
+  ["Ka", 1, "Ra", 2, ""],
+  ["Kha", 2, "Ra", 2, ""],
+  ["Ga", 3, "Ra", 2, ""],
+  ["Va", 4, "Ra", 2, ""],
+  ["Ma", 5, "Ra", 2, ""],
+  ["Ca (Cha)", 6, "Ra", 2, ""],
+  ["Sa", 7, "Ra", 2, ""],
+  ["Ha", 8, "Ra", 2, "Prefixed as Hari-Kambhoji so Ha(8) + Ra(2) yields #28."],
+  ["Dha", 9, "Ra", 2, "Prefixed as Dheera-Sankarabharanam so Dha(9) + Ra(2) yields #29."],
+  ["Na", 0, "Ga", 3, ""],
+  ["Ya", 1, "Ga", 3, ""],
+  ["Ra", 2, "Ga", 3, ""],
+  ["Ga", 3, "Ga", 3, ""],
+  ["Va", 4, "Ga", 3, ""],
+  ["Śa (Sha)", 5, "La", 3, ""],
+  ["Ca (Cha)", 6, "La", 3, "Prefixed as Chala-Nata so Ca(6) + La(3) yields #36."],
+  ["Sa", 7, "La", 3, ""],
+  ["Ja", 8, "La", 3, ""],
+  ["Jha", 9, "La", 3, "Prefixed as Jhala-Varali so Jha(9) + La(3) yields #39."],
+  ["Na", 0, "Va", 4, ""],
+  ["Pa", 1, "Va", 4, ""],
+  ["Ra", 2, "Gha", 4, ""],
+  ["Ga", 3, "Va", 4, ""],
+  ["Bha", 4, "Va", 4, ""],
+  ["Śa (Sha)", 5, "Bha", 4, "Prefixed as Subha-Pantuvarali so Śa(5) + Bha(4) yields #45."],
+  ["Ṣa (Sha)", 6, "Ḍha (Dva)", 4, ""],
+  ["Sa", 7, "Va", 4, ""],
+  ["Da", 8, "Va", 4, ""],
+  ["Dha", 9, "Va", 4, ""],
+  ["Na", 0, "Ma", 5, ""],
+  ["Ka", 1, "Ma", 5, ""],
+  ["Ra", 2, "Ma", 5, ""],
+  ["Ga", 3, "Ma", 5, ""],
+  ["Va", 4, "Śa", 5, ""],
+  ["Śa (Sha)", 5, "Ma", 5, ""],
+  ["Ṣa (Sha)", 6, "Ṇa", 5, ""],
+  ["Sa", 7, "Ma", 5, ""],
+  ["Ha", 8, "Ma", 5, ""],
+  ["Dha", 9, "Ma", 5, ""],
+  ["Na", 0, "Ta", 6, ""],
+  ["Ka", 1, "Ta", 6, ""],
+  ["Ra (Ṛ)", 2, "Ṣa", 6, ""],
+  ["La", 3, "Ta", 6, ""],
+  ["Va", 4, "Ca (Cha)", 6, ""],
+  ["Ma", 5, "Ca (Cha)", 6, "Prefixed as Mecha-Kalyani so Ma(5) + Ca(6) yields #65."],
+  ["Ca (Chi)", 6, "Ta", 6, ""],
+  ["Sa", 7, "Ca (Cha)", 6, ""],
+  ["Ja", 8, "Ta", 6, ""],
+  ["Dha", 9, "Ta", 6, ""],
+  ["Na", 0, "Sa", 7, ""],
+  ["Ka", 1, "Sa", 7, ""],
+  ["Ra", 2, "Sa", 7, ""]
+];
+
 function showRaga(r) {
   var old = document.querySelector('.slice.selected');
   if (old) old.classList.remove('selected');
@@ -6832,19 +6908,17 @@ function showRaga(r) {
     '</div>'
   ) : '';
 
-  // === STEP-BY-STEP MATHEMATICAL DEDUCTION DATA ===
-  var chNum = Math.ceil(r.n / 6); // Chakra number (1 to 12)
+  // === CARD 2: STEP-BY-STEP MATHEMATICAL DEDUCTION DATA ===
+  var chNum = Math.ceil(r.n / 6);
   var chStart = (chNum - 1) * 6 + 1;
   var chEnd = chNum * 6;
   var isSecondHalf = (r.n > 36);
 
-  // 1. The Madhyam Selection
   var mSymbol = isSecondHalf ? 'M₂' : 'M₁';
   var mName = isSecondHalf ? 'Prati Madhyama (M₂)' : 'Shuddha Madhyama (M₁)';
   var mHalfRange = isSecondHalf ? 'second half (37 to 72)' : 'first half (1 to 36)';
   var mDesc = "72 ragas are split into two halves: 1–36 use M₁ and 37–72 use M₂.";
 
-  // 2. Purvanga (Re & Ga) Selection
   var rgIndex = ((chNum - 1) % 6) + 1;
   var rgMap = {
     1: { code: 'R₁ G₁', name: 'Shuddha Rishabha (R₁) and Shuddha Gandhara (G₁)' },
@@ -6857,7 +6931,6 @@ function showRaga(r) {
   var rgInfo = rgMap[rgIndex];
   var rgDesc = "The 72 ragas are divided into 12 Chakras (groups of 6). Each Chakra shares the exact same Re and Ga combination (1: R₁G₁, 2: R₁G₂, 3: R₁G₃, 4: R₂G₂, 5: R₂G₃, 6: R₃G₃, repeating for Chakras 7–12).";
 
-  // 3. Uttaranga (Dha & Ni) Selection
   var posInChakra = ((r.n - 1) % 6) + 1;
   var dnMap = {
     1: { code: 'D₁ N₁', name: 'Shuddha Dhaivata (D₁) and Shuddha Nishada (N₁)' },
@@ -6871,19 +6944,27 @@ function showRaga(r) {
   var dnDesc = "Within any Chakra, the 6 ragas rotate through 6 fixed D-N pairs: 1: D₁N₁, 2: D₁N₂, 3: D₁N₃, 4: D₂N₂, 5: D₂N₃, 6: D₃N₃.";
   var posOrdinal = ['1st', '2nd', '3rd', '4th', '5th', '6th'][posInChakra - 1];
 
+  // === CARD 3: KAṬAPAYĀDI CIPHER DECODING DATA ===
+  var cipher = KATAPAYADI_CIPHER[r.n - 1];
+  var c1 = cipher[0], v1 = cipher[1], c2 = cipher[2], v2 = cipher[3], cipherNote = cipher[4];
+  var noteHtml = cipherNote ? '<div style="font-size:0.62rem;color:#7a6a4d;margin-top:4px;font-style:italic;">&bull; Note: ' + cipherNote + '</div>' : '';
+
   panel.innerHTML =
     '<div class="mw-cards-grid">' +
-      '<!-- CARD 1: OVERVIEW & PLAY SCALE -->' +
+      '<!-- CARD 1: OVERVIEW & CONTROLS -->' +
       '<div class="mw-card">' +
-        '<h2><span>' + r.name + '</span><span class="chakra-badge" style="background:' + chColor + '">' + r.ch + ' (' + chNum + ')</span></h2>' +
+        '<h2>' +
+          '<span><a href="javascript:void(0)" id="mw-name-toggle" style="color:var(--ink);text-decoration:underline;cursor:pointer;" title="Click to view Kaṭapayādi name decoding">' + r.name + ' &#9662;</a></span>' +
+          '<span class="chakra-badge" style="background:' + chColor + '">' + r.ch + ' (' + chNum + ')</span>' +
+        '</h2>' +
         '<div class="detail-num">Melakarta #' + r.n + ' of 72</div>' +
         '<div class="detail-row" style="display:flex;justify-content:space-between;align-items:center;">' +
-                  '<div>' +
-                    '<div class="detail-label"><a href="javascript:void(0)" id="mw-deriv-toggle" style="color:#1565c0;text-decoration:underline;cursor:pointer;">Carnatic Swaras &#9662;</a></div>' +
-                    '<div class="detail-value swara-display">' + r.cs + '</div>' +
-                  '</div>' +
-                  '<button type="button" class="play-swara-btn btn-mw-play" style="padding:2px 7px;font-size:0.65rem;">&#9654; Play Scale</button>' +
-                '</div>' +
+          '<div>' +
+            '<div class="detail-label"><a href="javascript:void(0)" id="mw-deriv-toggle" style="color:#1565c0;text-decoration:underline;cursor:pointer;">Carnatic Swaras &#9662;</a></div>' +
+            '<div class="detail-value swara-display">' + r.cs + '</div>' +
+          '</div>' +
+          '<button type="button" class="play-swara-btn btn-mw-play" style="padding:2px 7px;font-size:0.65rem;">&#9654; Play Scale</button>' +
+        '</div>' +
         '<div class="detail-row">' +
           '<div class="detail-label">Hindustani Swaras</div>' +
           '<div class="detail-value swara-display-h">' + r.hs + '</div>' +
@@ -6896,7 +6977,7 @@ function showRaga(r) {
       '</div>' +
 
       '<!-- CARD 2: CONCISE 1-LINE STEP-BY-STEP DEDUCTION (COLLAPSIBLE) -->' +
-            '<div class="mw-card" id="mw-deriv-card" style="display:none;">' +
+      '<div class="mw-card" id="mw-deriv-card" style="display:none;">' +
         '<h2><span>' + r.name + '</span><span style="font-size:0.62rem;color:#8a7fa0;font-weight:normal;">Derivation Logic</span></h2>' +
         '<div class="detail-num">Structural Template: <b>S &ndash; R &ndash; G &ndash; M &ndash; P &ndash; D &ndash; N &ndash; Ṡ</b></div>' +
 
@@ -6916,9 +6997,9 @@ function showRaga(r) {
         '</div>' +
 
         '<div class="detail-row">' +
-                  '<b style="font-size: 0.66rem; color: #3a2a12;">Constant Anchors:</b> ' +
-                  '<span class="detail-value" style="font-size: 0.66rem;">Shadjam (S) and Pancham (P) are invariant achala swaras &rarr; <b>S and P</b></span>' +
-                '</div>' +
+          '<b style="font-size: 0.66rem; color: #3a2a12;">Constant Anchors:</b> ' +
+          '<span class="detail-value" style="font-size: 0.66rem;">Shadjam (S) and Pancham (P) are invariant achala swaras &rarr; <b>S and P</b></span>' +
+        '</div>' +
 
         '<div class="mw-final-box">' +
           '<div style="font-size:0.60rem;color:#8a7fa0;text-transform:uppercase;font-weight:600;margin-bottom:2px;">Final Formula for ' + r.name + ' (#' + r.n + ')</div>' +
@@ -6928,8 +7009,42 @@ function showRaga(r) {
           '</div>' +
         '</div>' +
       '</div>' +
+
+      '<!-- CARD 3: KAṬAPAYĀDI CIPHER & NAME DECODING (COLLAPSIBLE) -->' +
+      '<div class="mw-card" id="mw-name-card" style="display:none;">' +
+        '<h2>' +
+          '<span>' + r.name + '</span>' +
+          '<button type="button" id="mw-name-close" style="background:none;border:none;color:#999;font-size:0.85rem;cursor:pointer;padding:0 4px;" title="Close Card">&times;</button>' +
+        '</h2>' +
+        '<div class="detail-num">Kaṭapayādi Rule: <i>Aṅkānāṁ vāmato gatiḥ</i> (digits read right-to-left)</div>' +
+
+        '<div style="overflow-x:auto;margin:4px 0 6px;">' +
+          '<table style="width:100%;border-collapse:collapse;font-size:0.56rem;text-align:center;font-family:monospace;background:var(--paper2);border:1px solid var(--line);">' +
+            '<tr style="background:#ede3cb;font-weight:bold;border-bottom:1px solid var(--line);">' +
+              '<td style="padding:2px 3px;">Digit</td>' +
+              '<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td>' +
+            '</tr>' +
+            '<tr><td style="font-weight:bold;">Ka-ādi</td><td>k</td><td>kh</td><td>g</td><td>gh</td><td>ṅ</td><td>c</td><td>ch</td><td>j</td><td>jh</td><td>ñ</td></tr>' +
+            '<tr><td style="font-weight:bold;">Ṭa-ādi</td><td>ṭ</td><td>ṭh</td><td>ḍ</td><td>ḍh</td><td>ṇ</td><td>t</td><td>th</td><td>d</td><td>dh</td><td>n</td></tr>' +
+            '<tr><td style="font-weight:bold;">Pa-ādi</td><td>p</td><td>ph</td><td>b</td><td>bh</td><td>m</td><td colspan="5" style="color:#aaa;">&mdash;</td></tr>' +
+            '<tr><td style="font-weight:bold;">Ya-ādi</td><td>y</td><td>r</td><td>l</td><td>v</td><td>ś</td><td>ṣ</td><td>s</td><td>h</td><td>ḷ</td><td style="color:#aaa;">&mdash;</td></tr>' +
+          '</table>' +
+        '</div>' +
+
+        '<div class="detail-row">' +
+          '<b>1st Consonant (C₁)</b>: <span class="detail-value"><b>' + c1 + '</b> &rarr; Digit <b>' + v1 + '</b> (Units place)</span>' +
+        '</div>' +
+        '<div class="detail-row">' +
+          '<b>2nd Consonant (C₂)</b>: <span class="detail-value"><b>' + c2 + '</b> &rarr; Digit <b>' + v2 + '</b> (Tens place)</span>' +
+        '</div>' +
+        '<div class="detail-row">' +
+          '<b>Reversal Equation</b>: <span class="detail-value">(' + v2 + ' &times; 10) + ' + v1 + ' = ' + r.n + ' &rarr; <b>Melakarta #' + r.n + '</b></span>' +
+        '</div>' +
+        noteHtml +
+      '</div>' +
     '</div>';
 
+  // Scale playback audio listener
   var playBtn = panel.querySelector('.btn-mw-play');
   if (playBtn) {
     playBtn.addEventListener('click', function(e) {
@@ -6937,18 +7052,42 @@ function showRaga(r) {
       playMelakartaScale(r.cs, this);
     });
   }
-  // Toggle Card 2 visibility when clicking "Carnatic Swaras"
-    var derivToggle = panel.querySelector('#mw-deriv-toggle');
-    var derivCard = panel.querySelector('#mw-deriv-card');
-    if (derivToggle && derivCard) {
-      derivToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var isHidden = (derivCard.style.display === 'none' || derivCard.style.display === '');
-        derivCard.style.display = isHidden ? 'block' : 'none';
-        derivToggle.innerHTML = isHidden ? 'Carnatic Swaras &#9652;' : 'Carnatic Swaras &#9662;';
-      });
-    }
+
+  // Toggle Card 2 (Swara Derivation) via "Carnatic Swaras ▾"
+  var derivToggle = panel.querySelector('#mw-deriv-toggle');
+  var derivCard = panel.querySelector('#mw-deriv-card');
+  if (derivToggle && derivCard) {
+    derivToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isHidden = (derivCard.style.display === 'none' || derivCard.style.display === '');
+      derivCard.style.display = isHidden ? 'block' : 'none';
+      derivToggle.innerHTML = isHidden ? 'Carnatic Swaras &#9652;' : 'Carnatic Swaras &#9662;';
+    });
+  }
+
+  // Toggle Card 3 (Kaṭapayādi Cipher) via Raga Name
+  var nameToggle = panel.querySelector('#mw-name-toggle');
+  var nameCard = panel.querySelector('#mw-name-card');
+  var nameClose = panel.querySelector('#mw-name-close');
+  if (nameToggle && nameCard) {
+    nameToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isHidden = (nameCard.style.display === 'none' || nameCard.style.display === '');
+      nameCard.style.display = isHidden ? 'block' : 'none';
+      nameToggle.innerHTML = isHidden ? r.name + ' &#9652;' : r.name + ' &#9662;';
+    });
+  }
+  if (nameClose && nameCard && nameToggle) {
+    nameClose.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      nameCard.style.display = 'none';
+      nameToggle.innerHTML = r.name + ' &#9662;';
+    });
+  }
+
   selectedRaga = r;
 }
 
