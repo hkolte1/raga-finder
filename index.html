@@ -214,9 +214,12 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
 #wheel-view .slice-label{font-size:9px;fill:#333;pointer-events:none;font-weight:600}
 #wheel-view .raga-name{font-size:9px;fill:#222;pointer-events:none;font-weight:600}
 #wheel-view .raga-name.selected{fill:#b8341e;font-size:11px;font-weight:700}
-#wheel-view .chakra-label{font-size:7px;fill:#444;pointer-events:none;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-#wheel-view .center-text{text-anchor:middle;fill:#2c2c2c;font-size:16px;font-weight:700;pointer-events:none}
-#wheel-view .center-sub{text-anchor:middle;fill:#999;font-size:10px;pointer-events:none}
+#wheel-view .chakra-label{font-size:7.5px;pointer-events:none;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+#wheel-view .dn-notes{font-size:7.5px;fill:#222;pointer-events:none;font-weight:600;letter-spacing:0.5px}
+#wheel-view .center-swara{text-anchor:middle;fill:#b8341e;font-size:13px;font-weight:bold;pointer-events:none;font-family:Georgia,serif}
+#wheel-view .center-achala{text-anchor:middle;fill:#8a7d60;font-size:7px;letter-spacing:1px;text-transform:uppercase;pointer-events:none}
+#wheel-view .ma-arc-text{font-size:8.5px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;pointer-events:none}
+#wheel-view .chakra-notes{font-size:7.5px;pointer-events:none;font-weight:700;letter-spacing:1.2px}
 #detail-panel {
   width: 100%;
   max-width: 680px;
@@ -920,7 +923,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Pa",
     "samvadi": "re",
     "cr": "Pantuvarali",
-    "mk": "Kamavardini",
+    "mk": "Kamavardhini",
     "notes": ["Sa","Re'","Ga","Ma|","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,0,1,1,1,0,0,1],
     "description": "Rishabh and Dhaivat Komal. Madhyam Teevra. Rest all Shuddha Swaras.It is very close to Raag Poorvi, which employs both Madhyams.",
@@ -1073,7 +1076,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Dha ",
     "samvadi": "Ga",
     "cr": "Sunadavinodini",
-    "mk": "Mechkalyani",
+    "mk": "Mechakalyani",
     "notes": ["Sa","Ga","Ma|","Dha","Ni"],
     "note_vec": [1,0,0,0,1,0,1,0,0,1,0,1],
     "description": "Raag Hindol is one of the unique ragas which does not use Pancham. Also omits Re completely. Elicits Veer ras. Literally transalated means swing and refers to the gamaks involving Teevra Ma and Dha in the raag chalan.",
@@ -1090,7 +1093,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Pa",
     "samvadi": "Re",
     "cr": "Hamir Kalyani",
-    "mk": "Mechkalyani",
+    "mk": "Mechakalyani",
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "Both Madhyams. Rest all Shuddha Swaras. Raag Kamod, not to be confused with Tilakkamod is unique raag with vakra ang. One can see clear shadows of Malhar ang, Hameer ang and Kalyan ang together with the glimpse of Kedar and Chhayanut.",
@@ -1107,7 +1110,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Ma",
     "samvadi": "Sa",
     "cr": "Hamir Kalyani",
-    "mk": "Mechkalyani",
+    "mk": "Mechakalyani",
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "It is generally accepted that there is much thermal energy in Raag Kedar and hence it is regarded as the Raagini of Raag Deepak. Kedar is famous for its intricate use of both Madhyams, with a heavy emphasis on Shuddha Madhyam (Ma) and a highly complex, zigzag (Vakra) movement.",
@@ -1124,7 +1127,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Pa",
     "samvadi": "Sa",
     "cr": "Maru Bihag",
-    "mk": "Mechkalyani",
+    "mk": "Mechakalyani",
     "notes": ["Sa","Ga","Ma|","Pa","Ni"],
     "note_vec": [1,0,1,0,1,0,1,1,0,1,0,1],
     "description": "\tRishabh and Dhaivat Varjya in Aaroh. Madhyam Teevra (with rare use of Madhyam Shuddha). Rest all Shuddha Swaras.",
@@ -1555,8 +1558,8 @@ var RING_RAGA_DETAILS = {
     "description": "Uses both gandhar and both nishads, eliciting shaant/bhakti ras.",
     "carnatic_reason":"Barwa is a rare, old raga belonging to the Kafi Thaat (22nd Melakarta). It moves in a slightly vakra (zigzag) path, structurally omitting or weakening the Pancham in the ascent, closely mimicking a blend of Bageshri and Kafi.Melodically, its specific hexatonic and pentatonic upper ascents mimic phrases found in Carnatic Sriranjani, though its complete performance uses a full Kapi style architecture."
   },
-  "Bhimpalasi": {
-    "name": "Bhimpalasi",
+  "Bhimpalas": {
+    "name": "Bhimpalas",
     "thaat": "Kafi",
     "effective_thaat": "Kafi",
     "jati": "Odav Sampurna",
@@ -1569,8 +1572,8 @@ var RING_RAGA_DETAILS = {
     "mk": "Kharaharapriya",
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha","Ni'"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,1,0],
-    "description": "Rishabh and Dhaivat Varjya in Aaroh. Gandhar and Nishad Komal. Rest all Shuddha Swaras. Bhimpalasi is known for a serene, tender, and pensive mood combined with a quiet yearning or romantic longing (sringara and viraha).",
-    "carnatic_reason":"Both Bhimpalasi and Abheri share the exact same up-and-down structural template. They are pentatonic (5 notes) in the ascent and heptatonic (7 notes) in the descent.Because their geometric intervals are identical, they create the exact same emotional space. Both are traditionally afternoon ragas that evoke a mixture of deep longing, peaceful devotion, and a sweet, romantic yearning."
+    "description": "Rishabh and Dhaivat Varjya in Aaroh. Gandhar and Nishad Komal. Rest all Shuddha Swaras. Bhimpalas is known for a serene, tender, and pensive mood combined with a quiet yearning or romantic longing (sringara and viraha).",
+    "carnatic_reason":"Both Bhimpalas and Abheri share the exact same up-and-down structural template. They are pentatonic (5 notes) in the ascent and heptatonic (7 notes) in the descent.Because their geometric intervals are identical, they create the exact same emotional space. Both are traditionally afternoon ragas that evoke a mixture of deep longing, peaceful devotion, and a sweet, romantic yearning."
   },
   "Brindavani Sarang": {
     "name": "Brindavani Sarang",
@@ -1719,7 +1722,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Ma",
     "samvadi": "Sa",
     "cr": "Madhyamavati",
-    "mk": "Kharaharipriya",
+    "mk": "Kharaharapriya",
     "notes": ["Sa","Re","Ma","Pa","Ni'"],
     "note_vec": [1,0,1,0,0,1,0,1,0,0,1,0],
     "description": "Gandhar and Dhaivat varja. Nishad Komal. Rest all Shuddha Swaras.",
@@ -1739,7 +1742,7 @@ var RING_RAGA_DETAILS = {
     "mk": "Gourimanohari",
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,0,1],
-    "description": "Rishabh and Dhaivat varja in aaroh. Gandhar Komal. Rest All Shuddha Swaras.Structurally similar to Brindavani sarang, except for the shuddha Nishad even in the avroh. Closer to Raag Bhimpalasi - in the use of shuddha Nishad makes it Raag Patdeep.",
+    "description": "Rishabh and Dhaivat varja in aaroh. Gandhar Komal. Rest All Shuddha Swaras.Structurally similar to Brindavani sarang, except for the shuddha Nishad even in the avroh. Closer to Raag Bhimpalas - in the use of shuddha Nishad makes it Raag Patdeep.",
     "carnatic_reason":"Carnatic Equivalent is Gowrimanohari (conceptually/structurally) or performed as Patdeep (directly adopted)."
   },
   "Pilu": {
@@ -1790,7 +1793,7 @@ var RING_RAGA_DETAILS = {
     "mk": "Natabhairavi",
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha'","Ni'","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,1,0,1,1],
-    "description": "Gandhar varja in aaroh, Gandhar, Dhaivat and Nishad komal, rest all shuddha swaras. In this sense, Adana is close to Shuddha Rishabh Asawari, difference being the Nishad in aaaroh. Raag Adana resembles Raag Darbari Kanada, with the difference that Gandhar is forbidden in Aaroh in Adana.",
+    "description": "Gandhar varja in aaroh, Gandhar, Dhaivat and Nishad komal, rest all shuddha swaras. In this sense, Adana is close to Shuddha Rishabh Asavari, difference being the Nishad in aaaroh. Raag Adana resembles Raag Darbari Kanada, with the difference that Gandhar is forbidden in Aaroh in Adana.",
     "carnatic_reason":"It mathematically maps to the 20th Melakarta, Natabhairavi. The specific aesthetic technique of skipping the 3rd note on the way up and looping tightly around the flat 3rd, flat 6th, and flat 7th in the upper registers mirrors the exact performance grammar found in Carnatic Kanada.Do not confuse Hindustani Adana with the Carnatic raga Atana, which belongs to a completely different, major-scale family."
   },
   "Asavari": {
@@ -1841,7 +1844,7 @@ var RING_RAGA_DETAILS = {
     "mk": "Charukesi",
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha'","Ni'"],
     "note_vec": [1,0,1,0,1,1,0,1,1,0,1,0],
-    "description": "Dhaivat and Nishad Komal. Rest all Shuddha Swaras. Not purely in this thaat, but due to usage of the 2 komal swaras, it is closest to Asawari thaat.",
+    "description": "Dhaivat and Nishad Komal. Rest all Shuddha Swaras. Not purely in this thaat, but due to usage of the 2 komal swaras, it is closest to Asavari thaat.",
     "carnatic_reason": "Adopted into Hindustani music from Carnatic Melakarta #26. It features Shuddha Re and Ga with Komal Dha and Ni, creating a signature bittersweet balance between bright optimism and plaintive longing."
   },
   "Darbari Kanada": {
@@ -1929,8 +1932,8 @@ var RING_RAGA_DETAILS = {
     "description": "All komal swaras - i.e rishabh, gandhar, dhaivat and nishad, rest all shuddha swaras.Raag Bhairavi is an early morning Raag, but it is also used as a concluding piece in the concerts at any time.",
     "carnatic_reason": "The natural scale of Hindustani Bhairavi matches Carnatic Hanumatodi. While modern Hindustani concert Bhairavi is rendered as Mishra Bhairavi(incorporating all 12 chromatic swaras), its pure core structure is the direct equivalent of Hanumatodi."
   },
-  "Bilaskhani todi": {
-    "name": "Bilaskhani todi",
+  "Bilaskhani Todi": {
+    "name": "Bilaskhani Todi",
     "thaat": "Bhairavi",
     "effective_thaat": "Bhairavi",
     "jati": "Odav Shadav",
@@ -1943,7 +1946,7 @@ var RING_RAGA_DETAILS = {
     "mk": "Hanumatodi",
     "notes": ["Sa","Re'","Ga'","Ma","Pa","Dha'","Ni'"],
     "note_vec": [1,1,0,1,0,1,0,1,1,0,1,0],
-    "description": "Madhyam and Nishad Varjya in Aaroh. Pancham Varjya in Avroh. Rishabh, Gandhar, Dhaivat and Nishad Komal. Rest all Shuddha Swaras.Raag Bilaskhani Todi is said to be created by Miya Tansens son Bilas Khan and is named after him. This Raag belongs to Bhairavi Thaat. Raag Bhairavi and Raag Komal Rishabh Asawari are nearest to Bilaskhani Todi.",
+    "description": "Madhyam and Nishad Varjya in Aaroh. Pancham Varjya in Avroh. Rishabh, Gandhar, Dhaivat and Nishad Komal. Rest all Shuddha Swaras.Raag Bilaskhani Todi is said to be created by Miya Tansens son Bilas Khan and is named after him. This Raag belongs to Bhairavi Thaat. Raag Bhairavi and Raag Komal Rishabh Asavari are nearest to Bilaskhani Todi.",
     "carnatic_reason":"Even though it shares the identical note pool with Bhairavi, it is a complete structural mismatch in performance. Bilaskhani Todi moves in an intensely non-linear, zigzag (Vakra) manner. It completely avoids linear phrases, choosing instead to jump obliquely across intervals - like jumping from Sa straight up to flat Ga, or dropping heavily from flat Dha down to Ma. A Carnatic musician replicates this unique mood by performing Hanumatodi while strictly enforcing asymmetric, omitted-note pathways in the ascent."
   },
   "Jogkauns": {
@@ -2008,7 +2011,7 @@ var RING_RAGA_DETAILS = {
     "vadi": "Pa",
     "samvadi": "Sa",
     "cr": "Pantuvarali",
-    "mk": "Kamavardini",
+    "mk": "Kamavardhini",
     "notes": ["Sa","Re'","Ga'","Ma|","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,1,0,0,1,1,1,0,0,1],
     "description": "Rishabh and Dhaivat varja in Aaroh. Rishabh, Gandhar and Dhaivat Komal. Madhyam Teevra. Rest all Shuddha Swaras.",
@@ -2304,9 +2307,7 @@ var SONGS_BASE = {
       "film": "Sant Tulsidas",
       "singer": "Pandit Bhimsen Joshi",
       "md": "Gyan Dutt"
-    }
-  ],
-  "Asawari": [
+    },
     {
       "song": "Hum tere bin ab rah nahi sakte",
       "film": "Aashiqui",
@@ -2750,6 +2751,72 @@ var SONGS_BASE = {
   ],
   "Bhimpalas": [
     {
+      "song": "Amrutahuni goda naam tuze deva",
+      "film": "",
+      "singer": "Manik Varma",
+      "md": "Bal Mote"
+    },
+    {
+      "song": "Khoya khoya chand",
+      "film": "Kala Bazar",
+      "singer": "Mohammed Rafi",
+      "md": "S.D.Burman"
+    },
+    {
+      "song": "Ye zindagi usi ki hai",
+      "film": "Anarkali",
+      "singer": "Lata Mangeshkar",
+      "md": "C. Ramchandra"
+    },
+    {
+      "song": "Nainon mein badra chhaye",
+      "film": "Mera Saaya",
+      "singer": "Lata Mangeshkar",
+      "md": "Madan Mohan"
+    },
+    {
+      "song": "Kuchh dil ne kaha",
+      "film": "Anupama",
+      "singer": "Lata Mangeshkar",
+      "md": "Hemant Kumar"
+    },
+    {
+      "song": "Tu mile dil khile",
+      "film": "Criminal",
+      "singer": "Kumar Sanu, Alka Yagnik",
+      "md": "M.M.Kreem"
+    },
+    {
+      "song": "Tu cheez badi hai mast",
+      "film": "Mohra",
+      "singer": "Udit Narayan, Kavita Krishnamurti",
+      "md": "Viju Shah"
+    },
+    {
+      "song": "Tanha tanha yahan pe jeena",
+      "film": "Rangeela",
+      "singer": "Asha Bhosale",
+      "md": "A.R.Rehman"
+    },
+    {
+      "song": "Radha kaise na jale",
+      "film": "Lagaan",
+      "singer": "Asha Bhosale, Udit Narayan",
+      "md": "A.R.Rehman"
+    },
+    {
+      "song": "Pani da rang",
+      "film": "Vicky Donor",
+      "singer": "Ayushman Khurana",
+      "md": "Ayushman Khurana"
+    },
+    {
+      "song": "Saathiya",
+      "film": "Saathia",
+      "singer": "Sonu Nigam",
+      "md": "A.R.Rehman"
+    },
+    {
       "song": "Aa Neele Gagan Tale Pyar",
       "film": "Badshah",
       "singer": "Lata Mangeshkar, Hemant Kumar",
@@ -2760,12 +2827,6 @@ var SONGS_BASE = {
       "film": "Aan",
       "singer": "Lata Mangeshkar",
       "md": "Naushad"
-    },
-    {
-      "song": "Amrutahuni goda naam",
-      "film": "",
-      "singer": "Manik Varma",
-      "md": ""
     },
     {
       "song": "Bina Madhur Madhur Kachhu Bol",
@@ -3222,12 +3283,6 @@ var SONGS_BASE = {
       "md": "Kalyanji, Anandji"
     },
     {
-      "song": "Gele te din gele",
-      "film": "",
-      "singer": "",
-      "md": ""
-    },
-    {
       "song": "Kisi Raha Men Kisi Mod Par",
       "film": "Mere Hamsafar",
       "singer": "Mukesh, Lata Mangeshkar",
@@ -3243,12 +3298,6 @@ var SONGS_BASE = {
       "song": "Mera to jo bhi kadam",
       "film": "Dosti",
       "singer": "Mohammed Rafi",
-      "md": ""
-    },
-    {
-      "song": "Rutu hirwa rutu barwa",
-      "film": "",
-      "singer": "",
       "md": ""
     },
     {
@@ -3732,12 +3781,6 @@ var SONGS_BASE = {
       "md": "Shankar-Ehsaan-Loy"
     },
     {
-      "song": "Manamohana Bada jhuthe",
-      "film": "Seema",
-      "singer": "Lata Mangeshkar",
-      "md": "Shankar Jaikishan"
-    },
-    {
       "song": "Manmohana Bade Jhuthe",
       "film": "Seema",
       "singer": "Lata Mangeshkar",
@@ -3750,22 +3793,10 @@ var SONGS_BASE = {
       "md": "Shankar-Jaikishan"
     },
     {
-      "song": "Yeh Dil Ki Lagi Kam Kya Hogi",
-      "film": "Mughal-e-Azam",
-      "singer": "Lata Mangeshkar",
-      "md": "Naushad"
-    },
-    {
       "song": "Yeh dil ki lagi kya kam hogi",
       "film": "Mughal E Azam",
       "singer": "Lata Mangeshkar",
       "md": ""
-    },
-    {
-      "song": "Zindagi aaj mere naam se sharmati hai",
-      "film": "Son of India",
-      "singer": "Mohammed Rafi",
-      "md": "Naushad"
     },
     {
       "song": "Zindagi Aaj Mere Nam Se Sharamati Hai",
@@ -4137,12 +4168,6 @@ var SONGS_BASE = {
       "song": "Kuchh to log kahenge",
       "film": "Amar Prem",
       "singer": "Kishore Kumar",
-      "md": "R.D.Burman"
-    },
-    {
-      "song": "Bada Natkhat hai ye",
-      "film": "Amar Prem",
-      "singer": "Lata Mangeshkar",
       "md": "R.D.Burman"
     },
     {
@@ -5036,12 +5061,6 @@ var SONGS_BASE = {
       "md": "Jaidev"
     },
     {
-      "song": "Kaun aaya mere man ke dware",
-      "film": "Dekh kabir roya",
-      "singer": "Manna Dey",
-      "md": "Madan Mohan"
-    },
-    {
       "song": "Kaun Aya Mere Man Ke Dvare",
       "film": "Dekh Kabir Roya",
       "singer": "Manna Dey",
@@ -5096,12 +5115,6 @@ var SONGS_BASE = {
       "film": "Chaliya",
       "singer": "Runa Laila",
       "md": "Kalyanji, Anandji"
-    },
-    {
-      "song": "Desh Pardesh",
-      "film": "Desh Pardesh",
-      "singer": "Kishore Kumar",
-      "md": "Rajesh Roshan"
     },
     {
       "song": "Desh Pardesh (Ye Desh Pardesh)",
@@ -5552,74 +5565,6 @@ var SONGS_BASE = {
       "md": "R.D.Burman"
     }
   ],
-  "Bhimpalasi": [
-    {
-      "song": "Amrutahuni goda naam tuze deva",
-      "film": "",
-      "singer": "Manik Varma",
-      "md": "Bal Mote"
-    },
-    {
-      "song": "Khoya khoya chand",
-      "film": "Kala Bazar",
-      "singer": "Mohammed Rafi",
-      "md": "S.D.Burman"
-    },
-    {
-      "song": "Ye zindagi usi ki hai",
-      "film": "Anarkali",
-      "singer": "Lata Mangeshkar",
-      "md": "C. Ramchandra"
-    },
-    {
-      "song": "Nainon mein badra chhaye",
-      "film": "Mera Saaya",
-      "singer": "Lata Mangeshkar",
-      "md": "Madan Mohan"
-    },
-    {
-      "song": "Kuchh dil ne kaha",
-      "film": "Anupama",
-      "singer": "Lata Mangeshkar",
-      "md": "Hemant Kumar"
-    },
-    {
-      "song": "Tu mile dil khile",
-      "film": "Criminal",
-      "singer": "Kumar Sanu, Alka Yagnik",
-      "md": "M.M.Kreem"
-    },
-    {
-      "song": "Tu cheez badi hai mast",
-      "film": "Mohra",
-      "singer": "Udit Narayan, Kavita Krishnamurti",
-      "md": "Viju Shah"
-    },
-    {
-      "song": "Tanha tanha yahan pe jeena",
-      "film": "Rangeela",
-      "singer": "Asha Bhosale",
-      "md": "A.R.Rehman"
-    },
-    {
-      "song": "Radha kaise na jale",
-      "film": "Lagaan",
-      "singer": "Asha Bhosale, Udit Narayan",
-      "md": "A.R.Rehman"
-    },
-    {
-      "song": "Pani da rang",
-      "film": "Vicky Donor",
-      "singer": "Ayushman Khurana",
-      "md": "Ayushman Khurana"
-    },
-    {
-      "song": "Saathiya",
-      "film": "Saathia",
-      "singer": "Sonu Nigam",
-      "md": "A.R.Rehman"
-    }
-  ],
   "Dhani": [
     {
       "song": "Khilte hai gul yaha",
@@ -5674,7 +5619,7 @@ var SONGS_BASE = {
       "md": "Shankar Jaikishan"
     }
   ],
-  "Bairagi bhairav": [
+  "Bairagi Bhairav": [
     {
       "song": "Kisi nazar ko tera intezaar",
       "film": "Aitbaar",
@@ -5699,22 +5644,6 @@ var SONGS_BASE = {
       "singer": "Mohammed Rafi, Lata Mangeshkar",
       "md": "R.D.Burman"
     }
-  ],
-  "Nat bhairav": [
-    {
-      "song": "Tu pyar ka saagar hai",
-      "film": "Seema",
-      "singer": "Mohammed Rafi",
-      "md": "Shankar Jaikishan"
-    }
-  ],
-  "Bilaskhani todi": [
-    {
-      "song": "Jhoote naina bole",
-      "film": "Lekin",
-      "singer": "Asha Bhosale",
-      "md": "Hridaynath Mangeshkar"
-    }
   ]
 };
 
@@ -5730,7 +5659,7 @@ var selected = new Set();
 var currentTab = "raga";
 
 /* SONGS with localStorage */
-var SONGS_KEY = 'raga_songs_v4';
+var SONGS_KEY = 'raga_songs_v5';
 var songs;
 function loadSongs(){
   try {
@@ -5821,7 +5750,7 @@ function randomRaga(){
 
 /* RAGA LOOKUP */
 function normName(s){ return s.toLowerCase().replace(/[^a-z]/g,''); }
-var NAME_MAP={'asawari':'Asavari','bhimpalas':'Bhimpalasi','darbari':'Darbari Kanada','desh':'Desh','kalyan':'Yaman','bilaskhanitodi':'Bilaskhani todi','natbhairav':'Nat bhairav'};
+var NAME_MAP={'asawari':'Asavari','asavari':'Asavari','bhimpalas':'Bhimpalas','darbari':'Darbari Kanada','desh':'Desh','kalyan':'Yaman','bilaskhanitodi':'Bilaskhani Todi','natbhairav':'Nat Bhairav'};
 function lookupRaga(){
   var input=document.getElementById('ragaInput').value.trim();
   var msg=document.getElementById('lookupMsg');
@@ -6008,7 +5937,7 @@ function playPianoTone(freq, startTime, duration) {
 }
 
 // Synthesizes a resonant plucked string tone (Sitar / Tanpura voice)
-function playStringTone1(freq, startTime, duration) {
+function playSitarTanpuraTone(freq, startTime, duration) {
   var ctx = getAudioContext();
   var osc = ctx.createOscillator();
   var filter = ctx.createBiquadFilter();
@@ -6070,47 +5999,6 @@ function playStringTone(freq, startTime, duration) {
     osc.start(startTime);
     osc.stop(startTime + duration);
   });
-}
-
-
-function parseSwaraSequenceOriginal(phrase, isAvroha) {
-  var tonic = 261.63; // Madhya Sa (C4)
-  var intervals = {
-    "Sa": 0, "re": 1, "Re": 2, "ga": 3, "Ga": 4,
-    "ma": 5, "Ma": 6, "Pa": 7, "dha": 8, "Dha": 9,
-    "ni": 10, "Ni": 11
-  };
-
-  var cleaned = phrase.replace(/[(),.\/|\-]/g, ' ');
-  var matches = cleaned.match(/(Sa|re|Re|ga|Ga|ma|Ma|Pa|dha|Dha|ni|Ni)('?)/g);
-  if (!matches) return [];
-
-  var seq = [];
-  var saEncountered = false;
-
-  matches.forEach(function(token) {
-    var baseNote = token.replace("'", "");
-    var isHigherOctave = token.indexOf("'") !== -1;
-    var semitones = intervals[baseNote];
-
-    if (semitones === undefined) return;
-
-    var octaveShift = 0;
-    if (isHigherOctave) {
-      octaveShift = 12;
-    } else if (!isAvroha) {
-      if (baseNote === 'Sa') {
-        saEncountered = true;
-      } else if (!saEncountered && (baseNote === 'Ni' || baseNote === 'ni' || baseNote === 'Dha' || baseNote === 'dha')) {
-        octaveShift = -12;
-      }
-    }
-
-    var freq = tonic * Math.pow(2, (semitones + octaveShift) / 12);
-    seq.push({ note: token, freq: freq });
-  });
-
-  return seq;
 }
 
 function parseSwaraSequence(phrase, isAvroha) {
@@ -6705,7 +6593,7 @@ var RAGAS = [
 {n:50,name:"Namanarayani",cs:"S R1 G3 M2 P D1 N2 S",hs:"Sa-re-Ga-Ma-Pa-dha-ni-Sa'",ch:"Brahma",he:"Namanarayani",desc:"Infused with deep, prayerful chanting rhythms, this raga sounds like a rhythmic evening temple prayer. It creates a comforting, protective, and deeply devotional atmosphere."},
 {n:51,name:"Kamavardhini",cs:"S R1 G3 M2 P D1 N3 S",hs:"Sa-re-Ga-Ma-Pa-dha-Ni-Sa'",ch:"Brahma",he:"Poorvi thaat",desc:"A massive pillar of the afternoon classical repertoire, this raga is bursting with intense, fiery passion and spiritual desperation. It demands absolute attention with its burning, restless energy."},
 {n:52,name:"Rampriya",cs:"S R1 G3 M2 P D2 N2 S",hs:"Sa-re-Ga-Ma-Pa-Dha-ni-Sa'",ch:"Brahma",he:"Rampriya",desc:"This raga blends royal dignity with a deeply affectionate, protective warmth. It evokes the comforting aura of a benevolent ruler, offering strength, peace, and reassurance."},
-{n:53,name:"Gamanasrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"Sa-re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Brahma",he:"Marwa thaat",desc:"This highly sophisticated scale serves as the parent to the immensely popular concert raga Purvikalyani. It moves with a graceful, twisting motion that balances deep longing with playful creativity."},
+{n:53,name:"Gamanashrama",cs:"S R1 G3 M2 P D2 N3 S",hs:"Sa-re-Ga-Ma-Pa-Dha-Ni-Sa'",ch:"Brahma",he:"Marwa thaat",desc:"This highly sophisticated scale serves as the parent to the immensely popular concert raga Purvikalyani. It moves with a graceful, twisting motion that balances deep longing with playful creativity."},
 {n:54,name:"Vishvambari",cs:"S R1 G3 M2 P D3 N3 S",hs:"Sa-re-Ga-Ma-Pa-ni-Ni-Sa'",ch:"Brahma",he:"Vishwambari",desc:"Carrying a vast, all-encompassing energy, this scale feels as large as the universe itself. It projects an atmosphere of epic grandeur, timelessness, and cosmic wonder."},
 {n:55,name:"Shamalangi",cs:"S R2 G2 M2 P D1 N1 S",hs:"Sa-Re-ga-Ma-Pa-dha-Dha-Sa'",ch:"Disi",he:"—",desc:"This raga carries a dark, evening-sky beauty that feels deeply enchanting and slightly protective. It evokes a quiet, velvety mood of hidden mysteries and restful contemplation."},
 {n:56,name:"Shanmukhapriya",cs:"S R2 G2 M2 P D1 N2 S",hs:"Sa-Re-ga-Ma-Pa-dha-ni-Sa'",ch:"Disi",he:"Shanmukhpriya",desc:"A crowd favorite, this powerful scale is incredibly dynamic, heroic, and emotionally expressive. It effortlessly commands the stage, invoking feelings of awe, courage, and sharp intelligence."},
@@ -6733,9 +6621,19 @@ var CHAKRA_COLORS = {
 };
 
 var CX = 450, CY = 450;
-var R_OUTER = 280, R_INNER = 90, R_LABEL = 250, R_CHAKRA = 155, R_NAME = 335, R_NAME2 = 365, R_NAME3 = 395;
+var R_OUTER = 280, R_INNER = 90, R_CENTER = 40, R_LABEL = 250;
+var R_CHAKRA_NAME = 124, R_CHAKRA_NOTES = 158;
+var R_DN_NOTES = 204; // Midway between Re-Ga (158) and Raga Number (250)
+var R_NAME = 335, R_NAME2 = 365, R_NAME3 = 395;
 var ANGLE_PER = 5;
 var selectedRaga = null;
+
+// The 6 Purvanga Re-Ga combinations repeating across Chakras 1–6 and 7–12
+var CHAKRA_RG_NOTES = [
+  "R₁ G₁", "R₁ G₂", "R₁ G₃", "R₂ G₂", "R₂ G₃", "R₃ G₃",
+  "R₁ G₁", "R₁ G₂", "R₁ G₃", "R₂ G₂", "R₂ G₃", "R₃ G₃"
+];
+
 var rotation = 0;
 var isDragging = false;
 var dragStartAngle = 0;
@@ -6743,7 +6641,11 @@ var dragStartRotation = 0;
 var wheelGroup = null;
 var counterEls = [];
 var ragaNameEls = [];
+var dnEls = [];
 var didDrag = false;
+
+// The 6 fixed Dha & Ni swara pairs rotating within each chakra
+var DN_PAIRS = ["D₁ N₁", "D₁ N₂", "D₁ N₃", "D₂ N₂", "D₂ N₃", "D₃ N₃"];
 
 function polarToCart(cx, cy, r, angleDeg) {
   var rad = (angleDeg - 90) * Math.PI / 180;
@@ -6776,12 +6678,93 @@ function buildWheel() {
   bg.setAttribute('fill', '#ffffff');
   bg.setAttribute('stroke', '#ccc'); bg.setAttribute('stroke-width', '1');
   wheelGroup.appendChild(bg);
-  var center = document.createElementNS(svgNS, 'circle');
-  center.setAttribute('cx', CX); center.setAttribute('cy', CY);
-  center.setAttribute('r', R_INNER);
-  center.setAttribute('fill', '#f5f3ee');
-  center.setAttribute('stroke', '#ccc'); center.setAttribute('stroke-width', '1');
-  wheelGroup.appendChild(center);
+
+  // 1. Two Semicircles for Madhyama (between R_CENTER=40 and R_INNER=90)
+    // Right Semicircle: Ragas 1-36 (0° to 180°) -> Shuddha Madhyama (M1)
+    var ma1Path = document.createElementNS(svgNS, 'path');
+    ma1Path.setAttribute('d', arcPath(CX, CY, R_INNER, R_CENTER, 0, 180));
+    ma1Path.setAttribute('fill', '#edf7ee');
+    ma1Path.setAttribute('stroke', '#a5d6a7');
+    ma1Path.setAttribute('stroke-width', '1.2');
+    wheelGroup.appendChild(ma1Path);
+
+    // Left Semicircle: Ragas 37-72 (180° to 360°) -> Prati / Teevra Madhyama (M2)
+    var ma2Path = document.createElementNS(svgNS, 'path');
+    ma2Path.setAttribute('d', arcPath(CX, CY, R_INNER, R_CENTER, 180, 360));
+    ma2Path.setAttribute('fill', '#fffde7');
+    ma2Path.setAttribute('stroke', '#fff59d');
+    ma2Path.setAttribute('stroke-width', '1.2');
+    wheelGroup.appendChild(ma2Path);
+
+    // Dividers at 12 o'clock and 6 o'clock separating the two semicircles
+    var divTop = document.createElementNS(svgNS, 'line');
+    divTop.setAttribute('x1', CX); divTop.setAttribute('y1', CY - R_INNER);
+    divTop.setAttribute('x2', CX); divTop.setAttribute('y2', CY - R_CENTER);
+    divTop.setAttribute('stroke', '#bbb'); divTop.setAttribute('stroke-width', '1.5');
+    wheelGroup.appendChild(divTop);
+
+    var divBottom = document.createElementNS(svgNS, 'line');
+    divBottom.setAttribute('x1', CX); divBottom.setAttribute('y1', CY + R_CENTER);
+    divBottom.setAttribute('x2', CX); divBottom.setAttribute('y2', CY + R_INNER);
+    divBottom.setAttribute('stroke', '#bbb'); divBottom.setAttribute('stroke-width', '1.5');
+    wheelGroup.appendChild(divBottom);
+
+    // Circular guide paths for curved text
+    var defs = svg.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS(svgNS, 'defs');
+      svg.insertBefore(defs, svg.firstChild);
+    }
+
+    // Guide arc for Shuddha Ma (Right half, clockwise)
+    var pM1Start = polarToCart(CX, CY, 65, 25);
+    var pM1End   = polarToCart(CX, CY, 65, 155);
+    var pathM1Guide = document.createElementNS(svgNS, 'path');
+    pathM1Guide.setAttribute('id', 'mw-ma1-guide');
+    pathM1Guide.setAttribute('d', 'M ' + pM1Start[0] + ' ' + pM1Start[1] + ' A 65 65 0 0 1 ' + pM1End[0] + ' ' + pM1End[1]);
+    pathM1Guide.setAttribute('fill', 'none');
+    defs.appendChild(pathM1Guide);
+
+    var txtM1 = document.createElementNS(svgNS, 'text');
+    txtM1.setAttribute('class', 'ma-arc-text');
+    txtM1.setAttribute('fill', '#2e7d32');
+    var tpM1 = document.createElementNS(svgNS, 'textPath');
+    tpM1.setAttribute('href', '#mw-ma1-guide');
+    tpM1.setAttribute('startOffset', '50%');
+    tpM1.setAttribute('text-anchor', 'middle');
+    tpM1.textContent = 'Shuddha Ma (M₁)';
+    txtM1.appendChild(tpM1);
+    wheelGroup.appendChild(txtM1);
+
+    // Guide arc for Teevra Ma (Left half, counter-clockwise so text stays upright)
+    var pM2Start = polarToCart(CX, CY, 65, 205);
+    var pM2End   = polarToCart(CX, CY, 65, 335);
+    var pathM2Guide = document.createElementNS(svgNS, 'path');
+    pathM2Guide.setAttribute('id', 'mw-ma2-guide');
+    pathM2Guide.setAttribute('d', 'M ' + pM2End[0] + ' ' + pM2End[1] + ' A 65 65 0 0 0 ' + pM2Start[0] + ' ' + pM2Start[1]);
+    pathM2Guide.setAttribute('fill', 'none');
+    defs.appendChild(pathM2Guide);
+
+    var txtM2 = document.createElementNS(svgNS, 'text');
+    txtM2.setAttribute('class', 'ma-arc-text');
+    txtM2.setAttribute('fill', '#c67100');
+    var tpM2 = document.createElementNS(svgNS, 'textPath');
+    tpM2.setAttribute('href', '#mw-ma2-guide');
+    tpM2.setAttribute('startOffset', '50%');
+    tpM2.setAttribute('text-anchor', 'middle');
+    tpM2.textContent = 'Teevra Ma (M₂)';
+    txtM2.appendChild(tpM2);
+    wheelGroup.appendChild(txtM2);
+
+    // 2. Innermost Circle (Sa, Pa)
+    var centerCircle = document.createElementNS(svgNS, 'circle');
+    centerCircle.setAttribute('cx', CX); centerCircle.setAttribute('cy', CY);
+    centerCircle.setAttribute('r', R_CENTER);
+    centerCircle.setAttribute('fill', '#ffffff');
+    centerCircle.setAttribute('stroke', '#b8341e');
+    centerCircle.setAttribute('stroke-width', '1.8');
+    wheelGroup.appendChild(centerCircle);
+
   for (var i = 0; i < RAGAS.length; i++) {
     var r = RAGAS[i];
     var startAngle = (r.n - 1) * ANGLE_PER;
@@ -6796,16 +6779,32 @@ function buildWheel() {
     path.setAttribute('data-num', r.n);
     (function(rg) { path.addEventListener('click', function(e) { if (didDrag) { e.stopPropagation(); return; } showRaga(rg); }); })(r);
     wheelGroup.appendChild(path);
+
     var lblPos = polarToCart(CX, CY, R_LABEL, midAngle);
-    var lbl = document.createElementNS(svgNS, 'text');
-    lbl.setAttribute('x', lblPos[0]); lbl.setAttribute('y', lblPos[1]);
-    lbl.setAttribute('class', 'slice-label');
-    lbl.setAttribute('text-anchor', 'middle');
-    lbl.setAttribute('dominant-baseline', 'middle');
-    lbl.textContent = r.n;
-    wheelGroup.appendChild(lbl);
-    counterEls.push({el: lbl, x: lblPos[0], y: lblPos[1]});
-    var nameR = R_NAME;
+        var lbl = document.createElementNS(svgNS, 'text');
+        lbl.setAttribute('x', lblPos[0]); lbl.setAttribute('y', lblPos[1]);
+        lbl.setAttribute('class', 'slice-label');
+        lbl.setAttribute('text-anchor', 'middle');
+        lbl.setAttribute('dominant-baseline', 'middle');
+        lbl.textContent = r.n;
+        wheelGroup.appendChild(lbl);
+        counterEls.push({el: lbl, x: lblPos[0], y: lblPos[1]});
+
+        // Dha & Ni swara text along the arc (midway between Re-Ga and Raga Number)
+        var dnPos = polarToCart(CX, CY, R_DN_NOTES, midAngle);
+        var dnEl = document.createElementNS(svgNS, 'text');
+        dnEl.setAttribute('x', dnPos[0]);
+        dnEl.setAttribute('y', dnPos[1]);
+        dnEl.setAttribute('class', 'dn-notes');
+        dnEl.setAttribute('text-anchor', 'middle');
+        dnEl.setAttribute('dominant-baseline', 'middle');
+        dnEl.textContent = DN_PAIRS[(r.n - 1) % 6];
+        wheelGroup.appendChild(dnEl);
+        dnEls.push({el: dnEl, x: dnPos[0], y: dnPos[1], midAngle: midAngle});
+
+        var nameR = R_NAME;
+
+
     if (r.n % 3 === 1) nameR = R_NAME;
     else if (r.n % 3 === 2) nameR = R_NAME2;
     else nameR = R_NAME3;
@@ -6820,27 +6819,47 @@ function buildWheel() {
     wheelGroup.appendChild(nameEl);
     ragaNameEls.push({el: nameEl, x: namePos[0], y: namePos[1], midAngle: midAngle});
   }
+
   var chakraNames = ["Indu","Netra","Agni","Veda","Bana","Ritu","Rishi","Vasu","Brahma","Disi","Rudra","Aditya"];
-  for (var c = 0; c < 12; c++) {
-    var chStart = c * 6 * ANGLE_PER;
-    var chMid = chStart + 3 * ANGLE_PER;
-    var lineOut = polarToCart(CX, CY, R_OUTER, chStart);
-    var lineIn = polarToCart(CX, CY, R_INNER, chStart);
-    var line = document.createElementNS(svgNS, 'line');
-    line.setAttribute('x1', lineOut[0]); line.setAttribute('y1', lineOut[1]);
-    line.setAttribute('x2', lineIn[0]); line.setAttribute('y2', lineIn[1]);
-    line.setAttribute('stroke', '#ffffff');
-    line.setAttribute('stroke-width', '2');
-    wheelGroup.appendChild(line);
-    var chPos = polarToCart(CX, CY, R_CHAKRA, chMid);
-    var chLbl = document.createElementNS(svgNS, 'text');
-    chLbl.setAttribute('x', chPos[0]); chLbl.setAttribute('y', chPos[1]);
-    chLbl.setAttribute('class', 'chakra-label');
-    chLbl.setAttribute('text-anchor', 'middle');
-    chLbl.setAttribute('dominant-baseline', 'middle');
-    chLbl.textContent = chakraNames[c];
-    wheelGroup.appendChild(chLbl);
-    counterEls.push({el: chLbl, x: chPos[0], y: chPos[1]});
+    for (var c = 0; c < 12; c++) {
+      var chStart = c * 6 * ANGLE_PER;
+      var chMid = chStart + 3 * ANGLE_PER;
+      var lineOut = polarToCart(CX, CY, R_OUTER, chStart);
+      var lineIn = polarToCart(CX, CY, R_INNER, chStart);
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttribute('x1', lineOut[0]); line.setAttribute('y1', lineOut[1]);
+      line.setAttribute('x2', lineIn[0]); line.setAttribute('y2', lineIn[1]);
+      line.setAttribute('stroke', '#ffffff');
+      line.setAttribute('stroke-width', '2');
+      wheelGroup.appendChild(line);
+
+      var chTextColor = (c % 2 === 0) ? '#0d47a1' : '#1b5e20'; // Alternating dark blue & dark green
+
+            // Chakra Name (Positioned closer to the center at R_CHAKRA_NAME = 124)
+            var chPos = polarToCart(CX, CY, R_CHAKRA_NAME, chMid);
+            var chLbl = document.createElementNS(svgNS, 'text');
+            chLbl.setAttribute('x', chPos[0]); chLbl.setAttribute('y', chPos[1]);
+            chLbl.setAttribute('class', 'chakra-label');
+            chLbl.setAttribute('fill', chTextColor);
+            chLbl.style.fill = chTextColor;
+            chLbl.setAttribute('text-anchor', 'middle');
+            chLbl.setAttribute('dominant-baseline', 'middle');
+            chLbl.textContent = chakraNames[c];
+            wheelGroup.appendChild(chLbl);
+            counterEls.push({el: chLbl, x: chPos[0], y: chPos[1]});
+
+            // Re & Ga Swaras (Matched to the exact same color as the chakra name)
+            var rgPos = polarToCart(CX, CY, R_CHAKRA_NOTES, chMid);
+            var rgLbl = document.createElementNS(svgNS, 'text');
+            rgLbl.setAttribute('x', rgPos[0]); rgLbl.setAttribute('y', rgPos[1]);
+            rgLbl.setAttribute('class', 'chakra-notes');
+            rgLbl.setAttribute('fill', chTextColor);
+            rgLbl.style.fill = chTextColor;
+            rgLbl.setAttribute('text-anchor', 'middle');
+            rgLbl.setAttribute('dominant-baseline', 'middle');
+            rgLbl.textContent = CHAKRA_RG_NOTES[c];
+            wheelGroup.appendChild(rgLbl);
+            counterEls.push({el: rgLbl, x: rgPos[0], y: rgPos[1]});
   }
   var border = document.createElementNS(svgNS, 'circle');
   border.setAttribute('cx', CX); border.setAttribute('cy', CY);
@@ -6849,20 +6868,16 @@ function buildWheel() {
   border.setAttribute('stroke', '#bbb'); border.setAttribute('stroke-width', '2');
   wheelGroup.appendChild(border);
   var ct = document.createElementNS(svgNS, 'text');
-  ct.setAttribute('x', CX); ct.setAttribute('y', CY - 8);
-  ct.setAttribute('class', 'center-text');
-  ct.textContent = '72';
-  svg.appendChild(ct);
-  var cs = document.createElementNS(svgNS, 'text');
-  cs.setAttribute('x', CX); cs.setAttribute('y', CY + 10);
-  cs.setAttribute('class', 'center-sub');
-  cs.textContent = 'Melakarta';
-  svg.appendChild(cs);
-  var cs2 = document.createElementNS(svgNS, 'text');
-  cs2.setAttribute('x', CX); cs2.setAttribute('y', CY + 25);
-  cs2.setAttribute('class', 'center-sub');
-  cs2.textContent = 'Ragas';
-  svg.appendChild(cs2);
+    ct.setAttribute('x', CX); ct.setAttribute('y', CY - 3);
+    ct.setAttribute('class', 'center-swara');
+    ct.textContent = 'Sa, Pa';
+    svg.appendChild(ct);
+
+    var cs = document.createElementNS(svgNS, 'text');
+    cs.setAttribute('x', CX); cs.setAttribute('y', CY + 11);
+    cs.setAttribute('class', 'center-achala');
+    cs.textContent = 'Achala';
+    svg.appendChild(cs);
   applyRotation();
 }
 function applyRotation() {
@@ -6872,13 +6887,25 @@ function applyRotation() {
     ce.el.setAttribute('transform', 'rotate(' + (-rotation) + ' ' + ce.x + ' ' + ce.y + ')');
   }
   for (var j = 0; j < ragaNameEls.length; j++) {
-    var rn = ragaNameEls[j];
-    var effAngle = (rn.midAngle + rotation) % 360;
-    if (effAngle < 0) effAngle += 360;
-    var nameRot = effAngle;
-    if (effAngle > 90 && effAngle < 270) { nameRot = effAngle + 180; }
-    rn.el.setAttribute('transform', 'rotate(' + nameRot + ' ' + rn.x + ' ' + rn.y + ')');
-  }
+      var rn = ragaNameEls[j];
+      var effAngle = (rn.midAngle + rotation) % 360;
+      if (effAngle < 0) effAngle += 360;
+      var nameRot = effAngle;
+      if (effAngle > 90 && effAngle < 270) { nameRot = effAngle + 180; }
+      rn.el.setAttribute('transform', 'rotate(' + nameRot + ' ' + rn.x + ' ' + rn.y + ')');
+    }
+
+  // Update Dha-Ni labels along the radius of each slice
+      for (var k = 0; k < dnEls.length; k++) {
+        var de = dnEls[k];
+        var effAngle = (de.midAngle + rotation) % 360;
+        if (effAngle < 0) effAngle += 360;
+        var dnRot = effAngle - 90;
+        var normRot = ((dnRot % 360) + 360) % 360;
+        if (normRot > 90 && normRot < 270) { dnRot += 180; }
+        de.el.setAttribute('transform', 'rotate(' + dnRot + ' ' + de.x + ' ' + de.y + ')');
+    }
+
   var display = document.getElementById('angle-display');
   if (display) { var norm = ((rotation % 360) + 360) % 360; display.textContent = Math.round(norm) + '\u00b0'; }
 }
@@ -7276,11 +7303,15 @@ function showRagaOnWheel(mk){
 function viewOnRagaRing(ragaName){
   // Normalize spelling differences between song DB and Raga Ring DB
   var nameMap = {
+    "asawari": "Asavari",
+    "asavari": "Asavari",
+    "bhimpalas": "Bhimpalas",
+    "bhimpalasi": "Bhimpalas",
     "nat bhairav": "Nat Bhairav",
     "des": "Desh",
     "bhimpalas": "Bhimpalasi",
     "darbari": "Darbari Kanada",
-    "bilaskhanitodi": "Bilaskhani todi"
+    "bilaskhanitodi": "Bilaskhani Todi"
   };
   var cleanKey = (ragaName || '').toLowerCase().replace(/[^a-z]/g, '');
   var targetRaga = nameMap[cleanKey] || ragaName;
@@ -7419,7 +7450,7 @@ var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Bibhas", "thaat": "Bhairav", "color": "#9B59B6"},
                      {"raga": "Ahir Bhairav", "thaat": "Bhairav", "color": "#9B59B6"},
                      {"raga": "Bhairavi", "thaat": "Bhairavi", "color": "#E74C3C"},
-                     {"raga": "Bilaskhani todi", "thaat": "Bhairavi", "color": "#E74C3C"},
+                     {"raga": "Bilaskhani Todi", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Malkauns", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Jogkauns", "thaat": "Bhairavi", "color": "#E74C3C"},
                      {"raga": "Charukeshi", "thaat": "Asavari", "color": "#95A5A6"},
@@ -7445,7 +7476,7 @@ var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Jog", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Brindavani Sarang", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Jaijaiwanti", "thaat": "Kafi", "color": "#1ABC9C"},
-                     {"raga": "Bhimpalasi", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Bhimpalas", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Bageshri", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Rageshri", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Desh", "thaat": "Khamaj", "color": "#F0AD4E"},
@@ -7507,243 +7538,6 @@ var ring_dragMoved = false;
 var ring_svg = document.getElementById('ring-svg');
 var ring_wheelGroup = document.getElementById('ring-wheel-group');
 var ring_selectedRaga = null;
-
-function buildRingOld() {
-  var group = document.getElementById('ring-wheel-group');
-  if (!group) return;
-
-  // Remove any previously built dynamic SVG elements (slices, labels, lines, arrows)
-  var dynamicEls = group.querySelectorAll('.hslice, .hnum, .hrname, .hboundary, .hthaat, .harrow, .htransition');
-  for (var d = 0; d < dynamicEls.length; d++) {
-    dynamicEls[d].remove();
-  }
-
-  var svgNS = 'http://www.w3.org/2000/svg';
-  var cx = 450, cy = 450;
-  var rOuter = 360, rInner = 115, rNum = 140;
-  var rNames = [190, 225, 260];
-  var total = RING_SEGMENTS.length;
-  var anglePer = 360 / total;
-
-  function toRad(deg) { return deg * Math.PI / 180; }
-  function pt(r, deg) {
-    return [cx + r * Math.cos(toRad(deg)), cy + r * Math.sin(toRad(deg))];
-  }
-
-  // 1. Group ragas by Thaat to find sector angles
-  var thaatGroups = {};
-  for (var i = 0; i < total; i++) {
-    var item = RING_SEGMENTS[i];
-    var startAngle = -90 + (i * anglePer);
-    var endAngle = startAngle + anglePer;
-    var midAngle = startAngle + (anglePer / 2);
-
-    if (!thaatGroups[item.thaat]) {
-      thaatGroups[item.thaat] = {
-        name: item.thaat,
-        color: item.color,
-        startAngle: startAngle,
-        endAngle: endAngle,
-        startIndex: i
-      };
-    } else {
-      thaatGroups[item.thaat].endAngle = endAngle;
-    }
-
-    // Slice Path
-    var pStartOut = pt(rOuter, startAngle), pEndOut = pt(rOuter, endAngle);
-    var pStartIn = pt(rInner, startAngle), pEndIn = pt(rInner, endAngle);
-    var d = 'M ' + pStartOut[0].toFixed(1) + ' ' + pStartOut[1].toFixed(1) +
-            ' A ' + rOuter + ' ' + rOuter + ' 0 0 1 ' + pEndOut[0].toFixed(1) + ' ' + pEndOut[1].toFixed(1) +
-            ' L ' + pEndIn[0].toFixed(1) + ' ' + pEndIn[1].toFixed(1) +
-            ' A ' + rInner + ' ' + rInner + ' 0 0 0 ' + pStartIn[0].toFixed(1) + ' ' + pStartIn[1].toFixed(1) + ' Z';
-
-    var path = document.createElementNS(svgNS, 'path');
-    path.setAttribute('class', 'hslice');
-    path.setAttribute('data-raga', item.raga);
-    path.setAttribute('d', d);
-    path.setAttribute('fill', item.color);
-    path.setAttribute('fill-opacity', '0.22');
-    path.setAttribute('stroke', '#fff');
-    path.setAttribute('stroke-width', '1.5');
-    (function(name) {
-      path.addEventListener('click', function() { if (!ring_dragMoved) ring_selectRaga(name); });
-    })(item.raga);
-    group.insertBefore(path, group.firstChild);
-
-    // Number
-    var np = pt(rNum, midAngle);
-    var numEl = document.createElementNS(svgNS, 'text');
-    numEl.setAttribute('class', 'hnum');
-    numEl.setAttribute('data-raga', item.raga);
-    numEl.setAttribute('x', np[0].toFixed(1));
-    numEl.setAttribute('y', np[1].toFixed(1));
-    numEl.setAttribute('text-anchor', 'middle');
-    numEl.setAttribute('dominant-baseline', 'central');
-    numEl.setAttribute('font-size', '11');
-    numEl.setAttribute('font-weight', 'bold');
-    numEl.style.pointerEvents = 'auto';
-    numEl.textContent = (i + 1);
-    (function(name) {
-      numEl.addEventListener('click', function(e) { e.stopPropagation(); if (!ring_dragMoved) ring_selectRaga(name); });
-    })(item.raga);
-    group.appendChild(numEl);
-
-    // Raga Name
-    var nameR = rNames[i % 3];
-    var lp = pt(nameR, midAngle);
-    var rot = midAngle;
-    var normAngle = ((midAngle % 360) + 360) % 360;
-    if (normAngle > 90 && normAngle < 270) { rot += 180; }
-
-    var nameEl = document.createElementNS(svgNS, 'text');
-    nameEl.setAttribute('class', 'hrname');
-    nameEl.setAttribute('data-raga', item.raga);
-    nameEl.setAttribute('x', lp[0].toFixed(1));
-    nameEl.setAttribute('y', lp[1].toFixed(1));
-    nameEl.setAttribute('text-anchor', 'middle');
-    nameEl.setAttribute('dominant-baseline', 'central');
-    nameEl.setAttribute('font-size', '9');
-    nameEl.setAttribute('font-weight', '500');
-    nameEl.setAttribute('transform', 'rotate(' + rot.toFixed(1) + ' ' + lp[0].toFixed(1) + ' ' + lp[1].toFixed(1) + ')');
-    nameEl.style.pointerEvents = 'auto';
-    nameEl.textContent = item.raga;
-    (function(name) {
-      nameEl.addEventListener('click', function(e) { e.stopPropagation(); if (!ring_dragMoved) ring_selectRaga(name); });
-    })(item.raga);
-    group.appendChild(nameEl);
-  }
-
-  // 2. Thaat Boundaries & Outer Thaat Labels
-  for (var th in thaatGroups) {
-    var tg = thaatGroups[th];
-    var pB1 = pt(rInner, tg.startAngle);
-    var pB2 = pt(rOuter, tg.startAngle);
-    var bLine = document.createElementNS(svgNS, 'line');
-    bLine.setAttribute('class', 'hboundary');
-    bLine.setAttribute('x1', pB1[0].toFixed(1));
-    bLine.setAttribute('y1', pB1[1].toFixed(1));
-    bLine.setAttribute('x2', pB2[0].toFixed(1));
-    bLine.setAttribute('y2', pB2[1].toFixed(1));
-    bLine.setAttribute('stroke', '#bbb');
-    bLine.setAttribute('stroke-width', '1.5');
-    bLine.setAttribute('stroke-dasharray', '3,2');
-    bLine.setAttribute('opacity', '0.5');
-    group.appendChild(bLine);
-
-    var thMid = (tg.startAngle + tg.endAngle) / 2;
-    var thPos = pt(rOuter + 45, thMid);
-    var thRot = thMid;
-    var normTh = ((thMid % 360) + 360) % 360;
-    if (normTh > 90 && normTh < 270) thRot += 180;
-    var thText = document.createElementNS(svgNS, 'text');
-    thText.setAttribute('class', 'hthaat');
-    thText.setAttribute('x', thPos[0].toFixed(1));
-    thText.setAttribute('y', thPos[1].toFixed(1));
-    thText.setAttribute('text-anchor', 'middle');
-    thText.setAttribute('dominant-baseline', 'central');
-    thText.setAttribute('font-size', '14');
-    thText.setAttribute('font-weight', 'bold');
-    thText.setAttribute('fill', tg.color);
-    thText.setAttribute('transform', 'rotate(' + thRot.toFixed(1) + ' ' + thPos[0].toFixed(1) + ' ' + thPos[1].toFixed(1) + ')');
-    thText.textContent = tg.name;
-    group.appendChild(thText);
-  }
-
-  // 3. Thaat Transition Arrows & Badges
-var rArrow = rOuter + 14;
-  var colorMap = {
-    "Ma": "#e67e22",      // Teevra ma (Orange)
-    "re": "#c0392b",      // Komal re (Red)
-    "dha": "#c0392b",     // Komal dha (Red)
-    "ga": "#c0392b",      // Komal ga (Red)
-    "ni": "#c0392b",      // Komal ni (Red)
-    "Ga + ma": "#7d5a3c", // Multi-note changes (Brown)
-    "ga + ni": "#7d5a3c"
-  };
-
-  for (var k = 0; k < RING_TRANSITIONS.length; k++) {
-    (function(idx) {
-      var t = RING_TRANSITIONS[idx];
-      var gFrom = thaatGroups[t.from];
-      var gTo = thaatGroups[t.to];
-      if (!gFrom || !gTo) return;
-
-      var isCCW = (t.dir === "ccw");
-      // For CW, boundary is where gTo starts; for CCW, boundary is where gTo ends
-      var boundaryAngle = isCCW ? gTo.endAngle : gTo.startAngle;
-
-      // Calculate start and end points across the boundary
-      var aStart = isCCW ? (boundaryAngle + anglePer * 0.9) : (boundaryAngle - anglePer * 0.9);
-      var aEnd   = isCCW ? (boundaryAngle - anglePer * 0.9) : (boundaryAngle + anglePer * 0.9);
-      var sweepFlag = isCCW ? 0 : 1;
-
-      var p1 = pt(rArrow, aStart);
-      var p2 = pt(rArrow, aEnd);
-      var strokeColor = colorMap[t.label] || '#7d5a3c';
-
-      // Dynamically sync arrowhead polygon color with arrow line color
-      var markerEl = document.getElementById('arrowhead-' + idx + '-a');
-      if (markerEl) {
-        var poly = markerEl.querySelector('polygon');
-        if (poly) poly.setAttribute('fill', strokeColor);
-      }
-
-      // Curved Arrow Path
-      var arrowPath = document.createElementNS(svgNS, 'path');
-      arrowPath.setAttribute('class', 'harrow');
-      arrowPath.setAttribute('d', 'M ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1) +
-                                  ' A ' + rArrow + ' ' + rArrow + ' 0 0 ' + sweepFlag + ' ' +
-                                  p2[0].toFixed(1) + ' ' + p2[1].toFixed(1));
-      arrowPath.setAttribute('fill', 'none');
-      arrowPath.setAttribute('stroke', strokeColor);
-      arrowPath.setAttribute('stroke-width', '2');
-      arrowPath.setAttribute('stroke-linecap', 'round');
-      arrowPath.setAttribute('marker-end', 'url(#arrowhead-' + idx + '-a)');
-      group.appendChild(arrowPath);
-
-      // Transition Badge / Pill
-      var badgePos = pt(rArrow + 16, boundaryAngle);
-      var badgeG = document.createElementNS(svgNS, 'g');
-      badgeG.setAttribute('class', 'htransition');
-      badgeG.setAttribute('data-index', idx);
-      badgeG.style.cursor = 'pointer';
-
-      var bWidth = t.label.length > 3 ? 54 : 30;
-      var rect = document.createElementNS(svgNS, 'rect');
-      rect.setAttribute('x', (badgePos[0] - bWidth / 2).toFixed(1));
-      rect.setAttribute('y', (badgePos[1] - 8).toFixed(1));
-      rect.setAttribute('width', bWidth);
-      rect.setAttribute('height', '16');
-      rect.setAttribute('rx', '7');
-      rect.setAttribute('fill', '#fff');
-      rect.setAttribute('fill-opacity', '0.9');
-      rect.setAttribute('stroke', strokeColor);
-      rect.setAttribute('stroke-width', '1');
-
-      var txt = document.createElementNS(svgNS, 'text');
-      txt.setAttribute('x', badgePos[0].toFixed(1));
-      txt.setAttribute('y', badgePos[1].toFixed(1));
-      txt.setAttribute('text-anchor', 'middle');
-      txt.setAttribute('dominant-baseline', 'central');
-      txt.setAttribute('font-size', '9');
-      txt.setAttribute('font-weight', 'bold');
-      txt.setAttribute('fill', strokeColor);
-      txt.textContent = t.label;
-
-      badgeG.appendChild(rect);
-      badgeG.appendChild(txt);
-
-      badgeG.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (!ring_dragMoved) ring_showTransitionInfo(idx);
-      });
-
-      group.appendChild(badgeG);
-    })(k);
-  }
-
-}
 
 // New Raga ring for 2 layers
 function buildRing() {
