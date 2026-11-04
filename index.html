@@ -161,6 +161,10 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
   border:1px solid var(--line);border-radius:6px;padding:6px 8px}
 .song-item .song-main{flex:1;min-width:0}
 .song-item .song-name{font-weight:bold;color:#3a2a12}
+.song-yt-link{text-decoration:none;display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+.song-yt-link:hover .song-name{color:var(--accent);text-decoration:underline}
+.yt-badge{font-size:0.62rem;color:#b8341e;background:#fdf2ef;border:1px solid #eccbc4;padding:1px 6px;border-radius:4px;font-weight:bold;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;gap:3px;line-height:1.3;transition:all 0.15s ease}
+.song-yt-link:hover .yt-badge{background:#b8341e;color:#fff;border-color:#b8341e}
 .song-item .song-detail{color:#7a6a4d;font-size:.7rem;display:block;margin-top:1px}
 .song-del{cursor:pointer;color:#c62828;font-weight:bold;font-size:1.2rem;border:none;background:none;
   padding:0 8px;flex-shrink:0;min-width:40px;min-height:40px;touch-action:manipulation}
@@ -6122,6 +6126,17 @@ function lookupRaga(){
   document.getElementById('list').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+// Generates an encoded YouTube search query from available song metadata
+function getYoutubeSearchUrl(s) {
+  var parts = [];
+  if (s.song) parts.push(s.song.trim());
+  if (s.film) parts.push(s.film.trim());
+  if (s.singer) parts.push(s.singer.trim());
+  else if (s.md) parts.push(s.md.trim());
+  var q = parts.join(' ').trim();
+  return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q);
+}
+
 /* SONG SEARCH */
 function searchSong(){
   var input=document.getElementById('songInput').value.trim().toLowerCase();
@@ -6178,10 +6193,13 @@ function searchSong(){
         '<a class="ring-link" data-raga="' + escapeHtml(m.raag) + '" style="font-size:0.75rem;white-space:nowrap;">View on Ring &rarr;</a>' +
       '</div>' +
       '<div class="songs-list">' +
-        '<div class="song-item">' +
+      '<div class="song-item">' +
           '<div class="song-main">' +
-            '<span class="song-name">' + escapeHtml(m.song) + '</span>' +
-            '<span class="song-detail">' + detailStr + '</span>' + tagBadge +
+              '<a href="' + getYoutubeSearchUrl(m) + '" target="_blank" rel="noopener noreferrer" class="song-yt-link" title="Listen on YouTube">' +
+                '<span class="song-name">' + escapeHtml(m.song) + '</span>' +
+                '<span class="yt-badge">&#9654; YouTube</span>' +
+              '</a>' +
+              '<span class="song-detail">' + detailStr + '</span>' + tagBadge +
           '</div>' +
         '</div>' +
       '</div>';
@@ -6680,7 +6698,11 @@ function songsBox(raagName){
           var tagBadge = s._tag ? ' <span style="font-size:.66rem;color:#fff;background:#b8341e;padding:1px 5px;border-radius:3px;margin-left:4px">'+s._tag+'</span>' : '';
           var songMain=document.createElement('div');
           songMain.className='song-main';
-          songMain.innerHTML='<span class="song-name">'+escapeHtml(s.song)+'</span><span class="song-detail">'+detailStr+'</span>'+tagBadge;
+          songMain.innerHTML='<a href="' + getYoutubeSearchUrl(s) + '" target="_blank" rel="noopener noreferrer" class="song-yt-link" title="Listen on YouTube">' +
+                '<span class="song-name">' + escapeHtml(s.song) + '</span>' +
+                '<span class="yt-badge">&#9654; YouTube</span>' +
+          '</a>' +
+          '<span class="song-detail">' + detailStr + '</span>' + tagBadge;
           item.appendChild(songMain);
           var editBtn=document.createElement('button');
           editBtn.className='song-edit';
