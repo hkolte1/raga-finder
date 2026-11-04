@@ -220,6 +220,245 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
 #wheel-view .center-achala{text-anchor:middle;fill:#8a7d60;font-size:7px;letter-spacing:1px;text-transform:uppercase;pointer-events:none}
 #wheel-view .ma-arc-text{font-size:8.5px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;pointer-events:none}
 #wheel-view .chakra-notes{font-size:7.5px;pointer-events:none;font-weight:700;letter-spacing:1.2px}
+
+/* Compact Melakarta Mini Swara Keyboard */
+.mw-kb-panel {
+  display: none;
+  max-width: 165px;
+  margin: 0 auto 10px auto;
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+.mw-kb-achala {
+  background: #8c6b23;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 3px;
+  margin: 1.5px 0;
+  user-select: none;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.mw-kb-row {
+  display: flex;
+  gap: 2px;
+  margin: 1.5px 0;
+}
+.mw-kb-btn {
+  flex: 1 1 0;
+  background: #f4ecdc;
+  border: 1px solid #cdbfa3;
+  border-radius: 3px;
+  color: #3a2a12;
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 0.64rem;
+  padding: 2.5px 0;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+}
+.mw-kb-btn:active {
+  background: #e6dcbe;
+}
+.mw-kb-btn.active {
+  background: #b8341e !important;
+  color: #ffffff !important;
+  border-color: #8e1414 !important;
+  font-weight: bold;
+  box-shadow: 0 0 0 1px #8e1414;
+}
+.mw-kb-actions {
+  display: flex;
+  gap: 3px;
+  margin-top: 3px;
+}
+.mw-kb-search-btn {
+  flex: 1;
+  background: #5b1716;
+  color: #ffffff;
+  border: 1px solid #3d0d0c;
+  border-radius: 3px;
+  padding: 3.5px 4px;
+  font-family: Georgia, serif;
+  font-size: 0.60rem;
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+  line-height: 1.2;
+}
+.mw-kb-search-btn:active {
+  background: #7a221f;
+}
+.mw-kb-reset-btn {
+  background: #eae0c8;
+  color: #5a4a3a;
+  border: 1px solid #cdbfa3;
+  border-radius: 3px;
+  padding: 3.5px 6px;
+  font-family: Georgia, serif;
+  font-size: 0.60rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  line-height: 1.2;
+}
+.mw-kb-reset-btn:active {
+  background: #ded2b6;
+}
+.mw-kb-status {
+  font-size: 0.58rem;
+  color: #6a5d44;
+  text-align: center;
+  margin-top: 3px;
+  min-height: 1.1em;
+  font-style: italic;
+  line-height: 1.2;
+}
+/* Hindustani Mini Swara Keyboard for Raga Ring */
+.rr-kb-panel {
+  display: none;
+  max-width: 165px;
+  margin: 0 auto 10px auto;
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+.rr-kb-achala {
+  background: #8c6b23;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 3px;
+  margin: 1.5px 0;
+  user-select: none;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.rr-kb-row {
+  display: flex;
+  gap: 2px;
+  margin: 1.5px 0;
+}
+.rr-kb-btn {
+  flex: 1 1 0;
+  background: #f4ecdc;
+  border: 1px solid #cdbfa3;
+  border-radius: 3px;
+  color: #3a2a12;
+  font-family: Georgia, serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  padding: 2.5px 0;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+}
+.rr-kb-btn:active {
+  background: #e6dcbe;
+}
+.rr-kb-btn.active {
+  background: #b8341e !important;
+  color: #ffffff !important;
+  border-color: #8e1414 !important;
+  font-weight: bold;
+  box-shadow: 0 0 0 1px #8e1414;
+}
+.rr-kb-actions {
+  display: flex;
+  gap: 3px;
+  margin-top: 3px;
+}
+.rr-kb-search-btn {
+  flex: 1;
+  background: #5b1716;
+  color: #ffffff;
+  border: 1px solid #3d0d0c;
+  border-radius: 3px;
+  padding: 3.5px 4px;
+  font-family: Georgia, serif;
+  font-size: 0.60rem;
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+  line-height: 1.2;
+}
+.rr-kb-search-btn:active {
+  background: #7a221f;
+}
+.rr-kb-reset-btn {
+  background: #eae0c8;
+  color: #5a4a3a;
+  border: 1px solid #cdbfa3;
+  border-radius: 3px;
+  padding: 3.5px 6px;
+  font-family: Georgia, serif;
+  font-size: 0.60rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  line-height: 1.2;
+}
+.rr-kb-reset-btn:active {
+  background: #ded2b6;
+}
+.rr-kb-status {
+  font-size: 0.58rem;
+  color: #6a5d44;
+  text-align: center;
+  margin-top: 3px;
+  min-height: 1.1em;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* Raga Ring Elements in BOLD RED when matching */
+.hslice.rr-swara-match {
+  fill-opacity: 0.75 !important;
+  stroke: #d32f2f !important;
+  stroke-width: 3 !important;
+}
+.hrname.rr-swara-match {
+  fill: #d32f2f !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+}
+.hnum.rr-swara-match {
+  fill: #d32f2f !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}
+
+/* Wheel Elements in BOLD RED when matching */
+#wheel-view .raga-name.mw-swara-match {
+  fill: #d32f2f !important;
+  font-size: 11.5px !important;
+  font-weight: 900 !important;
+}
+#wheel-view .slice.mw-swara-match {
+  fill-opacity: 0.75 !important;
+  stroke: #d32f2f !important;
+  stroke-width: 3 !important;
+}
+#wheel-view .slice-label.mw-swara-match {
+  fill: #d32f2f !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+}
+#wheel-view .dn-notes.mw-swara-match {
+  fill: #d32f2f !important;
+  font-weight: 900 !important;
+}
 #detail-panel {
   width: 100%;
   max-width: 680px;
@@ -544,6 +783,34 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 .pitch-bar select:focus {
   border-color: var(--accent);
 }
+/* Hide Raga Finder Admin buttons by default */
+#exportBtn, #reviewChangesBtn, #saveHtmlBtn {
+  display: none;
+}
+
+/* Contextual Toggle Button beside Root Pitch */
+.pitch-toggle-btn {
+  font-family: Georgia, serif;
+  font-size: 0.74rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.pitch-toggle-btn:hover {
+  background: var(--paper2);
+}
+.pitch-toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
 </style>
 </head>
 <body class="no-js-ready">
@@ -565,6 +832,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
     <option value="349.23">F4 (Safed 4Standard)</option>
     <option value="369.99">F#4 (Kali 3 Standard)</option>
   </select>
+  <button type="button" id="toggleViewToolsBtn" class="pitch-toggle-btn">🛠️ Admin Tools ▾</button>
 </div>
 <div id="finder-view" style="display: block;">
 <header class="top">
@@ -628,9 +896,46 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   <button onclick="rotateWheel(15)">Right ⟶</button>
   <button onclick="resetWheel()">Reset</button>
   <span id="angle-display">0°</span>
-</div>
-<div id="wheel-container">
-  <svg id="wheel" width="900" height="900" viewBox="40 40 820 820"></svg>
+  </div>
+
+  <!-- Compact Carnatic Swara Keyboard -->
+  <div class="mw-kb-panel">
+    <div class="mw-kb-achala">S</div>
+    <div class="mw-kb-row">
+      <button type="button" class="mw-kb-btn" data-fam="R" data-swara="R1">R₁</button>
+      <button type="button" class="mw-kb-btn" data-fam="R" data-swara="R2">R₂</button>
+      <button type="button" class="mw-kb-btn" data-fam="R" data-swara="R3">R₃</button>
+    </div>
+    <div class="mw-kb-row">
+      <button type="button" class="mw-kb-btn" data-fam="G" data-swara="G1">G₁</button>
+      <button type="button" class="mw-kb-btn" data-fam="G" data-swara="G2">G₂</button>
+      <button type="button" class="mw-kb-btn" data-fam="G" data-swara="G3">G₃</button>
+    </div>
+    <div class="mw-kb-row">
+      <button type="button" class="mw-kb-btn" data-fam="M" data-swara="M1">M₁</button>
+      <button type="button" class="mw-kb-btn" data-fam="M" data-swara="M2">M₂</button>
+    </div>
+    <div class="mw-kb-achala">P</div>
+    <div class="mw-kb-row">
+      <button type="button" class="mw-kb-btn" data-fam="D" data-swara="D1">D₁</button>
+      <button type="button" class="mw-kb-btn" data-fam="D" data-swara="D2">D₂</button>
+      <button type="button" class="mw-kb-btn" data-fam="D" data-swara="D3">D₃</button>
+    </div>
+    <div class="mw-kb-row">
+      <button type="button" class="mw-kb-btn" data-fam="N" data-swara="N1">N₁</button>
+      <button type="button" class="mw-kb-btn" data-fam="N" data-swara="N2">N₂</button>
+      <button type="button" class="mw-kb-btn" data-fam="N" data-swara="N3">N₃</button>
+    </div>
+    <div class="mw-kb-achala">S'</div>
+    <div class="mw-kb-actions">
+      <button type="button" class="mw-kb-search-btn" id="mwKbSearchBtn">Search By Swara</button>
+      <button type="button" class="mw-kb-reset-btn" id="mwKbResetBtn">Clear</button>
+    </div>
+    <div class="mw-kb-status" id="mwKbStatus">Tap swaras to highlight Melakartas</div>
+  </div>
+
+  <div id="wheel-container">
+    <svg id="wheel" width="900" height="900" viewBox="40 40 820 820"></svg>
   <div id="detail-panel"><div class="placeholder">
       <p style="font-size:1.8rem">🎵</p>
       <p>Tap any raga on the wheel to see its details</p>
@@ -640,6 +945,38 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 <p class="mw-footer">Source: ragajunglism.org — All 72 Carnatic parent scales with Hindustani equivalents</p>
 </div><!-- /wheel-view -->
 <div id="ring-view" style="display: none;">
+
+<!-- Compact Hindustani Swara Keyboard for Raga Ring -->
+<div class="rr-kb-panel">
+  <div class="rr-kb-achala">Sa</div>
+  <div class="rr-kb-row">
+    <button type="button" class="rr-kb-btn" data-vec-idx="1" data-swara="re">re</button>
+    <button type="button" class="rr-kb-btn" data-vec-idx="2" data-swara="Re">Re</button>
+  </div>
+  <div class="rr-kb-row">
+    <button type="button" class="rr-kb-btn" data-vec-idx="3" data-swara="ga">ga</button>
+    <button type="button" class="rr-kb-btn" data-vec-idx="4" data-swara="Ga">Ga</button>
+  </div>
+  <div class="rr-kb-row">
+    <button type="button" class="rr-kb-btn" data-vec-idx="5" data-swara="ma">ma</button>
+    <button type="button" class="rr-kb-btn" data-vec-idx="6" data-swara="Ma">Ma</button>
+  </div>
+  <div class="rr-kb-achala">Pa</div>
+  <div class="rr-kb-row">
+    <button type="button" class="rr-kb-btn" data-vec-idx="8" data-swara="dha">dha</button>
+    <button type="button" class="rr-kb-btn" data-vec-idx="9" data-swara="Dha">Dha</button>
+  </div>
+  <div class="rr-kb-row">
+    <button type="button" class="rr-kb-btn" data-vec-idx="10" data-swara="ni">ni</button>
+    <button type="button" class="rr-kb-btn" data-vec-idx="11" data-swara="Ni">Ni</button>
+  </div>
+  <div class="rr-kb-achala">Sa'</div>
+  <div class="rr-kb-actions">
+    <button type="button" class="rr-kb-search-btn" id="rrKbSearchBtn">Search By Swara</button>
+    <button type="button" class="rr-kb-reset-btn" id="rrKbResetBtn">Clear</button>
+  </div>
+  <div class="rr-kb-status" id="rrKbStatus">Tap swaras to highlight ragas on Ring</div>
+</div>
 
 <div id="ring-container">
 <svg id="ring-svg" viewBox="10 10 880 880">
@@ -1231,7 +1568,7 @@ var RING_RAGA_DETAILS = {
     "cr": "Behag",
     "mk": "Sankarabharanam",
     "notes": ["Sa","Re","Ga","ma","Ma|","Pa","Dha","Ni"],
-    "note_vec": [1,1,0,0,1,1,1,1,0,1,0,1],
+    "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "A late-night raga evoking peace and romance, often employing both shuddha and teevra Madhyam. Close to Yaman Kalyan in its use of both Ma",
     "carnatic_reason": "Asymmetric with Sharp Note. Bihag skips Re and Dha in the ascent but uses them in the descent. Crucially, it uses a sharp Ma (Teevra Madhyam) as a decorative, passing note. The Carnatic system adopted it as a bhashanga raga with the same parameters."
   },
@@ -6644,6 +6981,10 @@ var ragaNameEls = [];
 var dnEls = [];
 var didDrag = false;
 
+// Active selections for the mini Carnatic keyboard
+var mwSelectedSwaras = { R: null, G: null, M: null, D: null, N: null };
+var rrSelectedVecIndices = new Set();
+
 // The 6 fixed Dha & Ni swara pairs rotating within each chakra
 var DN_PAIRS = ["D₁ N₁", "D₁ N₂", "D₁ N₃", "D₂ N₂", "D₂ N₃", "D₃ N₃"];
 
@@ -6911,6 +7252,248 @@ function applyRotation() {
 }
 function rotateWheel(delta) { rotation += delta; applyRotation(); }
 function resetWheel() { rotation = 0; applyRotation(); }
+
+// Highlights matching Melakartas in BOLD RED on the wheel
+function updateMelakartaWheelHighlights(returnFirst) {
+  var activeSwaras = [];
+  ['R', 'G', 'M', 'D', 'N'].forEach(function(fam) {
+    if (mwSelectedSwaras[fam]) activeSwaras.push(mwSelectedSwaras[fam]);
+  });
+
+  var statusEl = document.getElementById('mwKbStatus');
+
+  if (activeSwaras.length === 0) {
+    document.querySelectorAll('#wheel .mw-swara-match').forEach(function(el) {
+      el.classList.remove('mw-swara-match');
+    });
+    if (statusEl) statusEl.textContent = 'Tap swaras above to highlight Melakartas';
+    return null;
+  }
+
+  var matchCount = 0;
+  var firstMatchedRaga = null;
+
+  for (var i = 0; i < RAGAS.length; i++) {
+    var r = RAGAS[i];
+    var rTokens = r.cs.split(/\s+/);
+    var matches = true;
+
+    for (var k = 0; k < activeSwaras.length; k++) {
+      if (rTokens.indexOf(activeSwaras[k]) === -1) {
+        matches = false;
+        break;
+      }
+    }
+
+    var sliceEl = document.querySelector('#wheel .slice[data-num="' + r.n + '"]');
+    var nameObj = ragaNameEls[r.n - 1];
+    var dnObj = (typeof dnEls !== 'undefined' && dnEls[r.n - 1]) ? dnEls[r.n - 1] : null;
+
+    if (matches) {
+      matchCount++;
+      if (!firstMatchedRaga) firstMatchedRaga = r;
+      if (sliceEl) sliceEl.classList.add('mw-swara-match');
+      if (nameObj && nameObj.el) nameObj.el.classList.add('mw-swara-match');
+      if (dnObj && dnObj.el) dnObj.el.classList.add('mw-swara-match');
+    } else {
+      if (sliceEl) sliceEl.classList.remove('mw-swara-match');
+      if (nameObj && nameObj.el) nameObj.el.classList.remove('mw-swara-match');
+      if (dnObj && dnObj.el) dnObj.el.classList.remove('mw-swara-match');
+    }
+  }
+
+  // Highlight slice number labels
+  document.querySelectorAll('#wheel .slice-label').forEach(function(lbl) {
+    var num = parseInt(lbl.textContent, 10);
+    if (!isNaN(num) && num >= 1 && num <= RAGAS.length) {
+      var r = RAGAS[num - 1];
+      var rTokens = r.cs.split(/\s+/);
+      var m = true;
+      for (var k = 0; k < activeSwaras.length; k++) {
+        if (rTokens.indexOf(activeSwaras[k]) === -1) { m = false; break; }
+      }
+      if (m) lbl.classList.add('mw-swara-match');
+      else lbl.classList.remove('mw-swara-match');
+    }
+  });
+
+  if (statusEl) {
+    if (matchCount === 0) {
+      statusEl.textContent = '0 matches (no Melakarta combines these swaras)';
+    } else if (matchCount === 1) {
+      statusEl.textContent = '1 match: #' + firstMatchedRaga.n + ' ' + firstMatchedRaga.name;
+    } else {
+      statusEl.textContent = matchCount + ' Melakartas highlighted in BOLD RED';
+    }
+  }
+
+  return firstMatchedRaga;
+}
+
+function clearMelakartaKeyboard() {
+  mwSelectedSwaras = { R: null, G: null, M: null, D: null, N: null };
+  document.querySelectorAll('.mw-kb-panel .mw-kb-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  updateMelakartaWheelHighlights();
+}
+
+function initMelakartaKeyboard() {
+  var kbPanel = document.querySelector('.mw-kb-panel');
+  if (!kbPanel) return;
+
+  var btns = kbPanel.querySelectorAll('.mw-kb-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var fam = this.getAttribute('data-fam');
+      var swara = this.getAttribute('data-swara');
+
+      if (mwSelectedSwaras[fam] === swara) {
+        mwSelectedSwaras[fam] = null;
+        this.classList.remove('active');
+      } else {
+        kbPanel.querySelectorAll('.mw-kb-btn[data-fam="' + fam + '"]').forEach(function(b) {
+          b.classList.remove('active');
+        });
+        mwSelectedSwaras[fam] = swara;
+        this.classList.add('active');
+      }
+
+      updateMelakartaWheelHighlights();
+    });
+  });
+
+  var searchBtn = document.getElementById('mwKbSearchBtn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', function() {
+      var firstMatch = updateMelakartaWheelHighlights(true);
+      if (firstMatch) {
+        rotation = -((firstMatch.n - 1) * ANGLE_PER + ANGLE_PER / 2);
+        applyRotation();
+        showRaga(firstMatch);
+        var svgEl = document.getElementById('wheel');
+        if (svgEl) svgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        var statusEl = document.getElementById('mwKbStatus');
+        if (statusEl) statusEl.textContent = 'Select one or more swaras to search';
+      }
+    });
+  }
+
+  var resetBtn = document.getElementById('mwKbResetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', clearMelakartaKeyboard);
+  }
+}
+// Highlights matching ragas in BOLD RED on the Raga Ring
+function updateRagaRingHighlights(returnFirst) {
+  var statusEl = document.getElementById('rrKbStatus');
+  var activeIndices = Array.from(rrSelectedVecIndices);
+
+  if (activeIndices.length === 0) {
+    document.querySelectorAll('#ring-svg .rr-swara-match').forEach(function(el) {
+      el.classList.remove('rr-swara-match');
+    });
+    if (statusEl) statusEl.textContent = 'Tap swaras above to highlight ragas on Ring';
+    return null;
+  }
+
+  var matchCount = 0;
+  var firstMatch = null;
+
+  for (var ragaName in RING_RAGA_DETAILS) {
+    if (!RING_RAGA_DETAILS.hasOwnProperty(ragaName)) continue;
+    var r = RING_RAGA_DETAILS[ragaName];
+    var matches = true;
+
+    if (r.note_vec) {
+      for (var i = 0; i < activeIndices.length; i++) {
+        if (!r.note_vec[activeIndices[i]]) {
+          matches = false;
+          break;
+        }
+      }
+    } else {
+      matches = false;
+    }
+
+    var slices = document.querySelectorAll('#ring-svg .hslice[data-raga="' + ragaName + '"]');
+    var names  = document.querySelectorAll('#ring-svg .hrname[data-raga="' + ragaName + '"]');
+    var nums   = document.querySelectorAll('#ring-svg .hnum[data-raga="' + ragaName + '"]');
+
+    if (matches) {
+      matchCount++;
+      if (!firstMatch) firstMatch = r;
+      slices.forEach(function(el){ el.classList.add('rr-swara-match'); });
+      names.forEach(function(el){ el.classList.add('rr-swara-match'); });
+      nums.forEach(function(el){ el.classList.add('rr-swara-match'); });
+    } else {
+      slices.forEach(function(el){ el.classList.remove('rr-swara-match'); });
+      names.forEach(function(el){ el.classList.remove('rr-swara-match'); });
+      nums.forEach(function(el){ el.classList.remove('rr-swara-match'); });
+    }
+  }
+
+  if (statusEl) {
+    if (matchCount === 0) {
+      statusEl.textContent = '0 matches (no raga on ring has these notes)';
+    } else if (matchCount === 1) {
+      statusEl.textContent = '1 match: ' + firstMatch.name;
+    } else {
+      statusEl.textContent = matchCount + ' ragas highlighted in BOLD RED';
+    }
+  }
+
+  return firstMatch;
+}
+
+function clearRagaRingKeyboard() {
+  rrSelectedVecIndices.clear();
+  document.querySelectorAll('.rr-kb-panel .rr-kb-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  updateRagaRingHighlights();
+}
+
+function initRagaRingKeyboard() {
+  var kbPanel = document.querySelector('.rr-kb-panel');
+  if (!kbPanel) return;
+
+  var btns = kbPanel.querySelectorAll('.rr-kb-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-vec-idx'), 10);
+      if (rrSelectedVecIndices.has(idx)) {
+        rrSelectedVecIndices.delete(idx);
+        this.classList.remove('active');
+      } else {
+        rrSelectedVecIndices.add(idx);
+        this.classList.add('active');
+      }
+      updateRagaRingHighlights();
+    });
+  });
+
+  var searchBtn = document.getElementById('rrKbSearchBtn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', function() {
+      var firstMatch = updateRagaRingHighlights(true);
+      if (firstMatch) {
+        ring_selectRaga(firstMatch.name);
+        var detailEl = document.getElementById('ring-detail-panel');
+        if (detailEl) detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        var statusEl = document.getElementById('rrKbStatus');
+        if (statusEl) statusEl.textContent = 'Select one or more swaras to search';
+      }
+    });
+  }
+
+  var resetBtn = document.getElementById('rrKbResetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', clearRagaRingKeyboard);
+  }
+}
 
 (function() {
   var svg = document.getElementById('wheel');
@@ -7256,6 +7839,63 @@ function buildLegend() {
 
 buildWheel();
 buildLegend();
+initMelakartaKeyboard();
+initRagaRingKeyboard();
+
+// Visibility state for each view's contextual tool
+var viewToolsVisible = {
+  finder: false, // Export to Excel, Review & Approve, Save to HTML
+  wheel: false,  // Melakarta mini-keyboard
+  ring: false    // Hindustani ring mini-keyboard
+};
+
+function updateViewToolsUI() {
+  var activeTab = document.querySelector('.view-tab.active');
+  var view = activeTab ? activeTab.getAttribute('data-view') : 'finder';
+  var btn = document.getElementById('toggleViewToolsBtn');
+  if (!btn) return;
+
+  var isVisible = viewToolsVisible[view];
+
+  // Adapt button label and icon to the current view
+  if (view === 'finder') {
+    btn.innerHTML = isVisible ? '🛠️ Admin Tools ▴' : '🛠️ Admin Tools ▾';
+  } else {
+    btn.innerHTML = isVisible ? '⌨️ Keyboard ▴' : '⌨️ Keyboard ▾';
+  }
+
+  if (isVisible) {
+    btn.classList.add('active');
+  } else {
+    btn.classList.remove('active');
+  }
+
+  // 1. Raga Finder Admin Buttons
+  var adminBtns = document.querySelectorAll('#exportBtn, #reviewChangesBtn, #saveHtmlBtn');
+  adminBtns.forEach(function(b) {
+    b.style.display = viewToolsVisible.finder ? 'inline-block' : 'none';
+  });
+
+  // 2. Melakarta Mini Keyboard
+  var mwKb = document.querySelector('.mw-kb-panel');
+  if (mwKb) {
+    mwKb.style.display = viewToolsVisible.wheel ? 'block' : 'none';
+  }
+
+  // 3. Ring Mini Keyboard
+  var rrKb = document.querySelector('.rr-kb-panel');
+  if (rrKb) {
+    rrKb.style.display = viewToolsVisible.ring ? 'block' : 'none';
+  }
+}
+
+// Button click toggles the tool for whichever view is currently active
+document.getElementById('toggleViewToolsBtn').addEventListener('click', function() {
+  var activeTab = document.querySelector('.view-tab.active');
+  var view = activeTab ? activeTab.getAttribute('data-view') : 'finder';
+  viewToolsVisible[view] = !viewToolsVisible[view];
+  updateViewToolsUI();
+});
 
 /* VIEW TOGGLE */
 document.querySelectorAll('.view-tab').forEach(function(tab){
@@ -7273,8 +7913,10 @@ document.querySelectorAll('.view-tab').forEach(function(tab){
     } else if(view==='ring'){
       document.getElementById('ring-view').style.display='block';
     }
+    updateViewToolsUI(); // Sync tool button state and visibility when switching tabs
   });
 });
+updateViewToolsUI();
 
 /* SHOW RAGA ON WHEEL */
 function showRagaOnWheel(mk){
@@ -7300,8 +7942,35 @@ function showRagaOnWheel(mk){
   document.getElementById('wheel-view').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+// Automatically rotates the selected raga to 12 o'clock and auto-zooms for clear legibility
+function ring_focusAndZoomRaga(ragaName) {
+  if (typeof RING_SEGMENTS === 'undefined' || !RING_SEGMENTS.length) return;
+  var idx = -1;
+  var cleanTarget = (ragaName || '').toLowerCase().replace(/[^a-z]/g, '');
+
+  for (var i = 0; i < RING_SEGMENTS.length; i++) {
+    if (RING_SEGMENTS[i].raga.toLowerCase().replace(/[^a-z]/g, '') === cleanTarget) {
+      idx = i;
+      break;
+    }
+  }
+  if (idx === -1) return;
+
+  var total = RING_SEGMENTS.length;
+  var anglePer = 360 / total;
+
+  // Spin the wheel so the chosen raga slice centers directly at 12 o'clock
+  ring_rotation = -(idx * anglePer + anglePer / 2);
+  if (typeof ring_applyRotation === 'function') ring_applyRotation();
+
+  // Auto-zoom to 2.2x and center on the top 12 o'clock arc
+  ring_zoom = 2.2;
+  ring_panX = 0;
+  ring_panY = -230;
+  if (typeof ring_applyZoomPan === 'function') ring_applyZoomPan();
+}
+
 function viewOnRagaRing(ragaName){
-  // Normalize spelling differences between song DB and Raga Ring DB
   var nameMap = {
     "asawari": "Asavari",
     "asavari": "Asavari",
@@ -7309,7 +7978,6 @@ function viewOnRagaRing(ragaName){
     "bhimpalasi": "Bhimpalas",
     "nat bhairav": "Nat Bhairav",
     "des": "Desh",
-    "bhimpalas": "Bhimpalasi",
     "darbari": "Darbari Kanada",
     "bilaskhanitodi": "Bilaskhani Todi"
   };
@@ -7322,10 +7990,14 @@ function viewOnRagaRing(ragaName){
   document.querySelectorAll('.view-tab').forEach(function(t){t.classList.remove('active');});
   var ringTab=document.querySelector('.view-tab[data-view="ring"]');
   if(ringTab) ringTab.classList.add('active');
-  if(typeof ring_resetZoomPan==='function'){ ring_resetZoomPan(); }
+
+  // Select and auto-zoom to the chosen raga
   if(typeof ring_selectRaga==='function' && targetRaga){
     ring_selectRaga(targetRaga);
   }
+  ring_focusAndZoomRaga(targetRaga);
+  if (typeof updateViewToolsUI === 'function') updateViewToolsUI();
+
   document.getElementById('ring-view').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -7336,20 +8008,27 @@ function viewOnRagaRingByThaat(thaatName){
   document.querySelectorAll('.view-tab').forEach(function(t){t.classList.remove('active');});
   var ringTab=document.querySelector('.view-tab[data-view="ring"]');
   if(ringTab) ringTab.classList.add('active');
-  if(typeof ring_resetZoomPan==='function'){ ring_resetZoomPan(); }
-  // Find first raga in this thaat on the ring and select it
+
+  var targetRaga = null;
   if(typeof RING_RAGA_DETAILS==='object'){
     for(var ragaName in RING_RAGA_DETAILS){
       if(RING_RAGA_DETAILS[ragaName].thaat && RING_RAGA_DETAILS[ragaName].thaat.toLowerCase()===thaatName.toLowerCase()){
-        ring_selectRaga(ragaName);
+        targetRaga = ragaName;
         break;
       }
       if(RING_RAGA_DETAILS[ragaName].effective_thaat && RING_RAGA_DETAILS[ragaName].effective_thaat.toLowerCase()===thaatName.toLowerCase()){
-        ring_selectRaga(ragaName);
+        targetRaga = ragaName;
         break;
       }
     }
   }
+  if(targetRaga){
+    ring_selectRaga(targetRaga);
+    ring_focusAndZoomRaga(targetRaga);
+  } else {
+    if(typeof ring_resetZoomPan==='function'){ ring_resetZoomPan(); }
+  }
+  if (typeof updateViewToolsUI === 'function') updateViewToolsUI();
   document.getElementById('ring-view').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
