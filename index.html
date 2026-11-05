@@ -884,7 +884,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   <h2>Matching Ragas</h2>
   <div class="hint" id="hintText">No notes selected yet. Tap keys above to begin.</div>
   <div class="tabs">
-    <div class="tab" data-tab="raga">Ragas</div>
+    <div class="tab active" data-tab="raga">Ragas</div>
     <div class="tab" data-tab="thaat">Thaats</div>
   </div>
   <div class="count" id="count"></div>
@@ -951,7 +951,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 <div id="ring-view" style="display: none;">
 
 <!-- Compact Hindustani Swara Keyboard for Raga Ring -->
-<div class="rr-kb-panel" style="display: none;">
+<div class="rr-kb-panel" style="display: block;">
   <div class="rr-kb-achala">Sa</div>
   <div class="rr-kb-row">
     <button type="button" class="rr-kb-btn" data-vec-idx="1" data-swara="re">re</button>
@@ -963,7 +963,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   </div>
   <div class="rr-kb-row">
     <button type="button" class="rr-kb-btn" data-vec-idx="5" data-swara="ma">ma</button>
-    <button type="button" class="rr-kb-btn" data-vec-idx="6" data-swara="Ma">Ma</button>
+    <button type="button" class="rr-kb-btn active" data-vec-idx="6" data-swara="Ma">Ma</button>
   </div>
   <div class="rr-kb-achala">Pa</div>
   <div class="rr-kb-row">
@@ -979,7 +979,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
     <button type="button" class="rr-kb-search-btn" id="rrKbSearchBtn">Search By Swara</button>
     <button type="button" class="rr-kb-reset-btn" id="rrKbResetBtn">Clear</button>
   </div>
-  <div class="rr-kb-status" id="rrKbStatus">Tap swaras to highlight ragas on Ring</div>
+  <div class="rr-kb-status" id="rrKbStatus">23 ragas highlighted in BOLD RED</div>
 </div>
 
 <div id="ring-container">
@@ -1076,8 +1076,8 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 
 
 <footer>
-  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 591 songs · Song edits saved on this device</span>
-  <span class="last-updated">Last Updated: November 4, 2026</span>
+  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 605 songs · Song edits saved on this device</span>
+  <span class="last-updated">Last Updated: November 5, 2026</span>
 </footer>
 </div>
 
@@ -3050,6 +3050,18 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Ajit Kadkade",
       "md": ""
+    },
+    {
+      "song": "Awargi - yeh dil ye pagal di mera",
+      "film": "Ghazal",
+      "singer": "Ghulam Ali",
+      "md": ""
+    },
+    {
+      "song": "Ab ke hum bichhde to",
+      "film": "Ghazal",
+      "singer": "Mehdi Hasan",
+      "md": ""
     }
   ],
   "Bhatiyar": [
@@ -3364,6 +3376,18 @@ var SONGS_BASE = {
       "film": "Geet Ramayan",
       "singer": "Sudheer Phadke",
       "md": "Sudheer Phadke"
+    },
+    {
+      "song": "Runujhunu runujhunu re bhramara",
+      "film": "Bhajan",
+      "singer": "Lata Mangeshkar",
+      "md": "Hridaynath Mangeshkar"
+    },
+    {
+      "song": "Duniya kisi ke pyar mein",
+      "film": "Ghazal",
+      "singer": "Mehdi Hasan",
+      "md": ""
     }
   ],
   "Bibhas": [
@@ -3802,6 +3826,18 @@ var SONGS_BASE = {
       "film": "Ek Sapera Ek Lutera",
       "singer": "Mohammed Rafi",
       "md": "Usha Khanna"
+    },
+    {
+      "song": "Hungama hai kyu barpa",
+      "film": "",
+      "singer": "Ghulam Ali",
+      "md": ""
+    },
+    {
+      "song": "Ku-ba-ku phail gayi baat",
+      "film": "Ghazal",
+      "singer": "Mehdi Hasan",
+      "md": ""
     }
   ],
   "Des": [
@@ -4268,6 +4304,18 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Mohammed Rafi",
       "md": ""
+    },
+    {
+      "song": "Gulo mein rang bhare",
+      "film": "Ghazal",
+      "singer": "Mehdi Hasan",
+      "md": ""
+    },
+    {
+      "song": "Aaye kuchh abr",
+      "film": "Ghazal",
+      "singer": "Runa Laila",
+      "md": ""
     }
   ],
   "Jog": [
@@ -4356,6 +4404,12 @@ var SONGS_BASE = {
       "film": "Sujata",
       "singer": "Talat Mahmood",
       "md": "S.D.Burman"
+    },
+    {
+      "song": "Chupke chupke raat din",
+      "film": "",
+      "singer": "Ghulam Ali",
+      "md": ""
     }
   ],
   "Kalavati": [
@@ -4662,6 +4716,12 @@ var SONGS_BASE = {
       "film": "Bombay",
       "singer": "Chitra",
       "md": "A.R.Rehman"
+    },
+    {
+      "song": "Dil mein ek lahar si uthi hai",
+      "film": "Ghazal",
+      "singer": "Ghulam Ali",
+      "md": ""
     }
   ],
   "Lalit": [
@@ -4700,6 +4760,12 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Jagjit Singh",
       "md": ""
+    },
+    {
+      "song": "Sone do",
+      "film": "Citylights",
+      "singer": "Arijit Singh",
+      "md": "Jeet Ganguly"
     }
   ],
   "Maand": [
@@ -5626,6 +5692,12 @@ var SONGS_BASE = {
       "film": "Aah",
       "singer": "Lata Mangeshkar",
       "md": "Shankar Jaikishan"
+    },
+    {
+      "song": "Tum itna jo muskura rahe ho",
+      "film": "Arth",
+      "singer": "Jagjit Singh",
+      "md": "Jagjit Singh"
     }
   ],
   "Sohni": [
@@ -5936,6 +6008,18 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Lata Mangeshkar",
       "md": "Vasant Prabhu"
+    },
+    {
+      "song": "Devagharche dnyat kunala",
+      "film": "",
+      "singer": "Jitendra Abhishekhi",
+      "md": "Jitendra Abhishekhi"
+    },
+    {
+      "song": "Baat karni mujhe mushkil",
+      "film": "Ghazal",
+      "singer": "Runa Laila",
+      "md": ""
     }
   ],
   "Yaman Kalyan": [
@@ -9515,6 +9599,7 @@ document.getElementById('saveHtmlBtn').addEventListener('click', function() {
 
 buildRing();
 </script>
+
 
 
 
