@@ -836,7 +836,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
     <option value="349.23">F4 (Safed 4Standard)</option>
     <option value="369.99">F#4 (Kali 3 Standard)</option>
   </select>
-  <button type="button" id="toggleViewToolsBtn" class="pitch-toggle-btn">🛠️ Admin Tools ▾</button>
+  <button type="button" id="toggleViewToolsBtn" class="pitch-toggle-btn active">🛠️ Admin Tools ▴</button>
 </div>
 <div id="finder-view" style="display: block;">
 <header class="top">
@@ -859,9 +859,9 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   <div class="controls">
     <button class="btn" id="randomBtn">Pick a random raga</button>
     <button class="btn" id="resetBtn">Clear all</button>
-    <button class="btn" id="exportBtn">Export to Excel</button>
-    <button class="btn" id="reviewChangesBtn">Review &amp; Approve Changes</button>
-    <button class="btn" id="saveHtmlBtn" style="border-color:#2e7d32;color:#2e7d32;font-weight:bold;">Save to HTML File</button>
+    <button class="btn" id="exportBtn" style="display: inline-block;">Export to Excel</button>
+    <button class="btn" id="reviewChangesBtn" style="display: inline-block;">Review &amp; Approve Changes</button>
+    <button class="btn" id="saveHtmlBtn" style="border-color: rgb(46, 125, 50); color: rgb(46, 125, 50); font-weight: bold; display: inline-block;">Save to HTML File</button>
   </div>
   <div class="lookup-row">
     <input type="text" id="ragaInput" placeholder="Type a raga name..." autocomplete="off" autocapitalize="none" autocorrect="off">
@@ -903,7 +903,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
   </div>
 
   <!-- Compact Carnatic Swara Keyboard -->
-  <div class="mw-kb-panel">
+  <div class="mw-kb-panel" style="display: none;">
     <div class="mw-kb-achala">S</div>
     <div class="mw-kb-row">
       <button type="button" class="mw-kb-btn" data-fam="R" data-swara="R1">R₁</button>
@@ -951,7 +951,7 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 <div id="ring-view" style="display: none;">
 
 <!-- Compact Hindustani Swara Keyboard for Raga Ring -->
-<div class="rr-kb-panel">
+<div class="rr-kb-panel" style="display: none;">
   <div class="rr-kb-achala">Sa</div>
   <div class="rr-kb-row">
     <button type="button" class="rr-kb-btn" data-vec-idx="1" data-swara="re">re</button>
@@ -1076,8 +1076,8 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 
 
 <footer>
-  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 582 songs · Song edits saved on this device</span>
-  <span class="last-updated">Last Updated: October 31, 2026</span>
+  <span>Raga-Thaat Matrix · 10 thaats, 75 ragas, 591 songs · Song edits saved on this device</span>
+  <span class="last-updated">Last Updated: November 4, 2026</span>
 </footer>
 </div>
 
@@ -1149,7 +1149,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","ma","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,1,0,1,1,0,0,1],
     "description": "Raag Bhairav is often referred to as the king of morning Raags. It produces a rich atmosphere. The Rishabh and Dhaivat used here are oscillating which is strongly recommended in this Raag. Rishabh and Dhaivat Komal. Rest All Shuddha Swaras.",
-    "carnatic_reason":"Despite sharing the identical note pool with Kalingada and Mayamalavagowla, the performance grammar of pure Bhairav is highly unique. It requires heavy, slow, microtonal oscillations (Andolan) on the flat 2nd (Komal Re) and flat 6th (Komal Dha). Carnatic Mayamalavagowla utilizes massive Gamakas on these exact same notes, matching the deep structural weight, gravitas, and early-morning devotional energy of Bhairav perfectly."
+    "carnatic_reason": "Despite sharing the identical note pool with Kalingada and Mayamalavagowla, the performance grammar of pure Bhairav is highly unique. It requires heavy, slow, microtonal oscillations (Andolan) on the flat 2nd (Komal Re) and flat 6th (Komal Dha). Carnatic Mayamalavagowla utilizes massive Gamakas on these exact same notes, matching the deep structural weight, gravitas, and early-morning devotional energy of Bhairav perfectly."
   },
   "Bibhas": {
     "name": "Bibhas",
@@ -1166,7 +1166,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Pa","Dha'"],
     "note_vec": [1,1,0,0,1,0,0,1,1,0,0,0],
     "description": "Madhyam and Nishad Varjya. Rishabh and Dhaivat Komal. Rest all Shuddha Swaras.Raag Bibhas comes into existence, by changing Rishabh and Dhaivat Komal in Raag Deshkar. In this Raag, Rishabh and Dhaivat are not oscillating as in Raag Bhairav. This Raag has a rather heavy feel and is perfect for Bhakti Ras.",
-    "carnatic_reason":"The defining aesthetic marker of Bibhas is the interplay between its Komal Re and Komal Dha. Mayamalavaala carries this exact genetic footprint. When you remove the Ma and Ni from Mayamalavagaula, you get the exact scale code of Bauli."
+    "carnatic_reason": "The defining aesthetic marker of Bibhas is the interplay between its Komal Re and Komal Dha. Mayamalavaala carries this exact genetic footprint. When you remove the Ma and Ni from Mayamalavagaula, you get the exact scale code of Bauli."
   },
   "Kalingada": {
     "name": "Kalingada",
@@ -1183,7 +1183,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,1,0,1,1,0,0,1],
     "description": "Komal Rishabh and Dhaivat. Rest all shuddha swaras. While Kalingada shares the same notes as the parent raga Bhairav, Bhairav features slow oscialltion on the rishabh and dhaivat swaras, whereas Kalingada moves with quicker execution to make it more suitable for lighter genres.",
-    "carnatic_reason":"Kalingada belongs strictly to the Bhairav Thaat. It utilizes all seven notes in a straightforward, linear, heptatonic (Sampoorna) manner.The primary difference between Kalingada and grand Bhairav is behavioral: Kalingada avoids heavy oscillations and is sung with crisp, steady notes, matching how Mayamalavagowla is taught to beginners in Carnatic music."
+    "carnatic_reason": "Kalingada belongs strictly to the Bhairav Thaat. It utilizes all seven notes in a straightforward, linear, heptatonic (Sampoorna) manner.The primary difference between Kalingada and grand Bhairav is behavioral: Kalingada avoids heavy oscillations and is sung with crisp, steady notes, matching how Mayamalavagowla is taught to beginners in Carnatic music."
   },
   "Nat Bhairav": {
     "name": "Nat bhairav",
@@ -1200,7 +1200,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha'","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,1,0,0,1],
     "description": "Dhaivat Komal. Rest all Shuddha Swaras.Raag Nat Bhairav is a combination of Raag Nut in Poorvang and Raag Bhairav in Uttarang.Popularized by Pt. Ravishankar.",
-    "carnatic_reason":"Nat Bhairav is a beautiful hybrid raga that blends the bright lower half (Poorvanga) of Raag Nat with the deeply devotional upper half (Uttaranga) of Raag Bhairav. Its Sampoorna scale is an exact match for melakarta Sarasangi."
+    "carnatic_reason": "Nat Bhairav is a beautiful hybrid raga that blends the bright lower half (Poorvanga) of Raag Nat with the deeply devotional upper half (Uttaranga) of Raag Bhairav. Its Sampoorna scale is an exact match for melakarta Sarasangi."
   },
   "Basant": {
     "name": "Basant",
@@ -1217,7 +1217,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,0,1,1,1,0,0,1],
     "description": "Rishabh and Pancham varja in Aaroh. Rishabh and Dhaivat Komal. Madhyam Teevra. Rest All Shuddha Swaras. Raag Basant is a Raag for Spring (Basant) season. It is rendered mostly in Madhya and Tar Saptaks.",
-    "carnatic_reason":"Structurally, its notes align with Suryakantam. Basant shares a deep historical and nominal connection with the Carnatic raga Vasanta. However, they have drifted in performance: Carnatic Vasanta completely drops the Pancham (P) and leans on a flat 6th (D₁) under the 15th Melakarta family, while Hindustani Basant retains the P and uses the dual-Madhyam technique to portray the colorful, fluttering spirit of spring"
+    "carnatic_reason": "Structurally, its notes align with Suryakantam. Basant shares a deep historical and nominal connection with the Carnatic raga Vasanta. However, they have drifted in performance: Carnatic Vasanta completely drops the Pancham (P) and leans on a flat 6th (D₁) under the 15th Melakarta family, while Hindustani Basant retains the P and uses the dual-Madhyam technique to portray the colorful, fluttering spirit of spring"
   },
   "Lalit": {
     "name": "Lalit",
@@ -1234,7 +1234,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma","Ma|","Dha","Ni"],
     "note_vec": [1,1,0,0,1,1,1,0,0,1,0,1],
     "description": "Pancham varja. Rishabh and Dhaivat Komal. Both Madhyam. Rest all Shuddha Swaras. Raag Lalit is a sweet mellifluous combination of both Madhyams (Shuddha and Teevra), requiring critical attention to the Komal Dhaivat employed. This note is a shruti in between Shuddha Dhaivat and commonly played Komal Dhaivat of Raag Todi.",
-    "carnatic_reason":"Because its baseline scale combines a flat 2nd (R₁) and a major 3rd (G₃), it anchors to the Suryakantam Thaat family (17th Melakarta) if using a major 6th, or Mayamalavagowla (15th) if using a flat 6th. Because the intentional, chromatic pairing of M₁ and M₂ directly next to each other violates standard Melakarta rules, Carnatic musicians treat it under its own adopted name (Bhashanga Janya) or microtonally shift notes to mimic Lalit's deeply melancholic dawn aesthetic."
+    "carnatic_reason": "Because its baseline scale combines a flat 2nd (R₁) and a major 3rd (G₃), it anchors to the Suryakantam Thaat family (17th Melakarta) if using a major 6th, or Mayamalavagowla (15th) if using a flat 6th. Because the intentional, chromatic pairing of M₁ and M₂ directly next to each other violates standard Melakarta rules, Carnatic musicians treat it under its own adopted name (Bhashanga Janya) or microtonally shift notes to mimic Lalit's deeply melancholic dawn aesthetic."
   },
   "Poorvi": {
     "name": "Poorvi",
@@ -1251,7 +1251,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma","Ma|","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,1,1,1,1,0,0,1],
     "description": "Rishabh and Dhaivat Komal. Both Madhyams. Rest all Shuddha Swaras. In this Raag Gandhar is very prominent and is a Vadi and Nyas Swar. This Raag creates an heavy atmosphere full of Karun Ras (Sadness).",
-    "carnatic_reason":"The sampoorna scale for Poorvi perfectly satisfies the formula for the 51st Melakarta, Kamavardhini. Every single note lines up in a flawless 1-to-1 frequency profile."
+    "carnatic_reason": "The sampoorna scale for Poorvi perfectly satisfies the formula for the 51st Melakarta, Kamavardhini. Every single note lines up in a flawless 1-to-1 frequency profile."
   },
   "Puriya Dhanashri": {
     "name": "Puriya Dhanashri",
@@ -1268,7 +1268,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Pa","Dha'","Ni"],
     "note_vec": [1,1,0,0,1,0,1,1,1,0,0,1],
     "description": "Rishabh and Dhaivat Komal. Madhyam Teevra. Rest all Shuddha Swaras.It is very close to Raag Poorvi, which employs both Madhyams.",
-    "carnatic_reason":"Because it shares this exact pitch footprint, its parent Melakarta is  Kamavardhini. The core reason it serves as a closer functional equivalent to live Carnatic concert renderings of Pantuvarali than Raag Poorvi is its treatment of Madhyam: Raag Poorvi frequently pairs its sharp Ma with a subtle, passing natural Shuddha Ma. Puriya Dhanashri strictly isolates the Teevra Madhyam and anchors heavily on Pancham, mirroring the exact linear execution and intense, yearning depth of Pantuvarali."
+    "carnatic_reason": "Because it shares this exact pitch footprint, its parent Melakarta is  Kamavardhini. The core reason it serves as a closer functional equivalent to live Carnatic concert renderings of Pantuvarali than Raag Poorvi is its treatment of Madhyam: Raag Poorvi frequently pairs its sharp Ma with a subtle, passing natural Shuddha Ma. Puriya Dhanashri strictly isolates the Teevra Madhyam and anchors heavily on Pancham, mirroring the exact linear execution and intense, yearning depth of Pantuvarali."
   },
   "Bhatiyar": {
     "name": "Bhatiyar",
@@ -1285,7 +1285,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,1,0,0,1,1,1,1,0,1,0,1],
     "description": "Both Madhyams, Rishabh Komal. Rest all Shuddha Swaras. Shows some glimpses of Raag Mand.",
-    "carnatic_reason":" Because its underlying Thaat baseline is rooted in Marwa, it mathematically tracks back to the 53rd Melakarta, Gamanashrama. However, because it introduces both Madhyams, Carnatic musicology often points to specialized, asymmetric Janya forms. When performed in its structured, linear heptatonic Bhatiyari Todi format, it aligns cleanly with the pitch ratios of Kokilapriya."
+    "carnatic_reason": " Because its underlying Thaat baseline is rooted in Marwa, it mathematically tracks back to the 53rd Melakarta, Gamanashrama. However, because it introduces both Madhyams, Carnatic musicology often points to specialized, asymmetric Janya forms. When performed in its structured, linear heptatonic Bhatiyari Todi format, it aligns cleanly with the pitch ratios of Kokilapriya."
   },
   "Marva": {
     "name": "Marva",
@@ -1302,7 +1302,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Dha","Ni"],
     "note_vec": [1,1,0,0,1,0,1,0,0,1,0,1],
     "description": "Pancham varja. Rishabh Komal, Madhyam Teevra. Rest all Shuddha Swaras.Raag Puriya is similar to Raag Marwa. But In Raag Puriya, Gandhar and Nishad are more emphasized. ",
-    "carnatic_reason":"Marva shares the exact same static pitch intervals as Sohni. And as a result, it maps directly onto the parent melakarta Gamanashrama. The critical reason Marwa is treated distinctly from Sohni comes down to musical behavior: Marwa places massive weight on the Komal Re and shuddha Dha, avoiding the higher-octave resolutions of Sohni."
+    "carnatic_reason": "Marva shares the exact same static pitch intervals as Sohni. And as a result, it maps directly onto the parent melakarta Gamanashrama. The critical reason Marwa is treated distinctly from Sohni comes down to musical behavior: Marwa places massive weight on the Komal Re and shuddha Dha, avoiding the higher-octave resolutions of Sohni."
   },
   "Puriya": {
     "name": "Puriya",
@@ -1319,7 +1319,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Dha","Ni"],
     "note_vec": [1,1,0,0,1,0,1,0,0,1,0,1],
     "description": "Pancham varja. Rishabh Komal, Madhyam Teevra. Rest all Shuddha Swaras.Raag Puriya is often referred to as king of night Raags. Its set of notes are exactly like Raag Marwa. However, in this Raag, Gandhar and Nishad are Vadi and Samvadi respectively and are also Nyas Swars. ",
-    "carnatic_reason":"Mathematically, its parent classification remains anchored to melakarta Gamanashrama. The reason it is a distinct entity is its octave focus: while Marwa anchors on Re/Dha and Sohni leaps to the upper register, Puriya stays strictly in the lower/middle octave registers (Poorvanga-pradhan), making its primary king notes the Gandhar (Ga) and Nishad (Ni). It maps to the same structural footprint in the South but uses a deeply contemplative, low-register delivery."
+    "carnatic_reason": "Mathematically, its parent classification remains anchored to melakarta Gamanashrama. The reason it is a distinct entity is its octave focus: while Marwa anchors on Re/Dha and Sohni leaps to the upper register, Puriya stays strictly in the lower/middle octave registers (Poorvanga-pradhan), making its primary king notes the Gandhar (Ga) and Nishad (Ni). It maps to the same structural footprint in the South but uses a deeply contemplative, low-register delivery."
   },
   "Puriya Kalyan": {
     "name": "Puriya Kalyan",
@@ -1336,7 +1336,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,1,0,0,1,0,1,1,0,1,0,1],
     "description": "Rishabh Komal, Madhyam Teevra. Rest all Shuddha Swaras. Raag Puriya Kalyan is a fine blend of Raag Yaman in Uttarang and Raag Puriya in Poorvang.",
-    "carnatic_reason":"The Hindustani Raag Puriya Kalyan maps directly to the Carnatic raga Gamanashrama. Under the Carnatic Melakarta classification system, it is the 53rd Melakarta parent raga itself."
+    "carnatic_reason": "The Hindustani Raag Puriya Kalyan maps directly to the Carnatic raga Gamanashrama. Under the Carnatic Melakarta classification system, it is the 53rd Melakarta parent raga itself."
   },
   "Sohni": {
     "name": "Sohni",
@@ -1353,7 +1353,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga","Ma|","Dha","Ni"],
     "note_vec": [1,1,0,0,1,0,1,0,0,1,0,1],
     "description": "Rishabh and Pancham varja in Aaroh. Pancham varja in Avroh. Rishabh Komal, Madhyam Teevra. Rest all Shuddha Swaras. The swar set of Sohani is like those of Raag Marwa and Raag Puriya except Rishabh is varja in Aaroh.",
-    "carnatic_reason":"A scale built on the specific notes of Sohni mathematically belongs to Gamanashrama. When you drop the Pa completely from this parent pool, it forms the exact structural scale of Carnatic Hamsanandi (S R₁ G₃ M₂ D₂ N₃ S'), making them a flawless match."
+    "carnatic_reason": "A scale built on the specific notes of Sohni mathematically belongs to Gamanashrama. When you drop the Pa completely from this parent pool, it forms the exact structural scale of Carnatic Hamsanandi (S R₁ G₃ M₂ D₂ N₃ S'), making them a flawless match."
   },
   "Bhoopali": {
     "name": "Bhoopali",
@@ -1370,7 +1370,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Pa","Dha"],
     "note_vec": [1,0,1,0,1,0,0,1,0,1,0,0],
     "description": "Bhoopali belongs to Kalyan thaat because of its uchcharan or raag-anga. Especially if you compare it with Shuddha Kalyan, which has the same aaroh as Bhoopali but uses Ma in the avroh. On the pure basis of shuddha swaras, this raga could belong to Bilaval thaat.",
-    "carnatic_reason":"In the Carnatic system, because both Bhupali and Deshkar map to the same mathematical notes, they both boil down to the singular parentage of the 29th Melakarta."
+    "carnatic_reason": "In the Carnatic system, because both Bhupali and Deshkar map to the same mathematical notes, they both boil down to the singular parentage of the 29th Melakarta."
   },
   "Chhayanat": {
     "name": "Chhayanat",
@@ -1387,7 +1387,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "The nearby Raags are Kedar, Kamod and Hameer. This Raag creates a heavy atmosphere.",
-    "carnatic_reason":"Hindustani Raag Chhayanat is famously a heavy, aggressive, and highly intricate Jod (hybrid) raga. It does not move in a straight line. Because of its specific phrase behaviors, it aligns beautifully with Chhamir Kalyani rather than the gentle Yamuna Kalyani. Chhamir Kalyani is also reffered to as the Carnatic name of Hameer Kalyani. Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
+    "carnatic_reason": "Hindustani Raag Chhayanat is famously a heavy, aggressive, and highly intricate Jod (hybrid) raga. It does not move in a straight line. Because of its specific phrase behaviors, it aligns beautifully with Chhamir Kalyani rather than the gentle Yamuna Kalyani. Chhamir Kalyani is also reffered to as the Carnatic name of Hameer Kalyani. Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
   },
   "Hameer": {
     "name": "Hameer",
@@ -1404,7 +1404,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,0,0,1,1,1,1,0,1,0,1],
     "description": "Powerful raga eliciting the veer ras. Usage of meend and khatka while arriving from Nishad to Dhaivat adds to its beauty.",
-    "carnatic_reason":"Maps cleanly to Hamir Kalyani. Confusion arises because Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
+    "carnatic_reason": "Maps cleanly to Hamir Kalyani. Confusion arises because Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
   },
   "Hindol": {
     "name": "Hindol",
@@ -1421,7 +1421,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Ma|","Dha","Ni"],
     "note_vec": [1,0,0,0,1,0,1,0,0,1,0,1],
     "description": "Raag Hindol is one of the unique ragas which does not use Pancham. Also omits Re completely. Elicits Veer ras. Literally transalated means swing and refers to the gamaks involving Teevra Ma and Dha in the raag chalan.",
-    "carnatic_reason":"Cleanly maps to Sunadavinodini. The defining, bright sonic signature of Hindustani Hindol comes from its use of a sharp 4th (Teevra Madhyam) alongside all natural/major intervals. Carnatic Sunadavinodini mirrors this exactly by using Prati Madhyama (M₂) coupled with major intervals for the 3rd (Antara Gandhara / G₃), 6th (Chatusruti Dhaivata / D₂), and 7th (Kakali Nishada / N₃). Do not confuse with carnatic raag Hindolam - which uses completely opposite swaras and maps to Hindustani raag Malkauns instead. For example Hindolam uses shuddha ma ( versus Hindol's teevra ma ), komal ga ( versus Hindo;s shuddha ga), komal dha ( versus Hindol's shuddha ga), and komal ni ( versus Hindol's shuddha ni)."
+    "carnatic_reason": "Cleanly maps to Sunadavinodini. The defining, bright sonic signature of Hindustani Hindol comes from its use of a sharp 4th (Teevra Madhyam) alongside all natural/major intervals. Carnatic Sunadavinodini mirrors this exactly by using Prati Madhyama (M₂) coupled with major intervals for the 3rd (Antara Gandhara / G₃), 6th (Chatusruti Dhaivata / D₂), and 7th (Kakali Nishada / N₃). Do not confuse with carnatic raag Hindolam - which uses completely opposite swaras and maps to Hindustani raag Malkauns instead. For example Hindolam uses shuddha ma ( versus Hindol's teevra ma ), komal ga ( versus Hindo;s shuddha ga), komal dha ( versus Hindol's shuddha ga), and komal ni ( versus Hindol's shuddha ni)."
   },
   "Kamod": {
     "name": "Kamod",
@@ -1438,7 +1438,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "Both Madhyams. Rest all Shuddha Swaras. Raag Kamod, not to be confused with Tilakkamod is unique raag with vakra ang. One can see clear shadows of Malhar ang, Hameer ang and Kalyan ang together with the glimpse of Kedar and Chhayanut.",
-    "carnatic_reason":"Carnatic Hamir Kalyani is also a Bhashanga raga, meaning it uses both Madhyamas (M₁ and M₂). It is a direct adaptation of these North Indian Kalyan-based structures. Sometimes Kamod gets associated to raag Sunadavinodini. However, Carnatic Sunadavinodini, on the other hand, is a strict pentatonic (Audava) scale (S G₃ M₂ D₂ N₃ Ṡ). It has no Rishabham (R) and no Panchamam, hence this mapping would be incorrect.Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
+    "carnatic_reason": "Carnatic Hamir Kalyani is also a Bhashanga raga, meaning it uses both Madhyamas (M₁ and M₂). It is a direct adaptation of these North Indian Kalyan-based structures. Sometimes Kamod gets associated to raag Sunadavinodini. However, Carnatic Sunadavinodini, on the other hand, is a strict pentatonic (Audava) scale (S G₃ M₂ D₂ N₃ Ṡ). It has no Rishabham (R) and no Panchamam, hence this mapping would be incorrect.Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
   },
   "Kedar": {
     "name": "Kedar",
@@ -1455,7 +1455,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "It is generally accepted that there is much thermal energy in Raag Kedar and hence it is regarded as the Raagini of Raag Deepak. Kedar is famous for its intricate use of both Madhyams, with a heavy emphasis on Shuddha Madhyam (Ma) and a highly complex, zigzag (Vakra) movement.",
-    "carnatic_reason":"Hamir Kalyani mirrors this exact nature. It uses Prati Madhyama (M₂) as its base but introduces Shuddha Madhyama (M₁) in specific downward, oscillating phrases to capture Kedar's signature, playful character.Under the Melakarta system, it is classified as a derivative (Janya) of the 65th Melakarta, MechaKalyani.Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
+    "carnatic_reason": "Hamir Kalyani mirrors this exact nature. It uses Prati Madhyama (M₂) as its base but introduces Shuddha Madhyama (M₁) in specific downward, oscillating phrases to capture Kedar's signature, playful character.Under the Melakarta system, it is classified as a derivative (Janya) of the 65th Melakarta, MechaKalyani.Hamir Kalyani is very versatile raga. When you emphasize Shuddha Ma and drop Ga, it acts like Kedar, when you strike a bold Dha in the uttarang, it acts like Hameer, when you perform sweeping glides between Pa and Re, it acts like Chhayanat, and when you use it in a specific winding way with Ga, it acts like Kamod."
   },
   "Maru Bihag": {
     "name": "Maru Bihag",
@@ -1472,7 +1472,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Ma|","Pa","Ni"],
     "note_vec": [1,0,1,0,1,0,1,1,0,1,0,1],
     "description": "\tRishabh and Dhaivat Varjya in Aaroh. Madhyam Teevra (with rare use of Madhyam Shuddha). Rest all Shuddha Swaras.",
-    "carnatic_reason":"In Carnatic music, the 65th Melakarta, MechaKalyani, serves as the architectural foundation for all ragas dominated by the sharp 4th interval (Prati Madhyama / Teevra Ma) combined with a natural/major 3rd and 7th. Because Maru Bihag's core musical movements and key descending phrases are anchored heavily in the sharp 4th framework, it structurally belongs as a Bhashanga Janya raga of MechaKalyani."
+    "carnatic_reason": "In Carnatic music, the 65th Melakarta, MechaKalyani, serves as the architectural foundation for all ragas dominated by the sharp 4th interval (Prati Madhyama / Teevra Ma) combined with a natural/major 3rd and 7th. Because Maru Bihag's core musical movements and key descending phrases are anchored heavily in the sharp 4th framework, it structurally belongs as a Bhashanga Janya raga of MechaKalyani."
   },
   "Shuddha Kalyan": {
     "name": "Shuddha Kalyan",
@@ -1488,8 +1488,8 @@ var RING_RAGA_DETAILS = {
     "mk": "Mechakalyani",
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
-    "description":"The ascent of this raga is similar to that for Bhoopali and the descent is similar to the descent of Yaman",
-    "carnatic_reason":"Both Shuddha Kalyan and Mohana Kalyani are symmetrical, hybrid ragas constructed by blending the exact same two foundational ragas from their respective traditions, i.e the ascent and descent. Because the descent of Mohana Kalyani utilizes all 7 notes of the 65th Melakarta, MechaKalyani (which corresponds directly to Hindustani Kalyan Thaat), it is classified as a Janya (derivative) raga of MechaKalyani."
+    "description": "The ascent of this raga is similar to that for Bhoopali and the descent is similar to the descent of Yaman",
+    "carnatic_reason": "Both Shuddha Kalyan and Mohana Kalyani are symmetrical, hybrid ragas constructed by blending the exact same two foundational ragas from their respective traditions, i.e the ascent and descent. Because the descent of Mohana Kalyani utilizes all 7 notes of the 65th Melakarta, MechaKalyani (which corresponds directly to Hindustani Kalyan Thaat), it is classified as a Janya (derivative) raga of MechaKalyani."
   },
   "Yaman": {
     "name": "Yaman",
@@ -1506,7 +1506,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,0,1,1,0,1,0,1],
     "description": "There is a lot of confusion between Yaman, Yaman Kalyan and Kalyan. At some point in time, raag Yaman used to be called Raag Kalyan and it is believed that at the time of the Mughals this name change occurred. Yaman uses only the teevra Ma, while Yaman Kalyan, while maintaining the same aaroh, uses both Ma in the avroh.",
-    "carnatic_reason":"The Carnatic equivalent of a pure Raag Yaman is the legendary Kalyani (also known as MechaKalyani). Under the Melakarta system, it is the 65th Melakarta raga itself."
+    "carnatic_reason": "The Carnatic equivalent of a pure Raag Yaman is the legendary Kalyani (also known as MechaKalyani). Under the Melakarta system, it is the 65th Melakarta raga itself."
   },
   "Yaman Kalyan": {
     "name": "Yaman Kalyan",
@@ -1523,7 +1523,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,1,1,0,1,0,1],
     "description": "The defining feature of Yaman Kalyan is the tactical use of both Ma, shuddha in the avroh, and teevra in the avroha.",
-    "carnatic_reason":"Yamuna Kalyani mirrors this exact behavior of Yaman Kalyan by introducing Suddha Madhyama (M₁) into a Prati Madhyama (M₂) structural layout.• Because its base structure uses all the notes of the 65th Melakarta (MechaKalyani), Carnatic music classifies Yamuna Kalyani as a Bhashanga Janya Raga—a derivative scale that introduces an anya swara - which is M₁ - outside its parent scale."
+    "carnatic_reason": "Yamuna Kalyani mirrors this exact behavior of Yaman Kalyan by introducing Suddha Madhyama (M₁) into a Prati Madhyama (M₂) structural layout.• Because its base structure uses all the notes of the 65th Melakarta (MechaKalyani), Carnatic music classifies Yamuna Kalyani as a Bhashanga Janya Raga—a derivative scale that introduces an anya swara - which is M₁ - outside its parent scale."
   },
   "Alhaiyya Bilawal": {
     "name": "Alhaiyya Bilawal",
@@ -1591,7 +1591,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Pa","Dha"],
     "note_vec": [1,0,1,0,1,0,0,1,0,1,0,0],
     "description": "Raag Deshkar is similar to Raag Bhoopali but it is different in the way it is sung. The important note here is Shuddha Dhaivat, which is very strong in Deshkar.",
-    "carnatic_reason":"It is a strict Upanga Janya Raga, staying completely inside the parent scale without borrowing any outside notes. Melodically and structurally, its scale configuration is the exact audio equivalent of the massive Carnatic raga Mohanam.In the Carnatic system, because both Bhupali and Deshkar map to the same mathematical notes, they both boil down to the singular parentage of the 29th Melakarta."
+    "carnatic_reason": "It is a strict Upanga Janya Raga, staying completely inside the parent scale without borrowing any outside notes. Melodically and structurally, its scale configuration is the exact audio equivalent of the massive Carnatic raga Mohanam.In the Carnatic system, because both Bhupali and Deshkar map to the same mathematical notes, they both boil down to the singular parentage of the 29th Melakarta."
   },
   "Durga": {
     "name": "Durga",
@@ -1608,7 +1608,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ma","Pa","Dha"],
     "note_vec": [1,0,1,0,0,1,0,1,0,1,0,0],
     "description": "Evokes virah, shringar as well as bhakti ras.",
-    "carnatic_reason":"Durga requires using R2, M1,P and D2. Under the rules of the Modern 72-Melakarta chart, any parent scale that utilizes those 4 notes could be the assigned Melakarta scale - Kharaharapriya uses G2 and N2, Harikhamboji uses G3 and N2, Sankarabharanam whcih uses G3 and N3, or Gourimanohari which uses G2 and N3. However, it is assigned to Kharaharapriya because Kharaharapriya serves as the structural foundation for symmetrical, natural interval structures that yield clean, balanced pentatonic shifts -Graha Bhedam."
+    "carnatic_reason": "Durga requires using R2, M1,P and D2. Under the rules of the Modern 72-Melakarta chart, any parent scale that utilizes those 4 notes could be the assigned Melakarta scale - Kharaharapriya uses G2 and N2, Harikhamboji uses G3 and N2, Sankarabharanam whcih uses G3 and N3, or Gourimanohari which uses G2 and N3. However, it is assigned to Kharaharapriya because Kharaharapriya serves as the structural foundation for symmetrical, natural interval structures that yield clean, balanced pentatonic shifts -Graha Bhedam."
   },
   "Hamsadhwani": {
     "name": "Hamsadhwani",
@@ -1659,7 +1659,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","ma","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,0,1],
     "description": "Mostly light entertainment types dominate the compositions. Bhajans and Ghazals are aptly composed in this Raag. The basic format belongs to the folk tune of Rajasthan.",
-    "carnatic_reason":"Maand is classified as a Bhashanga Janya Raga of Sankarabharanam because it relies on a bright, natural major scale structure but occasionally borrows decorative foreign notes to create its signature, light-classical flavor."
+    "carnatic_reason": "Maand is classified as a Bhashanga Janya Raga of Sankarabharanam because it relies on a bright, natural major scale structure but occasionally borrows decorative foreign notes to create its signature, light-classical flavor."
   },
   "Pahadi": {
     "name": "Pahadi",
@@ -1676,7 +1676,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","ma","Pa","Dha","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,0,1],
     "description": "Raag Pahadi is a light, folk-inspired Hindustani classical raga rooted in the hill music of the Himalayan foothills, evoking a serene and even shringar ras.",
-    "carnatic_reason":" Pahadi is a folk-derived raga meant to evoke the serene, cascading beauty of the mountains. To express this yearning, musicians frequently lower the third and seventh notes into Komal Gandhar (G2) and Komal Nishad (N2) during specific descending, sliding phrases. Because these foreign notes - Anyaswaras -act purely as decorative shades rather than structural pillars, Pahadi retains its primary home under the 29th Melakarta."
+    "carnatic_reason": " Pahadi is a folk-derived raga meant to evoke the serene, cascading beauty of the mountains. To express this yearning, musicians frequently lower the third and seventh notes into Komal Gandhar (G2) and Komal Nishad (N2) during specific descending, sliding phrases. Because these foreign notes - Anyaswaras -act purely as decorative shades rather than structural pillars, Pahadi retains its primary home under the 29th Melakarta."
   },
   "Shankara": {
     "name": "Shankara",
@@ -1710,7 +1710,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,1,1],
     "description": "Gandhar and Dhaivat Varjya in Aaroh. Both Nishads. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Because its structural base requires a natural Ma and a flat Ni in its complete descent, its parent scale is the 28th Melakarta, Harikambhoji. Carnatic music adopted this raga completely under the name Desh. Structurally, its notes align remarkably close to the ancient Carnatic raga Kedagaula, which utilizes the exact same up-and-down structural deletion template, though Desh features a smoother, more glided - Meend-heavy- delivery."
+    "carnatic_reason": "Because its structural base requires a natural Ma and a flat Ni in its complete descent, its parent scale is the 28th Melakarta, Harikambhoji. Carnatic music adopted this raga completely under the name Desh. Structurally, its notes align remarkably close to the ancient Carnatic raga Kedagaula, which utilizes the exact same up-and-down structural deletion template, though Desh features a smoother, more glided - Meend-heavy- delivery."
   },
   "Gara": {
     "name": "Gara",
@@ -1727,7 +1727,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Ga'","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,0,1,1,1,0,1,0,1,1,1],
     "description": "UsesBoth Gandhars. Both Nishads. Rest all Shuddha Swaras.Closest to Raag Jaijaivanti.",
-    "carnatic_reason":"Because it layers alternative types of Ga and Ni dynamically during performance, it matches the exact behavioral paradigm of Carnatic Misra Kapi—a Bhashanga Janya raga of Kharaharapriya that similarly borrows extra notes for aesthetic beauty."
+    "carnatic_reason": "Because it layers alternative types of Ga and Ni dynamically during performance, it matches the exact behavioral paradigm of Carnatic Misra Kapi—a Bhashanga Janya raga of Kharaharapriya that similarly borrows extra notes for aesthetic beauty."
   },
   "Jhinjhoti": {
     "name": "Jhinjhoti",
@@ -1744,7 +1744,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha","Ni'"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,1,0],
     "description": "Raag Jhinjhoti is a light and playful Raag, apt for instrumental music.Nishad varja in Aaroh. Nishad Komal in Avroh. Rest all Shuddha Swaras.",
-    "carnatic_reason":"This exact architecture—particularly the structural emphasis on starting phrases from the lower flat 7th (n D n S R G M G...)—maps perfectly onto Carnatic Chenchurutti. Both ragas are treated as Nishadantya ragas (meaning melodies that traditionally wrap up or peak around the Nishadam note) derived directly from the parent scale Harikambhoji."
+    "carnatic_reason": "This exact architecture—particularly the structural emphasis on starting phrases from the lower flat 7th (n D n S R G M G...)—maps perfectly onto Carnatic Chenchurutti. Both ragas are treated as Nishadantya ragas (meaning melodies that traditionally wrap up or peak around the Nishadam note) derived directly from the parent scale Harikambhoji."
   },
   "Kalavati": {
     "name": "Kalavati",
@@ -1761,7 +1761,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Pa","Dha","Ni'"],
     "note_vec": [1,0,0,0,1,0,0,1,0,1,1,0],
     "description": "Rishabh and Madhyam varja. Nishad Komal. Rest all Shuddha Swar.Close to Bhinna shadja in the notes but heavily different in the chalan. Kalavati emphasizes Pa and Sa, while Bhinna Shadja flips the intensity to Sa and Pa, with some emphasis on Ga. • It heavily highlights the upper half of the scale (Uttaranga-pradhan). It frequently leaps up to the higher octave and loves bright, linear, fast patterns.",
-    "carnatic_reason":"When you cross-reference a scale that has a major Ga, a major Dha, and a flat Ni, it traces directly back to the Khamaj Thaat, which maps to the 28th Melakarta, Harikambhoji. Carnatic Valaji inherits these exact 5 notes, sharing an absolute 1:1 structural and frequency blueprint with Kalavati."
+    "carnatic_reason": "When you cross-reference a scale that has a major Ga, a major Dha, and a flat Ni, it traces directly back to the Khamaj Thaat, which maps to the 28th Melakarta, Harikambhoji. Carnatic Valaji inherits these exact 5 notes, sharing an absolute 1:1 structural and frequency blueprint with Kalavati."
   },
   "Khamaj": {
     "name": "Khamaj",
@@ -1778,7 +1778,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,1,1],
     "description": "Used in light/semi-classical compositions quite frequently. Evokes shringar ras!",
-    "carnatic_reason":"Hindustani Raag Khamaj is the flagship of the Khamaj Thaat, which maps directly to Harikambhoji, the parent Melakarta raag itself."
+    "carnatic_reason": "Hindustani Raag Khamaj is the flagship of the Khamaj Thaat, which maps directly to Harikambhoji, the parent Melakarta raag itself."
   },
   "Rageshri": {
     "name": "Rageshri",
@@ -1795,7 +1795,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","ma","Dha","Ni'"],
     "note_vec": [1,0,1,0,1,1,0,0,0,1,1,0],
     "description": "Rishabh and Pancham Varjya in Aaroh. Pancham Varjya in Avroh. This raga bears a lot of resemblance or comparison with Raag Bageshri. Differences are Rageshri uses shuddha Ga and Pancham is completely varja, while Bageshri uses komal Ga and Pa is used in a vakra fashion. Both belong to different thaats.",
-    "carnatic_reason":"This exact, distinct combination—a scale anchored to a natural Ma and a flat Ni that explicitly skips the Pancham to build lingering tension around the Madhyam (M₁ G₃ M₁ ...)—is the precise definition of Carnatic Natakurinji."
+    "carnatic_reason": "This exact, distinct combination—a scale anchored to a natural Ma and a flat Ni that explicitly skips the Pancham to build lingering tension around the Madhyam (M₁ G₃ M₁ ...)—is the precise definition of Carnatic Natakurinji."
   },
   "Tilakkamod": {
     "name": "Tilakkamod",
@@ -1812,7 +1812,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,1,1],
     "description": "Gandhar and Dhaivat Varjya in Aaroh. Rare use of Komal Nishad in Avroh. Rest all Shuddha Swaras.Though the name of the Raag is Tilak Kamod, this Raag has no similarities to Raag Kamod. The notes of this Raag are similar to those of Raag Des, but the way it is rendered is very different, which creates a completely different atmosphere.",
-    "carnatic_reason":"Tilak Kamod does not have an ancient, native one-to-one Carnatic clone because its structural zigzag maneuvers are hyper-specific to the North. However, musicians map it structurally to Janya variants of Harikambhoji."
+    "carnatic_reason": "Tilak Kamod does not have an ancient, native one-to-one Carnatic clone because its structural zigzag maneuvers are hyper-specific to the North. However, musicians map it structurally to Janya variants of Harikambhoji."
   },
   "Tilang": {
     "name": "Tilang",
@@ -1829,7 +1829,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga","Ma","Pa","Ni'","Ni"],
     "note_vec": [1,0,0,0,1,1,0,1,0,0,1,1],
     "description": "Rishabh and Dhaivat Varjya. Both Nishads. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Because its main framework relies on a natural Ma, a major Ga,and prominently uses the flat Ni to resolve downward, its parent genus is the 28th Melakarta, Harikambhoji."
+    "carnatic_reason": "Because its main framework relies on a natural Ma, a major Ga,and prominently uses the flat Ni to resolve downward, its parent genus is the 28th Melakarta, Harikambhoji."
   },
   "Abhogi": {
     "name": "Abhogi",
@@ -1846,7 +1846,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Dha"],
     "note_vec": [1,0,1,1,0,1,0,0,0,1,0,0],
     "description": "Pancham, Nishad varja. Gandhar Komal. Rest All Shuddha Swaras.",
-    "carnatic_reason":"This is a direct, uncompromised cross-tradition match. Abhogi is a symmetric 5-note pentatonic scale (Audav-Audav) that completely omits Pancham (Pa) and Nishad (Ni).Carnatic music birthed this raga, and it was imported cleanly into the North with zero changes to its grammar."
+    "carnatic_reason": "This is a direct, uncompromised cross-tradition match. Abhogi is a symmetric 5-note pentatonic scale (Audav-Audav) that completely omits Pancham (Pa) and Nishad (Ni).Carnatic music birthed this raga, and it was imported cleanly into the North with zero changes to its grammar."
   },
   "Bageshri": {
     "name": "Bageshri",
@@ -1863,7 +1863,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","ma","Pa","Dha","Ni'"],
     "note_vec": [1,0,0,1,0,1,0,1,0,1,1,0],
     "description": "This raga bears a lot of resemblance or comparison with Raag Rageshri. Differences are Rageshri uses shuddha Ga and Pancham is completely varja, while Bageshri uses komal Ga and Pa is used in a vakra fashion. Both belong to different thaats.",
-    "carnatic_reason":"The key identifying feature of Sriranjani is that it is a 6-note symmetric (Shadava-Shadava) scale that completely deletes the Pancham. Its core structure is strictly: S R₂ G₂ M₁ D₂ N₂ S' → S' N₂ D₂ M₁ G₂ R₂ S.Raag Bageshri functions on the exact same core concept. In its standard classical framework, the Pancham is strictly varja (omitted) in the ascent, and is either completely omitted or hidden as a highly subtle, decorative passing note in a jagged downward curve (Vakra phrasing). "
+    "carnatic_reason": "The key identifying feature of Sriranjani is that it is a 6-note symmetric (Shadava-Shadava) scale that completely deletes the Pancham. Its core structure is strictly: S R₂ G₂ M₁ D₂ N₂ S' → S' N₂ D₂ M₁ G₂ R₂ S.Raag Bageshri functions on the exact same core concept. In its standard classical framework, the Pancham is strictly varja (omitted) in the ascent, and is either completely omitted or hidden as a highly subtle, decorative passing note in a jagged downward curve (Vakra phrasing). "
   },
   "Bahar": {
     "name": "Bahar",
@@ -1880,7 +1880,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","ma","Pa","Dha","ni'","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,1,1],
     "description": "Gandhar varja in aaroh. Dhaivat varja in avroh. Gandhar komal. Both nishads.",
-    "carnatic_reason":"In Carnatic music, the specific aesthetic device of looping around the flat 3rd and flat 7th in a heavy, majestic, Western-sounding curve is preserved inside the raga Kanada (which also uses a distinct Ga, Ni, architecture with deep gamaka styling)"
+    "carnatic_reason": "In Carnatic music, the specific aesthetic device of looping around the flat 3rd and flat 7th in a heavy, majestic, Western-sounding curve is preserved inside the raga Kanada (which also uses a distinct Ga, Ni, architecture with deep gamaka styling)"
   },
   "Barwa": {
     "name": "Barwa",
@@ -1897,7 +1897,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ga","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,1,1,1,0,1,0,1,1,1],
     "description": "Uses both gandhar and both nishads, eliciting shaant/bhakti ras.",
-    "carnatic_reason":"Barwa is a rare, old raga belonging to the Kafi Thaat (22nd Melakarta). It moves in a slightly vakra (zigzag) path, structurally omitting or weakening the Pancham in the ascent, closely mimicking a blend of Bageshri and Kafi.Melodically, its specific hexatonic and pentatonic upper ascents mimic phrases found in Carnatic Sriranjani, though its complete performance uses a full Kapi style architecture."
+    "carnatic_reason": "Barwa is a rare, old raga belonging to the Kafi Thaat (22nd Melakarta). It moves in a slightly vakra (zigzag) path, structurally omitting or weakening the Pancham in the ascent, closely mimicking a blend of Bageshri and Kafi.Melodically, its specific hexatonic and pentatonic upper ascents mimic phrases found in Carnatic Sriranjani, though its complete performance uses a full Kapi style architecture."
   },
   "Bhimpalas": {
     "name": "Bhimpalas",
@@ -1914,7 +1914,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha","Ni'"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,1,0],
     "description": "Rishabh and Dhaivat Varjya in Aaroh. Gandhar and Nishad Komal. Rest all Shuddha Swaras. Bhimpalas is known for a serene, tender, and pensive mood combined with a quiet yearning or romantic longing (sringara and viraha).",
-    "carnatic_reason":"Both Bhimpalas and Abheri share the exact same up-and-down structural template. They are pentatonic (5 notes) in the ascent and heptatonic (7 notes) in the descent.Because their geometric intervals are identical, they create the exact same emotional space. Both are traditionally afternoon ragas that evoke a mixture of deep longing, peaceful devotion, and a sweet, romantic yearning."
+    "carnatic_reason": "Both Bhimpalas and Abheri share the exact same up-and-down structural template. They are pentatonic (5 notes) in the ascent and heptatonic (7 notes) in the descent.Because their geometric intervals are identical, they create the exact same emotional space. Both are traditionally afternoon ragas that evoke a mixture of deep longing, peaceful devotion, and a sweet, romantic yearning."
   },
   "Brindavani Sarang": {
     "name": "Brindavani Sarang",
@@ -1931,7 +1931,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ma","Pa","Ni'","Ni"],
     "note_vec": [1,0,1,0,0,1,0,1,0,0,1,1],
     "description": "Gandhar and Dhaivat varja. Both Nishads. Rest all Shuddha Swaras. Note the presence of Shuddha Sarang, which employs both Madhyams and hence in Kalyan thaat, and its closest variant Madhmad Sarang which differs only in the use of komal Nishad exclusively.",
-    "carnatic_reason":"Because the complete framework relies heavily on a natural Re, natural Ma, and resolves downward on the flat Ni, it belongs to the Kafi Thaat lineage, which maps straight to the 22nd Melakarta, Kharaharapriya. Carnatic music adopted this structure completely under the name Brindavana Saranga, maintaining the asymmetric dual-Nishadam behavior."
+    "carnatic_reason": "Because the complete framework relies heavily on a natural Re, natural Ma, and resolves downward on the flat Ni, it belongs to the Kafi Thaat lineage, which maps straight to the 22nd Melakarta, Kharaharapriya. Carnatic music adopted this structure completely under the name Brindavana Saranga, maintaining the asymmetric dual-Nishadam behavior."
   },
   "Dhani": {
     "name": "Dhani",
@@ -1948,7 +1948,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ma","Pa","Ni'"],
     "note_vec": [1,0,0,1,0,1,0,1,0,0,1,0],
     "description": "Rishabh and Dhaivat varja. Gandhar and Nishad Komal. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Because it features a flat Ga and Ni alongside a natural Ma, its underlying parent matrix is the Kafi Thaat, or Melakarta 22 - Kharaharapriya. Carnatic Suddha Dhanyasi is the exact structural mirror of Dhani, carrying the same deeply meditative, soothing, and devotional character."
+    "carnatic_reason": "Because it features a flat Ga and Ni alongside a natural Ma, its underlying parent matrix is the Kafi Thaat, or Melakarta 22 - Kharaharapriya. Carnatic Suddha Dhanyasi is the exact structural mirror of Dhani, carrying the same deeply meditative, soothing, and devotional character."
   },
   "Jaijaiwanti": {
     "name": "Jaijaiwanti",
@@ -1965,7 +1965,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,0,1,1,0,1,0,1,1,1],
     "description": "Gandhar and Dhaivat varja in Aaroh. Both Gandhars. Both Nishads. Rest all Shuddha Swaras. Similar to Raag Gara almost in structure.",
-    "carnatic_reason":"aijaiwanti is a highly complex, hybrid raga belonging to the Khamaj Thaat (28th Melakarta). Its raw canvas relies on major intervals, but it is deeply Bhashanga—meaning it introduces notes outside its parent group.Because its structural base rests on a natural Rishabh,natural Madhyam, and natural Dhaivat its parent genus is mathematically assigned to 28. Harikambhoji."
+    "carnatic_reason": "aijaiwanti is a highly complex, hybrid raga belonging to the Khamaj Thaat (28th Melakarta). Its raw canvas relies on major intervals, but it is deeply Bhashanga—meaning it introduces notes outside its parent group.Because its structural base rests on a natural Rishabh,natural Madhyam, and natural Dhaivat its parent genus is mathematically assigned to 28. Harikambhoji."
   },
   "Jog": {
     "name": "Jog",
@@ -1982,7 +1982,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ga","Ma","Pa","Ni'"],
     "note_vec": [1,0,0,1,1,1,0,1,0,0,1,0],
     "description": "Rishabh and Dhaivat varya. Nishad Komal, Both Gandhars. Rest all Shuddha Swaras. In this Raag both Gandhars are used, Shuddha Gandhar in Aaroh and Komal Gandhar in Avroh. But in Avroh, both the Gandhars may be used simultaneously like: P m G m G g S. Meend is used to render from Komal Gandhar to Shadj(S).",
-    "carnatic_reason":"In Carnatic music, the use of a natural Ma along with a sharp, squeezed interval resembling a dual-3rd maps structurally to the Vakra variations of Gambhira Nattai or Nattai. Mathematically, its closest complete parent framework containing these compressed pitch intervals is the 36th Melakarta, Chalanattai, though musicians frequently treat its pure pentatonic intervals under the Harikambhoji layout."
+    "carnatic_reason": "In Carnatic music, the use of a natural Ma along with a sharp, squeezed interval resembling a dual-3rd maps structurally to the Vakra variations of Gambhira Nattai or Nattai. Mathematically, its closest complete parent framework containing these compressed pitch intervals is the 36th Melakarta, Chalanattai, though musicians frequently treat its pure pentatonic intervals under the Harikambhoji layout."
   },
   "Kafi": {
     "name": "Kafi",
@@ -2016,7 +2016,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ma","Pa","Ni'"],
     "note_vec": [1,0,1,0,0,1,0,1,0,0,1,0],
     "description": "Gandhar and Dhaivat varja. Only komal Nishads, versus the use of both Nishads in Brindavani Sarang. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Both Megh Malhar and Madhmad Sarang share the exact same structural twin in Carnatic music: Madhyamavati. The difference between them in the North is purely stylistic (Megh uses heavy, sliding meends, while Madhmad uses crisp, fast, and dry note attacks)."
+    "carnatic_reason": "Both Megh Malhar and Madhmad Sarang share the exact same structural twin in Carnatic music: Madhyamavati. The difference between them in the North is purely stylistic (Megh uses heavy, sliding meends, while Madhmad uses crisp, fast, and dry note attacks)."
   },
   "Malgunji": {
     "name": "Malgunji",
@@ -2050,7 +2050,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha","Ni'","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,1,1],
     "description": "Dhaivat varja in avroh. Komal gandhar, both nishads. This raga is sometimes referred to as Miya Malhar, since it is accredited tobeing created by Miya Tansen.",
-    "carnatic_reason":"There is some discrepancy but most sources cite Malhar as Shuddha Malhar and hence mapping to Melakarta Sankarabharnam and Shuddha Saveri - just like Raag Durga."
+    "carnatic_reason": "There is some discrepancy but most sources cite Malhar as Shuddha Malhar and hence mapping to Melakarta Sankarabharnam and Shuddha Saveri - just like Raag Durga."
   },
   "Megh Malhar": {
     "name": "Megh Malhar",
@@ -2067,7 +2067,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ma","Pa","Ni'"],
     "note_vec": [1,0,1,0,0,1,0,1,0,0,1,0],
     "description": "Gandhar and Dhaivat varja. Nishad Komal. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Carnatic Madhyamavati uses the exact 5 notes in a perfectly linear, symmetric manner, producing the exact same rain-bearing, meditative aesthetic as Megh Malhar."
+    "carnatic_reason": "Carnatic Madhyamavati uses the exact 5 notes in a perfectly linear, symmetric manner, producing the exact same rain-bearing, meditative aesthetic as Megh Malhar."
   },
   "Patdeep": {
     "name": "Patdeep",
@@ -2084,7 +2084,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,0,1,0,1],
     "description": "Rishabh and Dhaivat varja in aaroh. Gandhar Komal. Rest All Shuddha Swaras.Structurally similar to Brindavani sarang, except for the shuddha Nishad even in the avroh. Closer to Raag Bhimpalas - in the use of shuddha Nishad makes it Raag Patdeep.",
-    "carnatic_reason":"Carnatic Equivalent is Gowrimanohari (conceptually/structurally) or performed as Patdeep (directly adopted)."
+    "carnatic_reason": "Carnatic Equivalent is Gowrimanohari (conceptually/structurally) or performed as Patdeep (directly adopted)."
   },
   "Pilu": {
     "name": "Pilu",
@@ -2101,7 +2101,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ga","Ma","Pa","Dha'","Ni'","Ni"],
     "note_vec": [1,0,1,1,1,1,0,1,1,0,1,1],
     "description": "Rishabh and Dhaivat Varjya in Aaroh. Both gandhars, Shuddha Dhaivat although komal Dhaivat is often used, Both Nishads. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Because its structural baseline relies on a flat Ga and Ni, it is grouped under Melakarta 22,Kharaharapriya. In the South, this exact behavioral framework—where a basic Kafi scale is systematically embellished with major thirds, flat seconds, or sharp sevenths—is the exact definition of Misra Kapi."
+    "carnatic_reason": "Because its structural baseline relies on a flat Ga and Ni, it is grouped under Melakarta 22,Kharaharapriya. In the South, this exact behavioral framework—where a basic Kafi scale is systematically embellished with major thirds, flat seconds, or sharp sevenths—is the exact definition of Misra Kapi."
   },
   "Shivranjani": {
     "name": "Shivranjani",
@@ -2118,7 +2118,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Pa","Dha"],
     "note_vec": [1,0,1,1,0,0,0,1,0,1,0,0],
     "description": "Madhyam and Nishad varja. Gandhar Komal. Rest all Shuddha Swaras. Raag Shivranjani is a very melodious and straightforward Raag. This Raag is similar to Raag Bhoopali but has Gandhar Komal instead of Shuddha Gandhar.",
-    "carnatic_reason":"Shivranjani is a symmetric, 5-note pentatonic scale (Audav-Audav) derived from the Kafi Thaat family. It completely omits Madhyam (4th) and Nishad (7th).Its parent framework is mathematically tied to the 22nd Melakarta, Kharaharapriya. Carnatic music adopted this scale perfectly as a Janya raga. It is highly celebrated for its ability to convey a bittersweet, deeply melancholic blend of romance and profound sorrow."
+    "carnatic_reason": "Shivranjani is a symmetric, 5-note pentatonic scale (Audav-Audav) derived from the Kafi Thaat family. It completely omits Madhyam (4th) and Nishad (7th).Its parent framework is mathematically tied to the 22nd Melakarta, Kharaharapriya. Carnatic music adopted this scale perfectly as a Janya raga. It is highly celebrated for its ability to convey a bittersweet, deeply melancholic blend of romance and profound sorrow."
   },
   "Adana": {
     "name": "Adana",
@@ -2135,7 +2135,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha'","Ni'","Ni"],
     "note_vec": [1,0,1,1,0,1,0,1,1,0,1,1],
     "description": "Gandhar varja in aaroh, Gandhar, Dhaivat and Nishad komal, rest all shuddha swaras. In this sense, Adana is close to Shuddha Rishabh Asavari, difference being the Nishad in aaaroh. Raag Adana resembles Raag Darbari Kanada, with the difference that Gandhar is forbidden in Aaroh in Adana.",
-    "carnatic_reason":"It mathematically maps to the 20th Melakarta, Natabhairavi. The specific aesthetic technique of skipping the 3rd note on the way up and looping tightly around the flat 3rd, flat 6th, and flat 7th in the upper registers mirrors the exact performance grammar found in Carnatic Kanada.Do not confuse Hindustani Adana with the Carnatic raga Atana, which belongs to a completely different, major-scale family."
+    "carnatic_reason": "It mathematically maps to the 20th Melakarta, Natabhairavi. The specific aesthetic technique of skipping the 3rd note on the way up and looping tightly around the flat 3rd, flat 6th, and flat 7th in the upper registers mirrors the exact performance grammar found in Carnatic Kanada.Do not confuse Hindustani Adana with the Carnatic raga Atana, which belongs to a completely different, major-scale family."
   },
   "Asavari": {
     "name": "Asavari",
@@ -2152,7 +2152,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha'","Ni'"],
     "note_vec": [1,0,1,1,0,1,0,1,1,0,1,0],
     "description": "Rishabhh, Dhaivat and Nishad Komal - rest all shuddha swaras. Often this version is called Shuddha Rishabh Asavari. Apparently, in pre-Bhatkhande days, Asavari used komal Rishabh instead of Shuddha, and that version is called Komal Rishabh Asavari.",
-    "carnatic_reason":"Hindustani Raag Asavari is the flagship parent scale of the Asavari Thaat, which maps directly to the 20th Melakarta, Natabhairavi.While Jaunpuri and Asavari share the exact same parent scale, Asavari is distinguished by a much stricter omission rule: in pure Asavari, the Rishabh (Re) is also completely omitted or highly suppressed in the ascent (S M₁ P D₁ S'), creating an intensely stark, open-interval layout. This specific structural behavior aligns closely with phrases found in Carnatic Saramati (S R₂ G₂ M₁ D₁ N₂ S' → S' N₂ D₁ M₁ G₂ S), though Asavari retains a powerful, grounding Pancham (P) in its complete descent."
+    "carnatic_reason": "Hindustani Raag Asavari is the flagship parent scale of the Asavari Thaat, which maps directly to the 20th Melakarta, Natabhairavi.While Jaunpuri and Asavari share the exact same parent scale, Asavari is distinguished by a much stricter omission rule: in pure Asavari, the Rishabh (Re) is also completely omitted or highly suppressed in the ascent (S M₁ P D₁ S'), creating an intensely stark, open-interval layout. This specific structural behavior aligns closely with phrases found in Carnatic Saramati (S R₂ G₂ M₁ D₁ N₂ S' → S' N₂ D₁ M₁ G₂ S), though Asavari retains a powerful, grounding Pancham (P) in its complete descent."
   },
   "Chandrakauns": {
     "name": "Chandrakauns",
@@ -2169,7 +2169,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ma","Dha'","Ni"],
     "note_vec": [1,0,0,1,0,1,0,0,1,0,0,1],
     "description": "Rishabh and Pancham varja. Gandhar and Dhaivat Komal. Rest all Shuddha Swaras. When Komal Nishad of Raag Malkauns is replaced by Shuddha Nishad, Raag Chandrakauns appears. The Shuddha Nishad in this Raag not only differentiates it from Raag Malkauns but also produces a lasting unique impression on the audience.",
-    "carnatic_reason":"Rarely given an ancient native name, but performed explicitly as the Nishad variant of Hindolam (often called Chandrakauns in the South too).It traces mathematically back to the parent scale 20. Natabhairavi. It is a direct structural modification of Carnatic Hindolam—swapping out the N₂ for N₃."
+    "carnatic_reason": "Rarely given an ancient native name, but performed explicitly as the Nishad variant of Hindolam (often called Chandrakauns in the South too).It traces mathematically back to the parent scale 20. Natabhairavi. It is a direct structural modification of Carnatic Hindolam—swapping out the N₂ for N₃."
   },
   "Charukeshi": {
     "name": "Charukeshi",
@@ -2220,7 +2220,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma","Pa","Dha'","Ni'"],
     "note_vec": [1,0,1,1,0,1,0,1,1,0,1,0],
     "description": "Raag Jaunpuri is very similar to Raag Aasavari in its rendering and is very sweet to listen to. Whereas in Asavari both Gandhar and Nishad are varja in Aaroh, in Raag Jaunpuri only Gandhar is varja.",
-    "carnatic_reason":"The notes for Raag Jaunpuri are the exact definition of the 20th Melakarta, Natabhairavi. Carnatic music adopted this raga completely, maintaining its unique asymmetric up-and-down structural template flawlessly to close out concerts with its soaring, heroic, yet deeply devotional character."
+    "carnatic_reason": "The notes for Raag Jaunpuri are the exact definition of the 20th Melakarta, Natabhairavi. Carnatic music adopted this raga completely, maintaining its unique asymmetric up-and-down structural template flawlessly to close out concerts with its soaring, heroic, yet deeply devotional character."
   },
   "Kirwani": {
     "name": "Kirwani",
@@ -2254,7 +2254,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ma|","Pa","Ni'"],
     "note_vec": [1,0,0,1,0,0,1,1,0,0,1,0],
     "description": "Rishabh and Dhaivat varja. Gandhar and Nishad Komal. Madhyam Teevra. This is a Meend pradhan Raag. This Raag is considered to be a blending of Raag Madhuvanti and Raag Malkauns. S g M P these notes give the impression of Raag Madhuvanti.",
-    "carnatic_reason":"Its parent scale is mathematically anchored to the 59th Melakarta, Dharmavati (if utilizing a major 6th) or the 53rd Melakarta lineage. The Carnatic raga Sumanesa Ranjani utilizes this exact pentatonic note collection, capturing the identical mysterious, yearning, and contemporary aesthetic."
+    "carnatic_reason": "Its parent scale is mathematically anchored to the 59th Melakarta, Dharmavati (if utilizing a major 6th) or the 53rd Melakarta lineage. The Carnatic raga Sumanesa Ranjani utilizes this exact pentatonic note collection, capturing the identical mysterious, yearning, and contemporary aesthetic."
   },
   "Bhairavi": {
     "name": "Bhairavi",
@@ -2288,7 +2288,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re'","Ga'","Ma","Pa","Dha'","Ni'"],
     "note_vec": [1,1,0,1,0,1,0,1,1,0,1,0],
     "description": "Madhyam and Nishad Varjya in Aaroh. Pancham Varjya in Avroh. Rishabh, Gandhar, Dhaivat and Nishad Komal. Rest all Shuddha Swaras.Raag Bilaskhani Todi is said to be created by Miya Tansens son Bilas Khan and is named after him. This Raag belongs to Bhairavi Thaat. Raag Bhairavi and Raag Komal Rishabh Asavari are nearest to Bilaskhani Todi.",
-    "carnatic_reason":"Even though it shares the identical note pool with Bhairavi, it is a complete structural mismatch in performance. Bilaskhani Todi moves in an intensely non-linear, zigzag (Vakra) manner. It completely avoids linear phrases, choosing instead to jump obliquely across intervals - like jumping from Sa straight up to flat Ga, or dropping heavily from flat Dha down to Ma. A Carnatic musician replicates this unique mood by performing Hanumatodi while strictly enforcing asymmetric, omitted-note pathways in the ascent."
+    "carnatic_reason": "Even though it shares the identical note pool with Bhairavi, it is a complete structural mismatch in performance. Bilaskhani Todi moves in an intensely non-linear, zigzag (Vakra) manner. It completely avoids linear phrases, choosing instead to jump obliquely across intervals - like jumping from Sa straight up to flat Ga, or dropping heavily from flat Dha down to Ma. A Carnatic musician replicates this unique mood by performing Hanumatodi while strictly enforcing asymmetric, omitted-note pathways in the ascent."
   },
   "Jogkauns": {
     "name": "Jogkauns",
@@ -2305,7 +2305,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ga","Ma","Dha'","Ni'","Ni"],
     "note_vec": [1,0,0,1,1,1,0,1,1,0,1,1],
     "description": "Rishabh varja. Both Nishads, Both Gandhars, Dhaivat Komal. Rest all Shuddha Swaras.This Raag is a combination of Raag Jog and Raag Chandrakauns.",
-    "carnatic_reason":"Mapped to Janya variants of the 8th or 20th Melakarta, or interpreted via specialized Vakra (zigzag) phrasing combining Nattai and Hindolam."
+    "carnatic_reason": "Mapped to Janya variants of the 8th or 20th Melakarta, or interpreted via specialized Vakra (zigzag) phrasing combining Nattai and Hindolam."
   },
   "Malkauns": {
     "name": "Malkauns",
@@ -2322,7 +2322,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Ga'","Ma","Dha'","Ni'"],
     "note_vec": [1,0,0,1,0,1,0,0,1,0,1,0],
     "description": "Rishabh and Pancham varja. Gandhar, Dhaivat and Nishad Komal. Rest all Shuddha Swaras.",
-    "carnatic_reason":"Maps cleanly to Carnatic Hindolam. See note for raag Hindol, which is polar opposite of Malkauns, using shuddha ga, dha, ni versus Hindol's komal versions of those three notes. Additionally Malkauns uses shuddha Ma versus Hindol's use of teevra Ma."
+    "carnatic_reason": "Maps cleanly to Carnatic Hindolam. See note for raag Hindol, which is polar opposite of Malkauns, using shuddha ga, dha, ni versus Hindol's komal versions of those three notes. Additionally Malkauns uses shuddha Ma versus Hindol's use of teevra Ma."
   },
   "Madhuvanti": {
     "name": "Madhuvanti",
@@ -2339,7 +2339,7 @@ var RING_RAGA_DETAILS = {
     "notes": ["Sa","Re","Ga'","Ma|","Pa","Dha","Ni"],
     "note_vec": [1,0,1,1,0,0,1,1,0,1,0,1],
     "description": "Rishabh and Dhaivat varja in Aaroh. Gandhar Komal, Madhyam Teevra. Rest all Shuddha Swaras. Another older name for this raag is Ambika.",
-    "carnatic_reason":"Madhuvanti belongs to the Todi Thaat family conceptually but shifts its upper notes to be completely natural and major, creating a brilliant, sweet, and highly modern romantic aesthetic.Its exact notes are a flawless match for melakarta 59 - Dharmavati."
+    "carnatic_reason": "Madhuvanti belongs to the Todi Thaat family conceptually but shifts its upper notes to be completely natural and major, creating a brilliant, sweet, and highly modern romantic aesthetic.Its exact notes are a flawless match for melakarta 59 - Dharmavati."
   },
   "Multani": {
     "name": "Multani",
@@ -3044,6 +3044,12 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Lata Mangeshkar",
       "md": "Hridayanath Mangeshkar"
+    },
+    {
+      "song": "Sajal nayan nit dhaar",
+      "film": "",
+      "singer": "Ajit Kadkade",
+      "md": ""
     }
   ],
   "Bhatiyar": [
@@ -3652,6 +3658,24 @@ var SONGS_BASE = {
       "film": "Diwanaa",
       "singer": "Kumar Sanu, Sadhana Sargam",
       "md": "Nadeem-Shravan"
+    },
+    {
+      "song": "Maula mere lele meri jaan",
+      "film": "Chak de india",
+      "singer": "Salim",
+      "md": "Salim Suleiman"
+    },
+    {
+      "song": "Bedardi balama tujhko mera",
+      "film": "Arzoo",
+      "singer": "Lata Mangeshkar",
+      "md": "Shankar jaikishan"
+    },
+    {
+      "song": "Baiyya na dharo",
+      "film": "Dastak",
+      "singer": "Lata Mangeshkar",
+      "md": "Madan Mohan"
     }
   ],
   "Chhayanat": [
@@ -3980,6 +4004,12 @@ var SONGS_BASE = {
       "film": "Bharat Milap",
       "singer": "Chorus",
       "md": "Shankarrao Vyas"
+    },
+    {
+      "song": "Kokila gaa gaa gaa re",
+      "film": "Baykocha bhau",
+      "singer": "Asha Bhosale",
+      "md": "Vsant Prabhu"
     }
   ],
   "Hamsadhwani": [
@@ -4448,6 +4478,12 @@ var SONGS_BASE = {
       "film": "The Burning train",
       "singer": "Asha Bhosale, Mohammed Rafi",
       "md": "R.D.Burman"
+    },
+    {
+      "song": "Kanha re nand nandan",
+      "film": "",
+      "singer": "Sanjeevani Bhelande",
+      "md": ""
     }
   ],
   "Khamaj": [
@@ -4590,6 +4626,42 @@ var SONGS_BASE = {
       "film": "Chori Chori",
       "singer": "Manna Dey, Lata Mangeshkar",
       "md": "Shankar Jaikishan"
+    },
+    {
+      "song": "Mera Dil Ye Pukare Aaja",
+      "film": "Nagin",
+      "singer": "Lata Mangeshkar",
+      "md": "Hemant Kumar"
+    },
+    {
+      "song": "Yaad na jaaye beete dino ki",
+      "film": "Dil Ek Mandir",
+      "singer": "Mohammed Rafi",
+      "md": "Shankar Jaikishan"
+    },
+    {
+      "song": "Rimjhim gire saawan",
+      "film": "Manzil",
+      "singer": "Kishore Kumar, Lata Mangeshkar",
+      "md": "R.D.Burman"
+    },
+    {
+      "song": "Ye raate ye mausam nadi ka kinara",
+      "film": "Dilli Ka Thug",
+      "singer": "Kishore Kumar, Asha Bhosale",
+      "md": "Ravi"
+    },
+    {
+      "song": "Meri bheegi bheegi si",
+      "film": "Anamika",
+      "singer": "Kishore Kumar",
+      "md": "R.D.Burman"
+    },
+    {
+      "song": "Kehna hi kya",
+      "film": "Bombay",
+      "singer": "Chitra",
+      "md": "A.R.Rehman"
     }
   ],
   "Lalit": [
@@ -5004,6 +5076,18 @@ var SONGS_BASE = {
       "film": "Raja Hindustani",
       "singer": "Udit Narayan, Alka Yaagnik",
       "md": ""
+    },
+    {
+      "song": "O Priya priya",
+      "film": "Dil",
+      "singer": "Anuradha Paudwal, Suresh Wadkar",
+      "md": "Anand Milind"
+    },
+    {
+      "song": "Dil ke jharoke mein",
+      "film": "Brahmachari",
+      "singer": "Mohammed Rafi",
+      "md": "Shankar Jaikishan"
     }
   ],
   "Multani": [
@@ -5266,6 +5350,30 @@ var SONGS_BASE = {
       "film": "Rajnigandha",
       "singer": "Lata Mangeshkar",
       "md": "Salil Chowdhry"
+    },
+    {
+      "song": "Tum bin jaaoon kahan",
+      "film": "Pyar ka mausam",
+      "singer": "Mohammed Rafi",
+      "md": "R.D.Burman"
+    },
+    {
+      "song": "Menu ishqda lagiya rog",
+      "film": "Dil Hai Ke Manta Nahin",
+      "singer": "Anuradha Paudwal",
+      "md": "Nadeem Shravan"
+    },
+    {
+      "song": "De de pyar de",
+      "film": "Sharabi",
+      "singer": "Kishore Kumar",
+      "md": "Bappi Lahiri"
+    },
+    {
+      "song": "Itni shakti hamein dena data",
+      "film": "Ankush",
+      "singer": "Sushma Shreshtha",
+      "md": "Kuldip Singh"
     }
   ],
   "Poorvi": [
@@ -5822,6 +5930,12 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Lata Mangeshkar",
       "md": "Hridayanath Mangeshkar"
+    },
+    {
+      "song": "Chafa bolena",
+      "film": "",
+      "singer": "Lata Mangeshkar",
+      "md": "Vasant Prabhu"
     }
   ],
   "Yaman Kalyan": [
@@ -5985,6 +6099,14 @@ var SONGS_BASE = {
       "singer": "Mohammed Rafi, Lata Mangeshkar",
       "md": "R.D.Burman"
     }
+  ],
+  "Bairagi bhairav": [
+    {
+      "song": "Omkar Swaroopa sadguru samartha",
+      "film": "",
+      "singer": "Suresh Wadkar",
+      "md": ""
+    }
   ]
 };
 
@@ -6093,37 +6215,104 @@ function randomRaga(){
 function normName(s){ return s.toLowerCase().replace(/[^a-z]/g,''); }
 var NAME_MAP={'asawari':'Asavari','asavari':'Asavari','bhimpalas':'Bhimpalas','darbari':'Darbari Kanada','desh':'Desh','kalyan':'Yaman','bilaskhanitodi':'Bilaskhani Todi','natbhairav':'Nat Bhairav'};
 function lookupRaga(){
-  var input=document.getElementById('ragaInput').value.trim();
-  var msg=document.getElementById('lookupMsg');
+  var input = document.getElementById('ragaInput').value.trim();
+  var msg = document.getElementById('lookupMsg');
   if(!input){ msg.textContent=''; return; }
-  var norm=normName(input);
-  var mapped=NAME_MAP[norm]||input;
-  var normMapped=normName(mapped);
-  var matches=[];
-  for(var i=0;i<DATA.raags.length;i++){
-    var r=DATA.raags[i];
-    if(normName(r.name)===normMapped||normName(r.name).indexOf(normMapped)!==-1||normMapped.indexOf(normName(r.name))!==-1){
-      matches.push(r);
+
+  var norm = normName(input);
+  var mapped = NAME_MAP[norm] || input;
+  var normMapped = normName(mapped);
+  var nameMatches = [];
+
+  for(var i = 0; i < DATA.raags.length; i++){
+    var r = DATA.raags[i];
+    var rn = normName(r.name);
+    if(rn === normMapped || rn.indexOf(normMapped) !== -1 || normMapped.indexOf(rn) !== -1){
+      nameMatches.push(r);
     }
   }
-  if(matches.length===0){
-    msg.textContent='No raga found matching "'+input+'".';
-    msg.className='lookup-msg err';
+
+  if(nameMatches.length === 0){
+    msg.textContent = 'No raga found matching "' + input + '".';
+    msg.className = 'lookup-msg err';
     return;
   }
-  matches.sort(function(a,b){ return normName(a.name).length - normName(b.name).length; });
-  var best=matches[0];
+
+  // Exact name matches first, then sorted by shortest title
+  nameMatches.sort(function(a, b){
+    var an = normName(a.name);
+    var bn = normName(b.name);
+    if(an === normMapped && bn !== normMapped) return -1;
+    if(bn === normMapped && an !== normMapped) return 1;
+    return an.length - bn.length;
+  });
+
+  var primary = nameMatches[0];
+
+  // 1. Light up the primary raga's swaras on the keyboard
   selected.clear();
-  for(var n in best.notes){ if(best.notes[n]){ selected.add(n); } }
-  var keys=document.querySelectorAll('.key');
-  for(var ki=0;ki<keys.length;ki++){
-    var kn=keys[ki].getAttribute('data-note');
+  for(var n in primary.notes){ if(primary.notes[n]){ selected.add(n); } }
+  var keys = document.querySelectorAll('.key');
+  for(var ki = 0; ki < keys.length; ki++){
+    var kn = keys[ki].getAttribute('data-note');
     if(selected.has(kn)){ keys[ki].classList.add('on'); } else { keys[ki].classList.remove('on'); }
   }
-  render();
-  msg.textContent='Found: '+best.name;
-  msg.className='lookup-msg ok';
-  document.getElementById('list').scrollIntoView({behavior:'smooth',block:'start'});
+
+  // 2. Update the selected swara strip
+  var strip = document.getElementById('selStrip');
+  if(strip){
+    var stripHtml = '<div class="sl-label">Selected notes (in saptak order)</div>';
+    NOTE_ORDER.forEach(function(note){
+      if(selected.has(note)){
+        stripHtml += '<span class="sel-chip ' + NOTE_KIND[note] + '">' + LABELS[note] + ' ' + SUBLABELS[note] + '</span>';
+      }
+    });
+    strip.innerHTML = stripHtml;
+  }
+
+  // 3. Find other ragas that share the exact same note set (scale twins)
+  var primaryKey = primary._key || noteKey(primary.notes);
+  var scaleTwins = [];
+  for(var j = 0; j < DATA.raags.length; j++){
+    var other = DATA.raags[j];
+    var otherKey = other._key || noteKey(other.notes);
+    if(otherKey === primaryKey && nameMatches.indexOf(other) === -1){
+      scaleTwins.push(other);
+    }
+  }
+
+  // 4. Render the list with the searched raga at the top
+  var list = document.getElementById('list');
+  list.innerHTML = '';
+  var hint = document.getElementById('hintText');
+  var count = document.getElementById('count');
+
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  var ragaTab = document.querySelector('.tab[data-tab="raga"]');
+  if(ragaTab) ragaTab.classList.add('active');
+  currentTab = 'raga';
+
+  var totalResults = nameMatches.length + scaleTwins.length;
+  msg.textContent = 'Found: ' + primary.name + (scaleTwins.length ? ' (+' + scaleTwins.length + ' scale twins sharing same swaras)' : '');
+  msg.className = 'lookup-msg ok';
+  hint.textContent = 'Showing ' + primary.name + (scaleTwins.length ? ' and other ragas sharing the same swaras:' : ':');
+  count.textContent = totalResults + ' raga' + (totalResults > 1 ? 's' : '') + ' found';
+
+  // Card 1: Exact searched raga first
+  var isPrimaryExact = (normName(primary.name) === normMapped);
+  list.appendChild(ragaCard(primary, isPrimaryExact ? 'EXACT MATCH: ' + primary.name.toUpperCase() : true));
+
+  // Other name matches (e.g. variants)
+  for(var m = 1; m < nameMatches.length; m++){
+    list.appendChild(ragaCard(nameMatches[m], 'RAGA VARIANT: ' + nameMatches[m].name.toUpperCase()));
+  }
+
+  // Scale twins sharing the exact same note set (e.g. Chhayanat, Kamod, etc.)
+  for(var s = 0; s < scaleTwins.length; s++){
+    list.appendChild(ragaCard(scaleTwins[s], 'SAME SWARAS (SCALE TWIN OF ' + primary.name.toUpperCase() + ')'));
+  }
+
+  document.getElementById('list').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // Generates an encoded YouTube search query from available song metadata
@@ -6586,7 +6775,15 @@ function ragaCard(r,exact){
              '<a class="ring-link" data-raga="'+r.name+'" style="font-size:0.75rem;white-space:nowrap;">View on Ring &rarr;</a>' +
            '</div>';
 
-  if(exact) html='<div style="font-size:.7rem;color:#2e7d32;font-weight:bold;margin-bottom:2px">EXACT MATCH</div>'+html;
+  if(exact) {
+      var badgeLabel = (typeof exact === 'string') ? exact : 'EXACT MATCH';
+      var badgeColor = '#2e7d32'; // Default green for exact matches
+      if(typeof exact === 'string'){
+        if(exact.indexOf('SAME SWARAS') !== -1) badgeColor = '#1565c0'; // Blue for scale twins
+        else if(exact.indexOf('VARIANT') !== -1) badgeColor = '#b8341e'; // Red for name variants
+      }
+      html = '<div style="font-size:.7rem;color:' + badgeColor + ';font-weight:bold;margin-bottom:2px">' + badgeLabel + '</div>' + html;
+    }
   if(r.aaroha) {
     html += '<div class="swara-row">' +
               '<span class="swara-text"><b>Aaroha:</b> ' + r.aaroha + '</span>' +
@@ -8112,10 +8309,10 @@ document.getElementById('pwOverlay').addEventListener('click',function(e){if(e.t
 /* HINDUSTANI RAGA RING */
 /* Harshad */
 
-var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
+var RING_SEGMENTS = [{"raga": "Alhaiyya Bilawal", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Bhinna Shadja", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Hemant", "thaat": "Bilaval", "color": "#5CB85C"},
-                     {"raga": "Alhaiyya Bilawal", "thaat": "Bilaval", "color": "#5CB85C"},
+                     {"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Maand", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Shankara", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Hamsadhwani", "thaat": "Bilaval", "color": "#5CB85C"},
@@ -8162,7 +8359,7 @@ var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Adana", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Darbari Kanada", "thaat": "Asavari", "color": "#95A5A6"},
                      {"raga": "Kirwani", "thaat": "Asavari", "color": "#95A5A6"},
-                     {"raga": "Kafi", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Pilu", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Dhani", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Malgunji", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Bahar", "thaat": "Kafi", "color": "#1ABC9C"},
@@ -8173,20 +8370,20 @@ var RING_SEGMENTS = [{"raga": "Bihag", "thaat": "Bilaval", "color": "#5CB85C"},
                      {"raga": "Patdeep", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Abhogi", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Shivranjani", "thaat": "Kafi", "color": "#1ABC9C"},
-                     {"raga": "Pilu", "thaat": "Kafi", "color": "#1ABC9C"},
+                     {"raga": "Kafi", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Jog", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Brindavani Sarang", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Jaijaiwanti", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Bhimpalas", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Bageshri", "thaat": "Kafi", "color": "#1ABC9C"},
                      {"raga": "Rageshri", "thaat": "Khamaj", "color": "#F0AD4E"},
-                     {"raga": "Desh", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Gara", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Tilakkamod", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Khamaj", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Tilang", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Jhinjhoti", "thaat": "Khamaj", "color": "#F0AD4E"},
                      {"raga": "Kalavati", "thaat": "Khamaj", "color": "#F0AD4E"},
-                     {"raga": "Gara", "thaat": "Khamaj", "color": "#F0AD4E"},
+                     {"raga": "Desh", "thaat": "Khamaj", "color": "#F0AD4E"},
                      ];
 
 
@@ -9318,6 +9515,7 @@ document.getElementById('saveHtmlBtn').addEventListener('click', function() {
 
 buildRing();
 </script>
+
 
 
 
