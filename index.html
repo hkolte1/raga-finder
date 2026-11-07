@@ -158,9 +158,24 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
 .songs-title{font-size:.75rem;font-weight:bold;color:#4a3f2a;margin-bottom:4px}
 .songs-list{display:flex;flex-direction:column;gap:4px}
 .song-item{display:flex;align-items:flex-start;gap:6px;font-size:.76rem;line-height:1.35;background:var(--paper2);
-  border:1px solid var(--line);border-radius:6px;padding:6px 8px}
-.song-item .song-main{flex:1;min-width:0}
+  border:1px solid var(--line);border-radius:6px;padding:6px 8px;flex-wrap:wrap;}
+.song-item .song-main{flex:1 1 180px;min-width:0}
 .song-item .song-name{font-weight:bold;color:#3a2a12}
+
+/* Song Notes Card & Toggle */
+.song-notes-toggle{display:inline-flex;align-items:center;gap:3px;font-size:0.70rem;color:#1565c0;text-decoration:underline;cursor:pointer;margin-top:4px;touch-action:manipulation;background:none;border:none;padding:0;}
+.song-notes-toggle:hover{color:var(--accent);}
+.song-notes-toggle.has-notes{color:var(--accent);font-weight:bold;}
+.song-notes-card{display:none;width:100%;flex:1 1 100%;margin-top:6px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);box-sizing:border-box;}
+.song-notes-card.show{display:block;}
+.song-notes-header{display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;font-weight:bold;color:#3a2a12;margin-bottom:6px;border-bottom:1px dashed var(--line);padding-bottom:3px;}
+.song-notes-header .close-notes{cursor:pointer;color:#999;font-size:0.85rem;padding:0 4px;}
+.song-notes-textarea{width:100%;box-sizing:border-box;font-family:Georgia,serif;font-size:0.73rem;line-height:1.4;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);min-height:75px;resize:vertical;margin-bottom:6px;}
+.song-notes-textarea:focus{outline:none;border-color:var(--accent);}
+.song-notes-actions{display:flex;justify-content:space-between;align-items:center;}
+.song-notes-save-btn{font-family:Georgia,serif;font-size:0.70rem;padding:4px 12px;border-radius:4px;cursor:pointer;border:1px solid var(--shuddha);background:var(--shuddha);color:#fff;font-weight:bold;touch-action:manipulation;}
+.song-notes-save-btn:active{background:#2e7d32;}
+.song-notes-status{font-size:0.68rem;color:#2e7d32;font-style:italic;}
 .song-yt-link{text-decoration:none;display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
 .song-yt-link:hover .song-name{color:var(--accent);text-decoration:underline}
 .yt-badge{font-size:0.62rem;color:#b8341e;background:#fdf2ef;border:1px solid #eccbc4;padding:1px 6px;border-radius:4px;font-weight:bold;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;gap:3px;line-height:1.3;transition:all 0.15s ease}
@@ -898,9 +913,11 @@ h1{text-align:center;font-size:1.1rem;margin:4px 0 2px;color:#5a4a3a}
 <div id="controls">
   <button onclick="rotateWheel(-15)">⟵ Left</button>
   <button onclick="rotateWheel(15)">Right ⟶</button>
+  <button onclick="wheel_setZoom(wheel_zoom * 1.3)">+</button>
+  <button onclick="wheel_setZoom(wheel_zoom / 1.3)">−</button>
   <button onclick="resetWheel()">Reset</button>
   <span id="angle-display">0°</span>
-  </div>
+</div>
 
   <!-- Compact Carnatic Swara Keyboard -->
   <div class="mw-kb-panel" style="display: none;">
@@ -3276,12 +3293,6 @@ var SONGS_BASE = {
       "film": "",
       "singer": "Jitendra Abhishekhi",
       "md": "Jitendra Abhishekhi"
-    },
-    {
-      "song": "Nainon Mein Badra Chhaye",
-      "film": "Mera Saaya",
-      "singer": "Lata Mangeshkar",
-      "md": "Madan Mohan"
     },
     {
       "song": "Tum jo mil gaye ho",
@@ -7254,28 +7265,91 @@ function songsBox(raagName){
           var detailStr = detail.length ? ' &mdash; '+detail.join(' / ') : '';
           var tagBadge = s._tag ? ' <span style="font-size:.66rem;color:#fff;background:#b8341e;padding:1px 5px;border-radius:3px;margin-left:4px">'+s._tag+'</span>' : '';
           var songMain=document.createElement('div');
-          songMain.className='song-main';
-          songMain.innerHTML='<a href="' + getYoutubeSearchUrl(s) + '" target="_blank" rel="noopener noreferrer" class="song-yt-link" title="Listen on YouTube">' +
-                '<span class="song-name">' + escapeHtml(s.song) + '</span>' +
-                '<span class="yt-badge">&#9654; YouTube</span>' +
-          '</a>' +
-          '<span class="song-detail">' + detailStr + '</span>' + tagBadge;
-          item.appendChild(songMain);
-          var editBtn=document.createElement('button');
-          editBtn.className='song-edit';
-          editBtn.innerHTML='&#9998;';
-          editBtn.title='Edit this song';
-          editBtn.addEventListener('click',function(){toggleEdit(item,s,i);});
-          item.appendChild(editBtn);
-          var del=document.createElement('button');
-          del.className='song-del';
-          del.innerHTML='&times;';
-          del.title='Delete this song';
-          del.addEventListener('click',function(){
-            pwPrompt(function(){deleteSong(raagName,i);refreshList();});
-          });
-          item.appendChild(del);
-          listEl.appendChild(item);
+                    songMain.className='song-main';
+
+                    var hasNotes = !!(s.notes && s.notes.trim());
+                    var toggleLabel = hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Song Details ▾';
+
+                    songMain.innerHTML='<a href="' + getYoutubeSearchUrl(s) + '" target="_blank" rel="noopener noreferrer" class="song-yt-link" title="Listen on YouTube">' +
+                          '<span class="song-name">' + escapeHtml(s.song) + '</span>' +
+                          '<span class="yt-badge">&#9654; YouTube</span>' +
+                    '</a>' +
+                    '<span class="song-detail">' + detailStr + '</span>' + tagBadge +
+                    '<div><button type="button" class="song-notes-toggle' + (hasNotes ? ' has-notes' : '') + '">' + toggleLabel + '</button></div>';
+                    item.appendChild(songMain);
+
+                    var editBtn=document.createElement('button');
+                    editBtn.className='song-edit';
+                    editBtn.innerHTML='&#9998;';
+                    editBtn.title='Edit this song';
+                    editBtn.addEventListener('click',function(){toggleEdit(item,s,i);});
+                    item.appendChild(editBtn);
+
+                    var del=document.createElement('button');
+                    del.className='song-del';
+                    del.innerHTML='&times;';
+                    del.title='Delete this song';
+                    del.addEventListener('click',function(){
+                      pwPrompt(function(){deleteSong(raagName,i);refreshList();});
+                    });
+                    item.appendChild(del);
+
+                    // Expandable Notes Card (Structured like Raga Cards)
+                    var notesCard = document.createElement('div');
+                    notesCard.className = 'song-notes-card';
+                    notesCard.innerHTML =
+                      '<div class="song-notes-header">' +
+                        '<span>Notes &amp; Musicology: <i>' + escapeHtml(s.song) + '</i></span>' +
+                        '<span class="close-notes" title="Close Card">&times;</span>' +
+                      '</div>' +
+                      '<textarea class="song-notes-textarea" placeholder="Add raga analysis, note contours, tempo/taal nuances, or reasons why this song belongs to ' + escapeHtml(raagName) + '..."></textarea>' +
+                      '<div class="song-notes-actions">' +
+                        '<button type="button" class="song-notes-save-btn">Save Notes</button>' +
+                        '<span class="song-notes-status"></span>' +
+                      '</div>';
+
+                    var textarea = notesCard.querySelector('.song-notes-textarea');
+                    textarea.value = s.notes || '';
+
+                    var toggleBtn = songMain.querySelector('.song-notes-toggle');
+                    var closeBtn = notesCard.querySelector('.close-notes');
+                    var saveNotesBtn = notesCard.querySelector('.song-notes-save-btn');
+                    var statusSpan = notesCard.querySelector('.song-notes-status');
+
+                    function toggleCard(e) {
+                      if (e) e.stopPropagation();
+                      var isOpen = notesCard.classList.toggle('show');
+                      toggleBtn.innerHTML = isOpen
+                        ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Song Details ▴')
+                        : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Song Details ▾');
+                      if (isOpen) textarea.focus();
+                    }
+
+                    toggleBtn.addEventListener('click', toggleCard);
+                    closeBtn.addEventListener('click', toggleCard);
+
+                    saveNotesBtn.addEventListener('click', function(e) {
+                      e.stopPropagation();
+                      var val = textarea.value.trim();
+                      s.notes = val;
+                      hasNotes = !!val;
+                      s._tag = 'edited';
+                      saveSongs();
+
+                      statusSpan.textContent = 'Saved ✓';
+                      statusSpan.style.display = 'inline';
+                      toggleBtn.className = 'song-notes-toggle' + (hasNotes ? ' has-notes' : '');
+                      toggleBtn.innerHTML = notesCard.classList.contains('show')
+                        ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Song Details ▴')
+                        : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Song Details ▾');
+
+                      setTimeout(function() {
+                        statusSpan.style.display = 'none';
+                      }, 2000);
+                    });
+
+                    item.appendChild(notesCard);
+                    listEl.appendChild(item);
         })(sg[si],si);
       }
       if(sg.length > 5){
@@ -7287,33 +7361,41 @@ function songsBox(raagName){
       }
     }
   }
-  function toggleEdit(item,s,i){
-    var main=item.querySelector('.song-main');
-    var editBtn=item.querySelector('.song-edit');
-    var delBtn=item.querySelector('.song-del');
-    main.style.display='none';editBtn.style.display='none';delBtn.style.display='none';
-    var form=document.createElement('div');
-    form.className='song-edit-form';form.style.display='flex';
-    var eSong=document.createElement('input');eSong.placeholder='Song name';eSong.value=s.song||'';
-    var eFilm=document.createElement('input');eFilm.placeholder='Film';eFilm.value=s.film||'';
-    var eSinger=document.createElement('input');eSinger.placeholder='Singer';eSinger.value=s.singer||'';
-    var eMd=document.createElement('input');eMd.placeholder='Music Director';eMd.value=s.md||'';
-    var eTaal=document.createElement('input');eTaal.placeholder='Taal';eTaal.value=s.taal||'';
-    var eLaya=document.createElement('input');eLaya.placeholder='Laya';eLaya.value=s.laya||'';
-    var btns=document.createElement('div');btns.className='edit-btns';
-    var saveBtn=document.createElement('button');saveBtn.textContent='Save';
-    var cancelBtn=document.createElement('button');cancelBtn.textContent='Cancel';cancelBtn.className='cancel';
-    btns.appendChild(saveBtn);btns.appendChild(cancelBtn);
-    form.appendChild(eSong);form.appendChild(eFilm);form.appendChild(eSinger);form.appendChild(eMd);form.appendChild(eTaal);form.appendChild(eLaya);form.appendChild(btns);
-    item.appendChild(form);
-    eSong.focus();
-    function doSave(){
-      var ns=eSong.value.trim();if(!ns){eSong.focus();return;}
-      editSong(raagName,i,{song:ns,film:eFilm.value.trim(),singer:eSinger.value.trim(),md:eMd.value.trim(),taal:eTaal.value.trim(),laya:eLaya.value.trim()});
-      refreshList();
-    }
-    saveBtn.addEventListener('click',doSave);
-    cancelBtn.addEventListener('click',function(){refreshList();});
+  function toggleEdit(item,s,i,notesBtn,notesCard){
+      var main=item.querySelector('.song-main');
+      var editBtn=item.querySelector('.song-edit');
+      var delBtn=item.querySelector('.song-del');
+      main.style.display='none';editBtn.style.display='none';delBtn.style.display='none';notesBtn.style.display='none';notesCard.style.display='none';
+      var form=document.createElement('div');
+      form.className='song-edit-form';form.style.display='flex';
+      var eSong=document.createElement('input');eSong.placeholder='Song name';eSong.value=s.song||'';
+      var eFilm=document.createElement('input');eFilm.placeholder='Film';eFilm.value=s.film||'';
+      var eSinger=document.createElement('input');eSinger.placeholder='Singer';eSinger.value=s.singer||'';
+      var eMd=document.createElement('input');eMd.placeholder='Music Director';eMd.value=s.md||'';
+      var eTaal=document.createElement('input');eTaal.placeholder='Taal';eTaal.value=s.taal||'';
+      var eLaya=document.createElement('input');eLaya.placeholder='Laya';eLaya.value=s.laya||'';
+      var btns=document.createElement('div');btns.className='edit-btns';
+      var saveBtn=document.createElement('button');saveBtn.textContent='Save';
+      var cancelBtn=document.createElement('button');cancelBtn.textContent='Cancel';cancelBtn.className='cancel';
+      btns.appendChild(saveBtn);btns.appendChild(cancelBtn);
+      form.appendChild(eSong);form.appendChild(eFilm);form.appendChild(eSinger);form.appendChild(eMd);form.appendChild(eTaal);form.appendChild(eLaya);form.appendChild(btns);
+      item.appendChild(form);
+      eSong.focus();
+      function doSave(){
+            var ns=eSong.value.trim();if(!ns){eSong.focus();return;}
+            editSong(raagName,i,{
+              song: ns,
+              film: eFilm.value.trim(),
+              singer: eSinger.value.trim(),
+              md: eMd.value.trim(),
+              taal: eTaal.value.trim(),
+              laya: eLaya.value.trim(),
+              notes: s.notes || '' // Preserves existing notes
+            });
+            refreshList();
+          }
+      saveBtn.addEventListener('click',doSave);
+      cancelBtn.addEventListener('click',function(){refreshList();});
     var inputs=[eSong,eFilm,eSinger,eMd,eTaal,eLaya];
     for(var ii=0;ii<inputs.length;ii++){
       (function(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter')doSave();if(e.key==='Escape')refreshList();});})(inputs[ii]);
@@ -7337,7 +7419,7 @@ function songsBox(raagName){
   function doAdd(){
     var song=songIn.value.trim();
     if(!song){ songIn.focus(); return; }
-    addSong(raagName,{song:song, film:filmIn.value.trim(), singer:singerIn.value.trim(), md:mdIn.value.trim(), taal:'', laya:''});
+    addSong(raagName,{song:song, film:filmIn.value.trim(), singer:singerIn.value.trim(), md:mdIn.value.trim(), taal:'', laya:'', notes:''});
     songIn.value=''; filmIn.value=''; singerIn.value=''; mdIn.value='';
     refreshList();
   }
@@ -7390,13 +7472,13 @@ function exportExcel(){
   }
   rows.push('</Table></Worksheet>');
   rows.push('<Worksheet ss:Name="Songs"><Table>');
-  rows.push('<Row><Cell><Data ss:Type="String">Raga</Data></Cell><Cell><Data ss:Type="String">Song</Data></Cell><Cell><Data ss:Type="String">Film</Data></Cell><Cell><Data ss:Type="String">Singer</Data></Cell><Cell><Data ss:Type="String">Music Director</Data></Cell><Cell><Data ss:Type="String">Taal</Data></Cell><Cell><Data ss:Type="String">Laya</Data></Cell><Cell><Data ss:Type="String">Tag</Data></Cell></Row>');
+  rows.push('<Row><Cell><Data ss:Type="String">Raga</Data></Cell><Cell><Data ss:Type="String">Song</Data></Cell><Cell><Data ss:Type="String">Film</Data></Cell><Cell><Data ss:Type="String">Singer</Data></Cell><Cell><Data ss:Type="String">Music Director</Data></Cell><Cell><Data ss:Type="String">Taal</Data></Cell><Cell><Data ss:Type="String">Laya</Data></Cell><Cell><Data ss:Type="String">Notes</Data></Cell><Cell><Data ss:Type="String">Tag</Data></Cell></Row>');
   for(var rn in songs){
-    if(!songs.hasOwnProperty(rn))continue;
-    for(var s=0;s<songs[rn].length;s++){
-      var sg=songs[rn][s];
-      rows.push('<Row><Cell><Data ss:Type="String">'+xmlEsc(rn)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.song)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.film)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.singer)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.md)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.taal)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.laya)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg._tag||'')+'</Data></Cell></Row>');
-    }
+      if(!songs.hasOwnProperty(rn))continue;
+      for(var s=0;s<songs[rn].length;s++){
+        var sg=songs[rn][s];
+        rows.push('<Row><Cell><Data ss:Type="String">'+xmlEsc(rn)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.song)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.film)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.singer)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.md)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.taal)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.laya)+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg.notes||'')+'</Data></Cell><Cell><Data ss:Type="String">'+xmlEsc(sg._tag||'')+'</Data></Cell></Row>');
+      }
   }
   rows.push('</Table></Worksheet>');
   rows.push('<Worksheet ss:Name="Swara Reference"><Table>');
@@ -7559,6 +7641,15 @@ var counterEls = [];
 var ragaNameEls = [];
 var dnEls = [];
 var didDrag = false;
+
+// Melakarta Wheel Zoom & Pan State
+var WHEEL_VB_X = 40, WHEEL_VB_Y = 40, WHEEL_VB_W = 820, WHEEL_VB_H = 820;
+var wheel_zoom = 1.0;
+var wheel_panX = 0;
+var wheel_panY = 0;
+var wheel_minZoom = 1.0;
+var wheel_maxZoom = 4.0;
+
 
 // Active selections for the mini Carnatic keyboard
 var mwSelectedSwaras = { R: null, G: null, M: null, D: null, N: null };
@@ -7830,7 +7921,47 @@ function applyRotation() {
   if (display) { var norm = ((rotation % 360) + 360) % 360; display.textContent = Math.round(norm) + '\u00b0'; }
 }
 function rotateWheel(delta) { rotation += delta; applyRotation(); }
-function resetWheel() { rotation = 0; applyRotation(); }
+function wheel_applyZoomPan() {
+  var svg = document.getElementById('wheel');
+  if (!svg) return;
+  var vbW = WHEEL_VB_W / wheel_zoom;
+  var vbH = WHEEL_VB_H / wheel_zoom;
+  var vbX = WHEEL_VB_X + (WHEEL_VB_W - vbW) / 2 + wheel_panX;
+  var vbY = WHEEL_VB_Y + (WHEEL_VB_H - vbH) / 2 + wheel_panY;
+  svg.setAttribute('viewBox', vbX + ' ' + vbY + ' ' + vbW + ' ' + vbH);
+}
+
+function wheel_setZoom(z) {
+  wheel_zoom = Math.max(wheel_minZoom, Math.min(wheel_maxZoom, z));
+  wheel_applyZoomPan();
+}
+
+function wheel_resetZoomPan() {
+  wheel_zoom = 1.0;
+  wheel_panX = 0;
+  wheel_panY = 0;
+  wheel_applyZoomPan();
+}
+
+// Automatically rotates selected Melakarta raga to 12 o'clock and auto-zooms for clear legibility
+function wheel_focusAndZoomRaga(ragaObj) {
+  if (!ragaObj) return;
+  // Rotate slice to 12 o'clock
+  rotation = -((ragaObj.n - 1) * ANGLE_PER + ANGLE_PER / 2);
+  applyRotation();
+
+  // Zoom to 2.2x and pan up to center the 12 o'clock sector
+  wheel_zoom = 2.2;
+  wheel_panX = 0;
+  wheel_panY = -220;
+  wheel_applyZoomPan();
+}
+
+function resetWheel() {
+  rotation = 0;
+  applyRotation();
+  wheel_resetZoomPan();
+}
 
 // Highlights matching Melakartas in BOLD RED on the wheel
 function updateMelakartaWheelHighlights(returnFirst) {
@@ -7945,14 +8076,13 @@ function initMelakartaKeyboard() {
   var searchBtn = document.getElementById('mwKbSearchBtn');
   if (searchBtn) {
     searchBtn.addEventListener('click', function() {
-      var firstMatch = updateMelakartaWheelHighlights(true);
-      if (firstMatch) {
-        rotation = -((firstMatch.n - 1) * ANGLE_PER + ANGLE_PER / 2);
-        applyRotation();
-        showRaga(firstMatch);
-        var svgEl = document.getElementById('wheel');
-        if (svgEl) svgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
+          var firstMatch = updateMelakartaWheelHighlights(true);
+          if (firstMatch) {
+            showRaga(firstMatch);
+            wheel_focusAndZoomRaga(firstMatch);
+            var svgEl = document.getElementById('wheel');
+            if (svgEl) svgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
         var statusEl = document.getElementById('mwKbStatus');
         if (statusEl) statusEl.textContent = 'Select one or more swaras to search';
       }
@@ -8515,11 +8645,12 @@ function showRagaOnWheel(mk){
   }
   if(found){
     showRaga(found);
-    rotation=-((found.n-1)*ANGLE_PER+ANGLE_PER/2);
-    applyRotation();
+    wheel_focusAndZoomRaga(found);
   }
+  if (typeof updateViewToolsUI === 'function') updateViewToolsUI();
   document.getElementById('wheel-view').scrollIntoView({behavior:'smooth',block:'start'});
 }
+
 
 // Automatically rotates the selected raga to 12 o'clock and auto-zooms for clear legibility
 function ring_focusAndZoomRaga(ragaName) {
@@ -9707,7 +9838,10 @@ async function saveToHtmlFile() {
   if (songMsg) { songMsg.textContent = ''; songMsg.className = 'lookup-msg'; }
 
   var wheel = clone.querySelector('#wheel');
-  if (wheel) wheel.innerHTML = '';
+  if (wheel) {
+      wheel.innerHTML = '';
+      wheel.setAttribute('viewBox', '40 40 820 820');
+    }
   var wheelLegend = clone.querySelector('#legend');
   if (wheelLegend) wheelLegend.innerHTML = '';
   var detailPanel = clone.querySelector('#detail-panel');
@@ -9751,16 +9885,17 @@ async function saveToHtmlFile() {
   for (var raga in songs) {
     if (!songs.hasOwnProperty(raga)) continue;
     cleanDb[raga] = songs[raga].map(function(s) {
-      var item = {
-        song: s.song,
-        film: s.film || "",
-        singer: s.singer || "",
-        md: s.md || ""
-      };
-      if (s.taal) item.taal = s.taal;
-      if (s.laya) item.laya = s.laya;
-      return item;
-    });
+          var item = {
+            song: s.song,
+            film: s.film || "",
+            singer: s.singer || "",
+            md: s.md || ""
+          };
+          if (s.taal) item.taal = s.taal;
+          if (s.laya) item.laya = s.laya;
+          if (s.notes) item.notes = s.notes; // Embeds song notes in the HTML export
+          return item;
+        });
   }
   var newSongsBaseJson = 'var SONGS_BASE = ' + JSON.stringify(cleanDb, null, 2) + ';';
   var updatedHtml = htmlSource.replace(/var SONGS_BASE\s*=\s*\{[\s\S]*?\};/, newSongsBaseJson);
