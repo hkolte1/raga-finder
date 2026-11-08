@@ -161,6 +161,8 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
   border:1px solid var(--line);border-radius:6px;padding:6px 8px;flex-wrap:wrap;}
 .song-item .song-main{flex:1 1 180px;min-width:0}
 .song-item .song-name{font-weight:bold;color:#3a2a12}
+.song-item .song-detail{color:#7a6a4d;font-size:.7rem;display:block;margin-top:1px;cursor:pointer;}
+.song-item .song-detail:hover{color:var(--accent);text-decoration:underline;}
 
 /* Song Notes Card & Toggle */
 .song-notes-toggle{display:inline-flex;align-items:center;gap:3px;font-size:0.70rem;color:#1565c0;text-decoration:underline;cursor:pointer;margin-top:4px;touch-action:manipulation;background:none;border:none;padding:0;}
@@ -7327,6 +7329,11 @@ function songsBox(raagName){
 
                     toggleBtn.addEventListener('click', toggleCard);
                     closeBtn.addEventListener('click', toggleCard);
+                    // Clicking the song details text directly opens/toggles the Notes card
+                    var detailSpan = songMain.querySelector('.song-detail');
+                    if (detailSpan) {
+                        detailSpan.addEventListener('click', toggleCard);
+                    }
 
                     saveNotesBtn.addEventListener('click', function(e) {
                       e.stopPropagation();
@@ -7361,46 +7368,74 @@ function songsBox(raagName){
       }
     }
   }
-  function toggleEdit(item,s,i,notesBtn,notesCard){
-      var main=item.querySelector('.song-main');
-      var editBtn=item.querySelector('.song-edit');
-      var delBtn=item.querySelector('.song-del');
-      main.style.display='none';editBtn.style.display='none';delBtn.style.display='none';notesBtn.style.display='none';notesCard.style.display='none';
-      var form=document.createElement('div');
-      form.className='song-edit-form';form.style.display='flex';
-      var eSong=document.createElement('input');eSong.placeholder='Song name';eSong.value=s.song||'';
-      var eFilm=document.createElement('input');eFilm.placeholder='Film';eFilm.value=s.film||'';
-      var eSinger=document.createElement('input');eSinger.placeholder='Singer';eSinger.value=s.singer||'';
-      var eMd=document.createElement('input');eMd.placeholder='Music Director';eMd.value=s.md||'';
-      var eTaal=document.createElement('input');eTaal.placeholder='Taal';eTaal.value=s.taal||'';
-      var eLaya=document.createElement('input');eLaya.placeholder='Laya';eLaya.value=s.laya||'';
-      var btns=document.createElement('div');btns.className='edit-btns';
-      var saveBtn=document.createElement('button');saveBtn.textContent='Save';
-      var cancelBtn=document.createElement('button');cancelBtn.textContent='Cancel';cancelBtn.className='cancel';
-      btns.appendChild(saveBtn);btns.appendChild(cancelBtn);
-      form.appendChild(eSong);form.appendChild(eFilm);form.appendChild(eSinger);form.appendChild(eMd);form.appendChild(eTaal);form.appendChild(eLaya);form.appendChild(btns);
+  function toggleEdit(item, s, i) {
+      var main = item.querySelector('.song-main');
+      var editBtn = item.querySelector('.song-edit');
+      var delBtn = item.querySelector('.song-del');
+      var notesCard = item.querySelector('.song-notes-card');
+
+      if (main) main.style.display = 'none';
+      if (editBtn) editBtn.style.display = 'none';
+      if (delBtn) delBtn.style.display = 'none';
+      if (notesCard) notesCard.style.display = 'none';
+
+      var form = document.createElement('div');
+      form.className = 'song-edit-form';
+      form.style.display = 'flex';
+
+      var eSong = document.createElement('input'); eSong.placeholder = 'Song name'; eSong.value = s.song || '';
+      var eFilm = document.createElement('input'); eFilm.placeholder = 'Film'; eFilm.value = s.film || '';
+      var eSinger = document.createElement('input'); eSinger.placeholder = 'Singer'; eSinger.value = s.singer || '';
+      var eMd = document.createElement('input'); eMd.placeholder = 'Music Director'; eMd.value = s.md || '';
+      var eTaal = document.createElement('input'); eTaal.placeholder = 'Taal'; eTaal.value = s.taal || '';
+      var eLaya = document.createElement('input'); eLaya.placeholder = 'Laya'; eLaya.value = s.laya || '';
+
+      var btns = document.createElement('div');
+      btns.className = 'edit-btns';
+      var saveBtn = document.createElement('button'); saveBtn.textContent = 'Save';
+      var cancelBtn = document.createElement('button'); cancelBtn.textContent = 'Cancel'; cancelBtn.className = 'cancel';
+      btns.appendChild(saveBtn);
+      btns.appendChild(cancelBtn);
+
+      form.appendChild(eSong);
+      form.appendChild(eFilm);
+      form.appendChild(eSinger);
+      form.appendChild(eMd);
+      form.appendChild(eTaal);
+      form.appendChild(eLaya);
+      form.appendChild(btns);
+
       item.appendChild(form);
       eSong.focus();
-      function doSave(){
-            var ns=eSong.value.trim();if(!ns){eSong.focus();return;}
-            editSong(raagName,i,{
-              song: ns,
-              film: eFilm.value.trim(),
-              singer: eSinger.value.trim(),
-              md: eMd.value.trim(),
-              taal: eTaal.value.trim(),
-              laya: eLaya.value.trim(),
-              notes: s.notes || '' // Preserves existing notes
-            });
-            refreshList();
-          }
-      saveBtn.addEventListener('click',doSave);
-      cancelBtn.addEventListener('click',function(){refreshList();});
-    var inputs=[eSong,eFilm,eSinger,eMd,eTaal,eLaya];
-    for(var ii=0;ii<inputs.length;ii++){
-      (function(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter')doSave();if(e.key==='Escape')refreshList();});})(inputs[ii]);
+
+      function doSave() {
+        var ns = eSong.value.trim();
+        if (!ns) { eSong.focus(); return; }
+        editSong(raagName, i, {
+          song: ns,
+          film: eFilm.value.trim(),
+          singer: eSinger.value.trim(),
+          md: eMd.value.trim(),
+          taal: eTaal.value.trim(),
+          laya: eLaya.value.trim(),
+          notes: s.notes || ''
+        });
+        refreshList();
+      }
+
+      saveBtn.addEventListener('click', doSave);
+      cancelBtn.addEventListener('click', function() { refreshList(); });
+
+      var inputs = [eSong, eFilm, eSinger, eMd, eTaal, eLaya];
+      for (var ii = 0; ii < inputs.length; ii++) {
+        (function(inp) {
+          inp.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') doSave();
+            if (e.key === 'Escape') refreshList();
+          });
+        })(inputs[ii]);
+      }
     }
-  }
   refreshList();
   box.appendChild(listEl);
 
