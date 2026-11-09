@@ -171,12 +171,23 @@ header.top p{font-size:.78rem;color:#6a5d44;font-style:italic;margin-top:2px}
 .song-notes-card{display:none;width:100%;flex:1 1 100%;margin-top:6px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px;box-shadow:0 1px 4px rgba(0,0,0,.06);box-sizing:border-box;}
 .song-notes-card.show{display:block;}
 .song-notes-header{display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;font-weight:bold;color:#3a2a12;margin-bottom:6px;border-bottom:1px dashed var(--line);padding-bottom:3px;}
-.song-notes-header .close-notes{cursor:pointer;color:#999;font-size:0.85rem;padding:0 4px;}
+.song-notes-header .header-btns{display:flex;align-items:center;gap:8px;}
+.song-notes-header .edit-notes-btn{font-family:Georgia,serif;font-size:0.68rem;color:#1565c0;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;}
+.song-notes-header .edit-notes-btn:hover{color:var(--accent);}
+.song-notes-header .close-notes{cursor:pointer;color:#999;font-size:0.95rem;padding:0 4px;}
+
+/* Clean Read-Only Note Display (No Form) */
+.song-notes-view{font-size:0.74rem;line-height:1.45;color:#333;white-space:pre-wrap;word-wrap:break-word;background:rgba(184,52,30,0.03);border-left:2px solid var(--accent);padding:6px 8px;border-radius:0 4px 4px 0;margin-bottom:4px;}
+.song-notes-view.empty{font-style:italic;color:#888;background:#faf8f5;border-left:2px solid var(--line);}
+
+/* Editable Area (Hidden in View Mode) */
+.song-notes-edit-mode{display:none;margin-top:4px;}
 .song-notes-textarea{width:100%;box-sizing:border-box;font-family:Georgia,serif;font-size:0.73rem;line-height:1.4;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink);min-height:75px;resize:vertical;margin-bottom:6px;}
 .song-notes-textarea:focus{outline:none;border-color:var(--accent);}
-.song-notes-actions{display:flex;justify-content:space-between;align-items:center;}
+.song-notes-actions{display:flex;justify-content:flex-start;align-items:center;gap:6px;}
 .song-notes-save-btn{font-family:Georgia,serif;font-size:0.70rem;padding:4px 12px;border-radius:4px;cursor:pointer;border:1px solid var(--shuddha);background:var(--shuddha);color:#fff;font-weight:bold;touch-action:manipulation;}
 .song-notes-save-btn:active{background:#2e7d32;}
+.song-notes-cancel-btn{font-family:Georgia,serif;font-size:0.70rem;padding:4px 10px;border-radius:4px;cursor:pointer;border:1px solid #9a8d70;background:#9a8d70;color:#fff;touch-action:manipulation;}
 .song-notes-status{font-size:0.68rem;color:#2e7d32;font-style:italic;}
 .song-yt-link{text-decoration:none;display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
 .song-yt-link:hover .song-name{color:var(--accent);text-decoration:underline}
@@ -7328,67 +7339,116 @@ function songsBox(raagName){
                     });
                     item.appendChild(del);
 
-                    // Expandable Notes Card (Structured like Raga Cards)
+                    // Expandable Notes Card (View Mode by default, Edit Mode on demand)
                     var notesCard = document.createElement('div');
                     notesCard.className = 'song-notes-card';
                     notesCard.innerHTML =
                       '<div class="song-notes-header">' +
                         '<span>Notes &amp; Musicology: <i>' + escapeHtml(s.song) + '</i></span>' +
-                        '<span class="close-notes" title="Close Card">&times;</span>' +
+                        '<div class="header-btns">' +
+                          '<button type="button" class="edit-notes-btn">&#9998; Edit Note</button>' +
+                          '<span class="close-notes" title="Close">&times;</span>' +
+                          '</div>' +
                       '</div>' +
-                      '<textarea class="song-notes-textarea" placeholder="Add raga analysis, note contours, tempo/taal nuances, or reasons why this song belongs to ' + escapeHtml(raagName) + '..."></textarea>' +
-                      '<div class="song-notes-actions">' +
-                        '<button type="button" class="song-notes-save-btn">Save Notes</button>' +
-                        '<span class="song-notes-status"></span>' +
+                      '<!-- READ-ONLY VIEW MODE -->' +
+                      '<div class="song-notes-view' + (hasNotes ? '' : ' empty') + '">' +
+                        (hasNotes ? escapeHtml(s.notes) : 'No notes added yet for this song. Click &#9998; Edit Note to add analysis or comments.') +
+                      '</div>' +
+                      '<!-- EDIT MODE (HIDDEN UNTIL REQUESTED) -->' +
+                      '<div class="song-notes-edit-mode" style="display:none;">' +
+                        '<textarea class="song-notes-textarea" placeholder="Add raga analysis, note contours, tempo/taal nuances, or reasons why this song belongs to ' + escapeHtml(raagName) + '..."></textarea>' +
+                        '<div class="song-notes-actions">' +
+                          '<button type="button" class="song-notes-save-btn">Save Note</button>' +
+                          '<button type="button" class="song-notes-cancel-btn">Cancel</button>' +
+                          '<span class="song-notes-status"></span>' +
+                         '</div>' +
                       '</div>';
 
+                    var viewEl = notesCard.querySelector('.song-notes-view');
+                    var editModeEl = notesCard.querySelector('.song-notes-edit-mode');
                     var textarea = notesCard.querySelector('.song-notes-textarea');
-                    textarea.value = s.notes || '';
-
-                    var toggleBtn = songMain.querySelector('.song-notes-toggle');
-                    var closeBtn = notesCard.querySelector('.close-notes');
+                    var editNotesBtn = notesCard.querySelector('.edit-notes-btn');
                     var saveNotesBtn = notesCard.querySelector('.song-notes-save-btn');
+                    var cancelNotesBtn = notesCard.querySelector('.song-notes-cancel-btn');
+                    var toggleBtn = songMain.querySelector('.song-notes-toggle');
+                    var detailSpan = songMain.querySelector('.song-detail');
+                    var closeBtn = notesCard.querySelector('.close-notes');
                     var statusSpan = notesCard.querySelector('.song-notes-status');
+
+                    function showViewMode() {
+                      viewEl.style.display = 'block';
+                      editModeEl.style.display = 'none';
+                      editNotesBtn.style.display = 'inline-block';
+                    }
+
+                    function showEditMode() {
+                      viewEl.style.display = 'none';
+                      editModeEl.style.display = 'block';
+                      editNotesBtn.style.display = 'none';
+                      textarea.value = s.notes || '';
+                      textarea.focus();
+                    }
 
                     function toggleCard(e) {
                       if (e) e.stopPropagation();
                       var isOpen = notesCard.classList.toggle('show');
+                      if (isOpen) {
+                        showViewMode(); // Always opens into clean, read-only view mode
+                      }
                       toggleBtn.innerHTML = isOpen
-                        ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Song Details ▴')
-                        : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Song Details ▾');
-                      if (isOpen) textarea.focus();
+                        ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Add Notes ▴')
+                        : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Add Notes ▾');
                     }
 
+                    // Clicking either the Notes toggle or the Song Details line opens the view card
                     toggleBtn.addEventListener('click', toggleCard);
+                    if (detailSpan) detailSpan.addEventListener('click', toggleCard);
                     closeBtn.addEventListener('click', toggleCard);
-                    // Clicking the song details text directly opens/toggles the Notes card
-                    var detailSpan = songMain.querySelector('.song-detail');
-                    if (detailSpan) {
-                        detailSpan.addEventListener('click', toggleCard);
-                    }
 
-                    saveNotesBtn.addEventListener('click', function(e) {
+                    // Switch to edit mode only when clicking "Edit Note"
+                    editNotesBtn.addEventListener('click', function(e) {
                       e.stopPropagation();
-                      var val = textarea.value.trim();
-                      s.notes = val;
-                      hasNotes = !!val;
-                      s._tag = 'edited';
-                      saveSongs();
-
-                      statusSpan.textContent = 'Saved ✓';
-                      statusSpan.style.display = 'inline';
-                      toggleBtn.className = 'song-notes-toggle' + (hasNotes ? ' has-notes' : '');
-                      toggleBtn.innerHTML = notesCard.classList.contains('show')
-                        ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Song Details ▴')
-                        : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Song Details ▾');
-
-                      setTimeout(function() {
-                        statusSpan.style.display = 'none';
-                      }, 2000);
+                      showEditMode();
                     });
 
-                    item.appendChild(notesCard);
-                    listEl.appendChild(item);
+                    // Cancel editing and return to view mode without saving
+                    cancelNotesBtn.addEventListener('click', function(e) {
+                      e.stopPropagation();
+                      showViewMode();
+                    });
+
+                    // Save note, update display text, and return to view mode
+                    saveNotesBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var val = textarea.value.trim();
+                    s.notes = val;
+                    hasNotes = !!val;
+                    s._tag = 'edited';
+                    saveSongs();
+
+                    if (hasNotes) {
+                      viewEl.textContent = val;
+                      viewEl.classList.remove('empty');
+                    } else {
+                      viewEl.innerHTML = 'No notes added yet for this song. Click &#9998; Edit Note to add analysis or comments.';
+                      viewEl.classList.add('empty');
+                    }
+
+                    showViewMode();
+                    statusSpan.textContent = 'Saved ✓';
+                    statusSpan.style.display = 'inline';
+                    toggleBtn.className = 'song-notes-toggle' + (hasNotes ? ' has-notes' : '');
+                    toggleBtn.innerHTML = notesCard.classList.contains('show')
+                      ? (hasNotes ? '📝 Notes &amp; Musicology ▴' : '📝 Add Notes ▴')
+                      : (hasNotes ? '📝 Notes &amp; Musicology ▾' : '📝 Add Notes ▾');
+
+                    setTimeout(function() {
+                      statusSpan.style.display = 'none';
+                    }, 2000);
+                });
+
+                item.appendChild(notesCard);
+                listEl.appendChild(item);
         })(sg[si],si);
       }
       if(sg.length > 5){
@@ -10077,6 +10137,7 @@ document.getElementById('saveHtmlBtn').addEventListener('click', function() {
 
 buildRing();
 </script>
+
 
 
 
